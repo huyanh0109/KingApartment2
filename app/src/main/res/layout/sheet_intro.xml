@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="428dp"
+    android:layout_height="926dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="426dp"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    android:orientation="vertical">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:background="@drawable/ic_line"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"></androidx.appcompat.widget.AppCompatImageView>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="62dp"
+        android:layout_marginRight="62dp"
+        android:fontFamily="@font/source_sans_pro_semibold"
+        android:text="@string/title_intro_1"
+        android:textAlignment="center"
+        android:textColor="@color/textcolor_blue_blod"
+        android:textSize="28dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/content_intro"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+    </androidx.appcompat.widget.AppCompatTextView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/content_intro"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="44dp"
+        android:layout_marginRight="44dp"
+        android:layout_marginBottom="47dp"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="@string/content_intro"
+        android:textAlignment="center"
+        android:textColor="@color/textcolor_black"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toTopOf="@id/icon_next"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+    </androidx.appcompat.widget.AppCompatTextView>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/icon_next"
+        android:layout_width="42dp"
+        android:layout_height="5dp"
+        android:background="@drawable/ic_next1"
+        android:layout_marginBottom="42dp"
+        app:layout_constraintBottom_toTopOf="@id/tv_skip_intro"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+    </androidx.appcompat.widget.AppCompatImageView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_skip_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/source_sans_pro_semibold"
+        android:text="@string/text_skip"
+        android:textAlignment="center"
+        android:textColor="@color/textcolor_blue_blod"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/btn_intro"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+    </androidx.appcompat.widget.AppCompatTextView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_intro"
+        android:layout_width="380dp"
+        android:layout_height="55dp"
+        android:text="@string/btn_intro"
+        android:textColor="@color/textcolor_white"
+        android:background="@drawable/shape_button_gradient"
+        android:layout_marginBottom="54dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+    />
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

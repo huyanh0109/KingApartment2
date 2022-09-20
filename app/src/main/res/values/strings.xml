@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">DATN</string>
+    <string name="app_name" translatable="false">DATN</string>
+    <string name="btn_intro">Tiếp Theo</string>
+    <string name="text_skip">Bỏ qua</string>
+    <string name="title_intro_1">Ứng Dụng Bất Động Sản cập nhật nhanh nhất</string>
+    <string name="content_intro">Griya is greatest Real Estate Mobile App platform in this century.</string>
 </resources>

@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="428dp"
-    android:layout_height="926dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/img_intro">
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="426dp"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintBottom_toBottomOf="parent"
-    android:orientation="vertical">
+    android:background="@drawable/shape_background_sheet_intro">
+    <me.relex.circleindicator.CircleIndicator3
+        android:id="@+id/icon_next"
+        android:layout_width="42dp"
+        android:layout_height="11dp"
+        android:layout_marginTop="42dp"
+        app:ci_drawable="@drawable/shape_circle"
+        android:layout_marginBottom="42dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_skip_intro"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+    </me.relex.circleindicator.CircleIndicator3>
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/circleIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
@@ -18,53 +32,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"></androidx.appcompat.widget.AppCompatImageView>
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="300dp"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vpg_intro"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:layout_marginLeft="62dp"
-        android:layout_marginRight="62dp"
-        android:fontFamily="@font/source_sans_pro_semibold"
-        android:text="@string/title_intro_1"
-        android:textAlignment="center"
-        android:textColor="@color/textcolor_blue_blod"
-        android:textSize="28dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/content_intro"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
-
-    </androidx.appcompat.widget.AppCompatTextView>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/content_intro"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="44dp"
-        android:layout_marginRight="44dp"
-        android:layout_marginBottom="47dp"
-        android:fontFamily="@font/source_sans_pro"
-        android:text="@string/content_intro"
-        android:textAlignment="center"
-        android:textColor="@color/textcolor_black"
-        android:textSize="14dp"
-        app:layout_constraintBottom_toTopOf="@id/icon_next"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
-
-    </androidx.appcompat.widget.AppCompatTextView>
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/icon_next"
-        android:layout_width="42dp"
-        android:layout_height="5dp"
-        android:background="@drawable/ic_next1"
-        android:layout_marginBottom="42dp"
-        app:layout_constraintBottom_toTopOf="@id/tv_skip_intro"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
-
-    </androidx.appcompat.widget.AppCompatImageView>
-
+        app:layout_constraintBottom_toTopOf="@+id/icon_next"
+        ></androidx.viewpager2.widget.ViewPager2>
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_skip_intro"
         android:layout_width="wrap_content"

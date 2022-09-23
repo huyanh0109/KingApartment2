@@ -12,4 +12,6 @@
     <color name="textcolor_black">#FF000000</color>
     <color name="text_color_light">#56616F</color>
     <color name="text_color_error">#F81212</color>
+    <color name="background_icon_setting">#EAF1FF</color>
+    <color name="line_light">#EBEEF2</color>
 </resources>

@@ -7,7 +7,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_62dp"
+        android:layout_height="@dimen/_55dp"
         android:layout_margin="@dimen/padding_large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -17,6 +17,6 @@
         android:background="@drawable/shape_bottom_nav"
         app:labelVisibilityMode="unlabeled"
         android:elevation="3dp"
-        app:itemRippleColor="@color/text_color_error"
+        app:itemRippleColor="@color/textcolor_blue_blod"
         ></com.google.android.material.bottomnavigation.BottomNavigationView>
 </androidx.constraintlayout.widget.ConstraintLayout>

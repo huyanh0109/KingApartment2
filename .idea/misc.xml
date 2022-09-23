@@ -3,10 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/DATN/app/src/main/res/drawable/ic_group18.xml" value="0.188" />
+        <entry key="..\:/Android/DATN/app/src/main/res/drawable/ic_imgs.xml" value="0.1" />
+        <entry key="..\:/Android/DATN/app/src/main/res/drawable/ic_launcher_background.xml" value="0.172" />
+        <entry key="..\:/Android/DATN/app/src/main/res/drawable/ic_line.xml" value="0.172" />
+        <entry key="..\:/Android/DATN/app/src/main/res/drawable/ic_next1.xml" value="0.172" />
         <entry key="..\:/Android/DATN/app/src/main/res/drawable/shape.xml" value="0.135" />
         <entry key="..\:/Android/DATN/app/src/main/res/drawable/shape_background_sheet_intro.xml" value="0.173" />
         <entry key="..\:/Android/DATN/app/src/main/res/drawable/shape_button_gradient.xml" value="0.173" />
         <entry key="..\:/Android/DATN/app/src/main/res/drawable/shape_circle.xml" value="0.172" />
+        <entry key="..\:/Android/DATN/app/src/main/res/drawable/shape_edittext.xml" value="0.1285" />
+        <entry key="..\:/Android/DATN/app/src/main/res/drawable/shape_error.xml" value="0.141" />
+        <entry key="..\:/Android/DATN/app/src/main/res/layout/activity_main.xml" value="0.14749893116716545" />
+        <entry key="..\:/Android/DATN/app/src/main/res/layout/fragment_sheet_intro.xml" value="0.16666666666666666" />
+        <entry key="..\:/Android/DATN/app/src/main/res/layout/fragment_signin.xml" value="0.22" />
+        <entry key="..\:/Android/DATN/app/src/main/res/layout/fragment_splash.xml" value="0.16666666666666666" />
+        <entry key="..\:/Android/DATN/app/src/main/res/layout/fragment_splash2.xml" value="0.12783318223028106" />
         <entry key="..\:/Android/DATN/app/src/main/res/layout/sheet_intro.xml" value="0.1" />
         <entry key="..\:/Android/DATN/app/src/main/res/layout/viewpager_intro.xml" value="0.16666666666666666" />
       </map>

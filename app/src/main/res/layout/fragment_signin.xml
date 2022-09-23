@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ic_logo"
+        android:layout_width="@dimen/logo_size_small"
+        android:layout_height="@dimen/logo_size_small"
+        android:background="@drawable/ic_logo"
+        app:layout_constraintBottom_toTopOf="@+id/ll_signin_top"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:id="@+id/ll_signin_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/ll_signin_bot"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ic_logo">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_singin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/source_sans_pro_semibold"
+        android:text="@string/signin_title"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_large"
+        android:layout_gravity="center"/>
+
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:layout_marginLeft="@dimen/_11dp"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:text="@string/signin_email"
+            android:textColor="@color/text_color_light"
+            app:layout_constraintTop_toBottomOf="@+id/ic_logo" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="@dimen/button_size_weight_large"
+            android:layout_height="@dimen/button_size_height"
+            android:background="@drawable/shape_edittext"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:padding="@dimen/padding_small"
+            android:text="@string/signin_title_email"
+            android:textColor="#EBEEF2"
+            android:textSize="@dimen/text_size_normal" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="@dimen/button_size_weight_large"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_tiny_small"
+            android:background="@drawable/shape_error"
+            android:drawableLeft="@drawable/ic_error"
+            android:fontFamily="@font/source_sans_pro"
+            android:paddingLeft="@dimen/_11dp"
+            android:text="@string/signin_email_error"
+            android:textAlignment="viewStart"
+            android:textColor="@color/text_color_error" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:layout_marginLeft="@dimen/_11dp"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:text="@string/signin_email"
+            android:textColor="@color/text_color_light"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ic_logo" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="@dimen/button_size_weight_large"
+            android:layout_height="@dimen/button_size_height"
+            android:background="@drawable/shape_edittext"
+            android:drawableRight="@drawable/ic_hide"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:padding="@dimen/padding_small"
+            android:text="@string/signin_email"
+            android:textColor="#EBEEF2"
+            android:textSize="@dimen/text_size_normal" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="@dimen/button_size_weight_large"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_tiny_small"
+            android:background="@drawable/shape_error"
+            android:drawableLeft="@drawable/ic_error"
+            android:fontFamily="@font/source_sans_pro"
+            android:paddingLeft="@dimen/_11dp"
+            android:text="@string/signin_email_error"
+            android:textAlignment="viewStart"
+            android:textColor="@color/text_color_error" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/textcolor_blue_blod"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:text="@string/remember_pass"
+            android:textColor="@color/text_color_light" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_signin"
+        android:layout_width="@dimen/button_size_weight_large"
+        android:layout_height="@dimen/button_size_height"
+        android:layout_marginTop="@dimen/padding_large"
+        android:background="@drawable/shape_button_gradient"
+        android:text="@string/signin_button"
+        android:textColor="@color/textcolor_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_signin_top" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btn_forgotpass"
+        android:layout_width="wrap_content"
+        android:layout_margin="@dimen/padding_large"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/source_sans_pro_semibold"
+        android:text="@string/forgot_pass_text"
+        android:layout_gravity="center"
+        android:textColor="@color/textcolor_blue_blod"
+        android:textSize="@dimen/text_size_normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_signin" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@id/ll_signin_bot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_signin_top">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_semibold"
+            android:text="@string/text_question_signup"
+            android:textColor="@color/text_color_light"
+            android:textSize="@dimen/text_size_normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_signin" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btn_signupnow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_small"
+            android:fontFamily="@font/source_sans_pro_semibold"
+            android:text="@string/text_signup_now"
+            android:textColor="@color/textcolor_blue_blod"
+            android:textSize="@dimen/text_size_normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_signin" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

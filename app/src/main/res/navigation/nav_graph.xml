@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentSplash">
+
+    <fragment
+        android:id="@+id/fragmentSplash"
+        android:name="com.example.datn.fragment.FragmentSplash"
+        android:label="FragmentSplash" >
+        <action
+            android:id="@+id/action_fragmentSplash_to_fragmentIntro"
+            app:destination="@id/fragmentIntro" />
+        <action
+            android:id="@+id/action_fragmentSplash_to_fragmentSignin"
+            app:destination="@id/fragmentSignin" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentIntro"
+        android:name="com.example.datn.fragment.FragmentIntro"
+        android:label="FragmentIntro" >
+        <action
+            android:id="@+id/action_fragmentIntro_to_fragmentSignin"
+            app:destination="@id/fragmentSignin" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentSignin"
+        android:name="com.example.datn.fragment.FragmentSignin"
+        android:label="FragmentSignin" />
+</navigation>

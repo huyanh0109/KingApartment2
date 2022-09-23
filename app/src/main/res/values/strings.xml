@@ -5,4 +5,17 @@
     <string name="title_intro_1">Ứng Dụng Bất Động Sản cập nhật nhanh nhất</string>
     <string name="content_intro">Griya is greatest Real Estate Mobile App platform in this century.</string>
     <string name="content_intro2">Griya is greatdsadsadsadsadsadsadsadsadatform in this century.</string>
+    <string name="content_intro3">Griya is greatest Real Estate Mobile App platform in this century.</string>
+    <string name="signin_title">Đăng Nhập</string>
+    <string name="signin_title_email">Email</string>
+    <string name="remember_pass">Nhớ mật khẩu</string>
+    <string name="signin_button">Đăng nhập</string>
+    <string name="forgot_pass_text">Quên mật khẩu?</string>
+    <string name="text_question_signup">Bạn chưa có tài khoản</string>
+    <string name="text_signup_now">Đăng kí ngay</string>
+    <string name="discover">Khám phá ngay</string>
+    <string name="signin_email">
+Email<font color="#F81212"> *</font>
+    </string>
+    <string name="signin_email_error">Email không đúng!</string>
 </resources>

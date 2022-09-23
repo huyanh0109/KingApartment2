@@ -31,8 +31,8 @@ public class IntroAdapter extends RecyclerView.Adapter<IntroAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         switch (position){
             case 0:
-                holder.tv_title.setText("@string/title_intro_1");
-                holder.tv_content.setText("@string/content_intro");
+                holder.tv_title.setText(R.string.title_intro_1);
+                holder.tv_content.setText(R.string.content_intro);
                 break;
             case 1:
                 holder.tv_title.setText("@string/title_intro_1");

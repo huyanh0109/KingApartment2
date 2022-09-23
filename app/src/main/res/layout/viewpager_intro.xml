@@ -7,16 +7,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">>
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_title_intro"
-        android:layout_width="300dp"
+        android:layout_width="@dimen/_300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="62dp"
-        android:layout_marginRight="62dp"
+        android:layout_marginBottom="@dimen/_20dp"
+        android:layout_marginLeft="@dimen/_62dp"
+        android:layout_marginRight="@dimen/_62dp"
         android:fontFamily="@font/source_sans_pro_semibold"
         android:text="@string/title_intro_1"
         android:textAlignment="center"
         android:textColor="@color/textcolor_blue_blod"
-        android:textSize="28dp"
+        android:textSize="@dimen/text_size_xlarge"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/tv_content_intro"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -26,19 +26,19 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_content_intro"
-        android:layout_width="300dp"
+        android:layout_width="@dimen/_300dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="44dp"
+        android:layout_marginLeft="@dimen/_44dp"
         android:layout_marginRight="44dp"
         android:fontFamily="@font/source_sans_pro"
         android:text="@string/content_intro"
         android:textAlignment="center"
         android:textColor="@color/textcolor_black"
-        android:textSize="14dp"
+        android:textSize="@dimen/text_size_small"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="797dp">
+>
 
     </androidx.appcompat.widget.AppCompatTextView>
 </androidx.constraintlayout.widget.ConstraintLayout>

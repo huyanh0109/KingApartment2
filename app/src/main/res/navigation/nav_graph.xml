@@ -27,5 +27,29 @@
     <fragment
         android:id="@+id/fragmentSignin"
         android:name="com.example.datn.fragment.FragmentSignin"
-        android:label="FragmentSignin" />
+        android:label="FragmentSignin" >
+        <action
+            android:id="@+id/action_fragmentSignin_to_fragmentDaddy"
+            app:destination="@id/fragmentDaddy" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentHome"
+        android:name="com.example.datn.fragment.FragmentHome"
+        android:label="FragmentHome" />
+    <fragment
+        android:id="@+id/fragmentFavorite"
+        android:name="com.example.datn.fragment.FragmentFavorite"
+        android:label="FragmentFavorite" />
+    <fragment
+        android:id="@+id/fragmentNotification"
+        android:name="com.example.datn.fragment.FragmentNotification"
+        android:label="FragmentNotification" />
+    <fragment
+        android:id="@+id/fragmentProfile"
+        android:name="com.example.datn.fragment.FragmentProfile"
+        android:label="FragmentProfile" />
+    <fragment
+        android:id="@+id/fragmentDaddy"
+        android:name="com.example.datn.fragment.FragmentDaddy"
+        android:label="FragmentDaddy" />
 </navigation>

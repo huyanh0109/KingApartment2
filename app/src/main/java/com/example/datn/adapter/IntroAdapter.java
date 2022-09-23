@@ -1,7 +1,6 @@
-package com.example.datn;
+package com.example.datn.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
+import com.example.datn.R;
 
 public class IntroAdapter extends RecyclerView.Adapter<IntroAdapter.ViewHolder> {
     Context context;

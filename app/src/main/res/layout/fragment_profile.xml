@@ -1,18 +1,259 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/men"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/margin_bottmnav"
+        android:layout_marginLeft="@dimen/padding_xlarge_x"
+        android:layout_marginRight="@dimen/padding_xlarge_x"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_large_normal"
+            android:layout_marginBottom="@dimen/padding_normal"
+            android:layout_marginTop="@dimen/padding_large"
+            android:fontFamily="@font/source_sans_pro_semibold"
+            android:text="@string/text_setting"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_xlarge" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/ll_setting_profile"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_line"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/padding_normal"
+                    android:paddingBottom="@dimen/padding_normal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/_62dp"
+                        android:layout_height="@dimen/_62dp"
+                        android:layout_marginLeft="@dimen/padding_large"
+                        android:src="@drawable/ic_profile_setting" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/padding_normal"
+                        android:fontFamily="@font/source_sans_pro_semibold"
+                        android:text="@string/text_setting_profile"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_normal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_setting_notification"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_line"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/padding_normal"
+
+                    android:paddingBottom="@dimen/padding_normal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/_62dp"
+                        android:layout_height="@dimen/_62dp"
+                        android:layout_marginLeft="@dimen/padding_large"
+                        android:src="@drawable/ic_setting_notificaiton" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/padding_normal"
+                        android:fontFamily="@font/source_sans_pro_semibold"
+                        android:text="@string/text_setting_notification"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_normal" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/ll_setting_security"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_line"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/padding_normal"
+
+                    android:paddingBottom="@dimen/padding_normal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/_62dp"
+                        android:layout_height="@dimen/_62dp"
+                        android:layout_marginLeft="@dimen/padding_large"
+
+                        android:src="@drawable/ic_setting_protect" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/padding_normal"
+                        android:fontFamily="@font/source_sans_pro_semibold"
+                        android:text="@string/text_setting_security"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_normal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_setting_help"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_line"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/padding_normal"
+
+                    android:paddingBottom="@dimen/padding_normal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/_62dp"
+                        android:layout_height="@dimen/_62dp"
+                        android:layout_marginLeft="@dimen/padding_large"
+                        android:src="@drawable/ic_setting_help" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/padding_normal"
+                        android:fontFamily="@font/source_sans_pro_semibold"
+                        android:text="@string/text_setting_help"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_normal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_setting_contact"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_line"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/padding_normal"
+
+                    android:paddingBottom="@dimen/padding_normal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/_62dp"
+                        android:layout_height="@dimen/_62dp"
+                        android:layout_marginLeft="@dimen/padding_large"
+
+                        android:src="@drawable/ic_setting_contact" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/padding_normal"
+                        android:fontFamily="@font/source_sans_pro_semibold"
+                        android:text="@string/text_setting_contact"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_normal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_setting_term"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_line"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/padding_normal"
+
+                    android:paddingBottom="@dimen/padding_normal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/_62dp"
+                        android:layout_height="@dimen/_62dp"
+                        android:layout_marginLeft="@dimen/padding_large"
+
+                        android:src="@drawable/ic_setting_term" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/padding_normal"
+                        android:fontFamily="@font/source_sans_pro_semibold"
+                        android:text="@string/text_setting_term"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_normal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_setting_signout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_line"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/padding_normal"
+                    android:paddingBottom="@dimen/padding_normal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/_62dp"
+                        android:layout_height="@dimen/_62dp"
+                        android:layout_marginLeft="@dimen/padding_large"
+
+                        android:src="@drawable/ic_setting_signout" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/padding_normal"
+                        android:fontFamily="@font/source_sans_pro_semibold"
+                        android:text="@string/text_setting_signout"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_normal" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_large"
+        android:layout_marginTop="651dp"
+        android:background="@drawable/shape_bottom_nav"
+        android:elevation="3dp"
+        app:itemIconTint="@drawable/nav_selector"
+        app:itemRippleColor="@color/textcolor_blue_blod"
+        app:labelVisibilityMode="unlabeled"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/bottom_navigation"></com.google.android.material.bottomnavigation.BottomNavigationView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

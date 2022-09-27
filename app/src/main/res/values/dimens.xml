@@ -18,6 +18,9 @@
     <dimen name="button_size_height">46dp</dimen>
     <dimen name="button_size_weight_large">300dp</dimen>
     <dimen name="bottom_sheet_hight">330dp</dimen>
+    <dimen name="button_size_small">150dp</dimen>
+    <!-- margin size bottomnav-->
+    <dimen name="margin_bottmnav">80dp</dimen>
     <!-- margin padding size-->
     <dimen name="padding_tiny_small">4dp</dimen>
     <dimen name="padding_midlde_tiny_small">6dp</dimen>

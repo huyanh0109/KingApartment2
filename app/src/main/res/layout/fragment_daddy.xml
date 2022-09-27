@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_container"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent">
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_55dp"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/padding_large"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:menu="@menu/bottom_navigation"
-        app:itemIconTint="@drawable/nav_selector"
+        android:layout_marginTop="651dp"
         android:background="@drawable/shape_bottom_nav"
-        app:labelVisibilityMode="unlabeled"
         android:elevation="3dp"
+        app:itemIconTint="@drawable/nav_selector"
         app:itemRippleColor="@color/textcolor_blue_blod"
-        ></com.google.android.material.bottomnavigation.BottomNavigationView>
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="@id/main_container"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/bottom_navigation"></com.google.android.material.bottomnavigation.BottomNavigationView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

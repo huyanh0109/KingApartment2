@@ -1,6 +1,6 @@
 package com.example.datn.fragment;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,7 +35,10 @@ public class FragmentSignin extends Fragment {
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                getActivity().finishAffinity();
+                Intent setIntent = new Intent(Intent.ACTION_MAIN);
+                setIntent.addCategory(Intent.CATEGORY_HOME);
+                setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(setIntent);
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(this,callback);;

@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/men"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/padding_xlarge_x"
+        android:layout_marginRight="@dimen/padding_xlarge_x"
+        android:layout_marginBottom="@dimen/margin_bottmnav"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_large_normal"
+            android:layout_marginTop="@dimen/padding_large"
+            android:layout_marginBottom="@dimen/padding_normal"
+            android:fontFamily="@font/source_sans_pro_semibold"
+            android:text="@string/help_title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_xlarge" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/help_ll_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/padding_large"
+                    android:background="@drawable/shape_dropdown"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/padding_large_xlarge"
+                    android:paddingTop="@dimen/padding_tiny_small"
+                    android:paddingRight="@dimen/padding_large"
+                    android:paddingBottom="@dimen/padding_tiny_small">
+
+
+                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                        android:id="@+id/dropview_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/button_size_height"
+                        android:background="@drawable/shape_none"
+                        android:drawableRight="@drawable/ic_dropdown"
+                        android:fontFamily="@font/source_sans_pro_semibold"
+                        android:inputType="none"
+                        android:text="@string/title_help_1"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_normal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/help_ll_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/padding_large"
+                    android:background="@drawable/shape_dropdown"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/padding_large_xlarge"
+                    android:paddingTop="@dimen/padding_tiny_small"
+                    android:paddingRight="@dimen/padding_large"
+                    android:paddingBottom="@dimen/padding_tiny_small">
+
+
+                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                        android:id="@+id/dropview2"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/button_size_height"
+                        android:background="@drawable/shape_none"
+                        android:drawableRight="@drawable/ic_dropdown"
+                        android:fontFamily="@font/source_sans_pro_semibold"
+                        android:inputType="none"
+                        android:text="@string/title_help_2"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_normal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/help_ll_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/padding_large"
+                        android:background="@drawable/shape_dropdown"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/padding_large_xlarge"
+                        android:paddingTop="@dimen/padding_tiny_small"
+                        android:paddingRight="@dimen/padding_large"
+                        android:paddingBottom="@dimen/padding_tiny_small">
+
+
+                        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                            android:id="@+id/dropview_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/button_size_height"
+                            android:background="@drawable/shape_none"
+                            android:drawableRight="@drawable/ic_dropdown"
+                            android:fontFamily="@font/source_sans_pro_semibold"
+                            android:inputType="none"
+                            android:text="@string/title_help_3"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_normal" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/help_ll_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/padding_large"
+                        android:background="@drawable/shape_dropdown"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/padding_large_xlarge"
+                        android:paddingTop="@dimen/padding_tiny_small"
+                        android:paddingRight="@dimen/padding_large"
+                        android:paddingBottom="@dimen/padding_tiny_small">
+
+
+                        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                            android:id="@+id/dropview_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/button_size_height"
+                            android:background="@drawable/shape_none"
+                            android:drawableRight="@drawable/ic_dropdown"
+                            android:fontFamily="@font/source_sans_pro_semibold"
+                            android:inputType="none"
+                            android:text="@string/title_help_4"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_normal" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/help_ll_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/padding_large"
+                        android:background="@drawable/shape_dropdown"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/padding_large_xlarge"
+                        android:paddingTop="@dimen/padding_tiny_small"
+                        android:paddingRight="@dimen/padding_large"
+                        android:paddingBottom="@dimen/padding_tiny_small">
+
+
+                        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                            android:id="@+id/dropview_5"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/button_size_height"
+                            android:background="@drawable/shape_none"
+                            android:drawableRight="@drawable/ic_dropdown"
+                            android:fontFamily="@font/source_sans_pro_semibold"
+                            android:inputType="none"
+                            android:text="@string/title_help_5"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_normal" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/help_ll_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/padding_large"
+                        android:background="@drawable/shape_dropdown"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/padding_large_xlarge"
+                        android:paddingTop="@dimen/padding_tiny_small"
+                        android:paddingRight="@dimen/padding_large"
+                        android:paddingBottom="@dimen/padding_tiny_small">
+
+
+                        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                            android:id="@+id/dropview_6"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/button_size_height"
+                            android:background="@drawable/shape_none"
+                            android:drawableRight="@drawable/ic_dropdown"
+                            android:fontFamily="@font/source_sans_pro_semibold"
+                            android:inputType="none"
+                            android:text="@string/title_help_6"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_normal" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/help_ll_7"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/padding_large"
+                        android:background="@drawable/shape_dropdown"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/padding_large_xlarge"
+                        android:paddingTop="@dimen/padding_tiny_small"
+                        android:paddingRight="@dimen/padding_large"
+                        android:paddingBottom="@dimen/padding_tiny_small">
+
+
+                        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                            android:id="@+id/dropview_7"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/button_size_height"
+                            android:background="@drawable/shape_none"
+                            android:drawableRight="@drawable/ic_dropdown"
+                            android:fontFamily="@font/source_sans_pro_semibold"
+                            android:inputType="none"
+                            android:text="@string/title_help_7"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_normal" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/help_ll_8"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/padding_large"
+                        android:background="@drawable/shape_dropdown"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/padding_large_xlarge"
+                        android:paddingTop="@dimen/padding_tiny_small"
+                        android:paddingRight="@dimen/padding_large"
+                        android:paddingBottom="@dimen/padding_tiny_small">
+
+
+                        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                            android:id="@+id/dropview_8"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/button_size_height"
+                            android:background="@drawable/shape_none"
+                            android:drawableRight="@drawable/ic_dropdown"
+                            android:fontFamily="@font/source_sans_pro_semibold"
+                            android:inputType="none"
+                            android:text="@string/title_help_8"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_normal" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/help_ll_9"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/padding_large"
+                        android:background="@drawable/shape_dropdown"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/padding_large_xlarge"
+                        android:paddingTop="@dimen/padding_tiny_small"
+                        android:paddingRight="@dimen/padding_large"
+                        android:paddingBottom="@dimen/padding_tiny_small">
+
+
+                        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                            android:id="@+id/dropview_9"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/button_size_height"
+                            android:background="@drawable/shape_none"
+                            android:drawableRight="@drawable/ic_dropdown"
+                            android:fontFamily="@font/source_sans_pro_semibold"
+                            android:inputType="none"
+                            android:text="@string/title_help_9"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_normal" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

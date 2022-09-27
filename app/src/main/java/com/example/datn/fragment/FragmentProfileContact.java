@@ -13,13 +13,13 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.datn.R;
 
-public class FragmentProfileTerms extends Fragment {
+public class FragmentProfileContact extends Fragment {
     Bundle bundle = new Bundle();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profile_terms, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile_contact, container, false);
         bundle.putString("Profile", "Profile");
         return view;
     }
@@ -30,13 +30,11 @@ public class FragmentProfileTerms extends Fragment {
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                NavHostFragment.findNavController(FragmentProfileTerms.this).navigate(R.id.action_fragmentProfileTerms_to_fragmentDaddy, bundle);
+                NavHostFragment.findNavController(FragmentProfileContact.this).navigate(R.id.action_fragmentProfileContact_to_fragmentDaddy, bundle);
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
         ;
 
     }
-
 }
-

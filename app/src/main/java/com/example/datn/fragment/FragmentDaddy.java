@@ -88,7 +88,7 @@ public class FragmentDaddy extends Fragment {
     }
 
     public static Boolean getBoolean(Bundle arguments, String key) {
-        if (arguments != null && arguments.containsKey("ProfileTerms")) {
+        if (arguments != null && arguments.containsKey("Profile")) {
             return arguments.getBoolean(key);
         } else {
             return null;

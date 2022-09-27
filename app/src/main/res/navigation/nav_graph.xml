@@ -64,6 +64,12 @@
         <action
             android:id="@+id/action_fragmentDaddy_to_fragmentProfileTerms2"
             app:destination="@id/fragmentProfileTerms" />
+        <action
+            android:id="@+id/action_fragmentDaddy_to_fragmentProfileContact"
+            app:destination="@id/fragmentProfileContact" />
+        <action
+            android:id="@+id/action_fragmentDaddy_to_fragmentProfileHelp"
+            app:destination="@id/fragmentProfileHelp" />
     </fragment>
     <fragment
         android:id="@+id/fragmentProfileTerms"
@@ -71,6 +77,22 @@
         android:label="FragmentProfileTerms">
         <action
             android:id="@+id/action_fragmentProfileTerms_to_fragmentDaddy"
+            app:destination="@id/fragmentDaddy" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentProfileContact"
+        android:name="com.example.datn.fragment.FragmentProfileContact"
+        android:label="FragmentProfileContact">
+        <action
+            android:id="@+id/action_fragmentProfileContact_to_fragmentDaddy"
+            app:destination="@id/fragmentDaddy" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentProfileHelp"
+        android:name="com.example.datn.fragment.FragmentProfileHelp"
+        android:label="FragmentProfileHelp">
+        <action
+            android:id="@+id/action_fragmentProfileHelp_to_fragmentDaddy"
             app:destination="@id/fragmentDaddy" />
     </fragment>
 </navigation>

@@ -36,8 +36,10 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
-            android:layout_height="38dp"
+            android:layout_height="@dimen/text_size_special"
+            android:layout_marginTop="@dimen/padding_normal"
             android:layout_marginLeft="@dimen/_11dp"
+
             android:fontFamily="@font/source_sans_pro_bold"
             android:text="@string/signin_email"
             android:textColor="@color/text_color_light"
@@ -49,8 +51,9 @@
             android:background="@drawable/shape_edittext"
             android:fontFamily="@font/source_sans_pro_bold"
             android:padding="@dimen/padding_small"
-            android:text="@string/signin_title_email"
-            android:textColor="#EBEEF2"
+            android:hint="@string/signin_title_email"
+            android:textColorHint="#EBEEF2"
+            android:textColor="@color/text_color_black_tiny"
             android:textSize="@dimen/text_size_normal" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -67,10 +70,11 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
-            android:layout_height="38dp"
+            android:layout_height="@dimen/text_size_special"
+            android:layout_marginTop="@dimen/padding_normal"
             android:layout_marginLeft="@dimen/_11dp"
             android:fontFamily="@font/source_sans_pro_bold"
-            android:text="@string/signin_email"
+            android:text="@string/signin_title_pass"
             android:textColor="@color/text_color_light"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -83,8 +87,9 @@
             android:drawableRight="@drawable/ic_hide"
             android:fontFamily="@font/source_sans_pro_bold"
             android:padding="@dimen/padding_small"
-            android:text="@string/signin_email"
-            android:textColor="#EBEEF2"
+            android:hint="@string/signin_title_pass_hint"
+            android:textColorHint="#EBEEF2"
+            android:textColor="@color/text_color_black_tiny"
             android:textSize="@dimen/text_size_normal" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -108,30 +113,30 @@
             android:textColor="@color/text_color_light" />
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_signin"
-        android:layout_width="@dimen/button_size_weight_large"
-        android:layout_height="@dimen/button_size_height"
-        android:layout_marginTop="@dimen/padding_large"
-        android:background="@drawable/shape_button_gradient"
-        android:text="@string/signin_button"
-        android:textColor="@color/textcolor_white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_signin_top" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_signin"
+            android:layout_width="@dimen/button_size_weight_large"
+            android:layout_height="@dimen/button_size_height"
+            android:layout_marginTop="@dimen/padding_large"
+            android:background="@drawable/shape_button_siliver"
+            android:text="@string/signin_button"
+            android:textColor="@color/textcolor_white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_signin_top" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/btn_forgotpass"
-        android:layout_width="wrap_content"
-        android:layout_margin="@dimen/padding_large"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/source_sans_pro_semibold"
-        android:text="@string/forgot_pass_text"
-        android:layout_gravity="center"
-        android:textColor="@color/textcolor_blue_blod"
-        android:textSize="@dimen/text_size_normal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btn_forgotpass"
+            android:layout_width="wrap_content"
+            android:layout_margin="@dimen/padding_large"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_semibold"
+            android:text="@string/forgot_pass_text"
+            android:layout_gravity="center"
+            android:textColor="@color/textcolor_blue_blod"
+            android:textSize="@dimen/text_size_normal"
+            app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_signin" />

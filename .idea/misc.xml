@@ -29,9 +29,19 @@
         <entry key="..\:/Android/KingApartment/app/src/main/res/drawable/ic_home.xml" value="0.141" />
         <entry key="..\:/Android/KingApartment/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Android/KingApartment/app/src/main/res/drawable/ic_logo.xml" value="0.1595" />
+        <entry key="..\:/Android/KingApartment/app/src/main/res/drawable/ic_next.xml" value="0.129" />
+        <entry key="..\:/Android/KingApartment/app/src/main/res/drawable/ic_next1.xml" value="0.129" />
         <entry key="..\:/Android/KingApartment/app/src/main/res/drawable/ic_profile.xml" value="0.112" />
+        <entry key="..\:/Android/KingApartment/app/src/main/res/drawable/ic_profile_setting.xml" value="0.129" />
+        <entry key="..\:/Android/KingApartment/app/src/main/res/drawable/ic_setting_contact.xml" value="0.129" />
+        <entry key="..\:/Android/KingApartment/app/src/main/res/drawable/ic_setting_help.xml" value="0.129" />
+        <entry key="..\:/Android/KingApartment/app/src/main/res/drawable/ic_setting_notificaiton.xml" value="0.129" />
+        <entry key="..\:/Android/KingApartment/app/src/main/res/drawable/ic_setting_protect.xml" value="0.129" />
+        <entry key="..\:/Android/KingApartment/app/src/main/res/drawable/ic_setting_signout.xml" value="0.129" />
+        <entry key="..\:/Android/KingApartment/app/src/main/res/drawable/ic_setting_term.xml" value="0.129" />
         <entry key="..\:/Android/KingApartment/app/src/main/res/drawable/nav_selector.xml" value="0.1595" />
         <entry key="..\:/Android/KingApartment/app/src/main/res/drawable/shape.xml" value="0.108" />
+        <entry key="..\:/Android/KingApartment/app/src/main/res/drawable/shape_background_gradient.xml" value="0.129" />
         <entry key="..\:/Android/KingApartment/app/src/main/res/drawable/shape_background_sheet_intro.xml" value="0.1595" />
         <entry key="..\:/Android/KingApartment/app/src/main/res/drawable/shape_bottom_nav.xml" value="0.1" />
         <entry key="..\:/Android/KingApartment/app/src/main/res/drawable/shape_bottom_sheet.xml" value="0.108" />
@@ -49,7 +59,7 @@
         <entry key="..\:/Android/KingApartment/app/src/main/res/layout/fragment_home.xml" value="0.13360507246376813" />
         <entry key="..\:/Android/KingApartment/app/src/main/res/layout/fragment_notification.xml" value="0.15307971014492755" />
         <entry key="..\:/Android/KingApartment/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
-        <entry key="..\:/Android/KingApartment/app/src/main/res/layout/fragment_profile_contact.xml" value="0.1" />
+        <entry key="..\:/Android/KingApartment/app/src/main/res/layout/fragment_profile_contact.xml" value="0.22" />
         <entry key="..\:/Android/KingApartment/app/src/main/res/layout/fragment_profile_help.xml" value="0.16666666666666666" />
         <entry key="..\:/Android/KingApartment/app/src/main/res/layout/fragment_profile_notification.xml" value="0.17864583333333334" />
         <entry key="..\:/Android/KingApartment/app/src/main/res/layout/fragment_profile_security.xml" value="0.17864583333333334" />
@@ -57,6 +67,7 @@
         <entry key="..\:/Android/KingApartment/app/src/main/res/layout/fragment_profile_user.xml" value="0.17864583333333334" />
         <entry key="..\:/Android/KingApartment/app/src/main/res/layout/fragment_sheet_intro.xml" value="0.1796875" />
         <entry key="..\:/Android/KingApartment/app/src/main/res/layout/fragment_signin.xml" value="0.16666666666666666" />
+        <entry key="..\:/Android/KingApartment/app/src/main/res/layout/fragment_splash.xml" value="0.1796875" />
         <entry key="..\:/Android/KingApartment/app/src/main/res/layout/viewpager_intro.xml" value="0.15307971014492755" />
         <entry key="..\:/Android/KingApartment/app/src/main/res/menu/bottom_navigation.xml" value="0.1796875" />
       </map>

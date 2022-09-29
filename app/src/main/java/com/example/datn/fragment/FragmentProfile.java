@@ -32,6 +32,8 @@ public class FragmentProfile extends Fragment {
         initView(view);
         signOut();
         termS();
+        contact();
+        help();
         return view;
     }
 
@@ -50,6 +52,24 @@ public class FragmentProfile extends Fragment {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(FragmentProfile.this).navigate(R.id.action_fragmentDaddy_to_fragmentProfileTerms2);
+            }
+        });
+    }
+
+    private void help() {
+        btn_help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(FragmentProfile.this).navigate(R.id.action_fragmentDaddy_to_fragmentProfileHelp);
+            }
+        });
+    }
+
+    private void contact() {
+        btn_contact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(FragmentProfile.this).navigate(R.id.action_fragmentDaddy_to_fragmentProfileContact);
             }
         });
     }

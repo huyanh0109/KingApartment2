@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="textcolor_white">#FFFFFFFF</color>
     <color name="textcolor_blue_blod">#2972FE</color>
+    <color name="nav_ic_blue_blod">#FFFFFFFF</color>
     <color name="textcolor_black">#09101D</color>
     <color name="text_color_light">#56616F</color>
     <color name="text_color_black_tiny">#2C3A4B</color>

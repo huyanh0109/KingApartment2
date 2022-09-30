@@ -12,7 +12,7 @@
         android:layout_marginTop="651dp"
         android:background="@drawable/shape_bottom_nav"
         android:elevation="3dp"
-        app:itemIconTint="@drawable/nav_selector"
+        app:itemIconSize="48dp"
         app:itemRippleColor="@color/textcolor_blue_blod"
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="@id/main_container"
@@ -20,7 +20,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
         app:menu="@menu/bottom_navigation"></com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

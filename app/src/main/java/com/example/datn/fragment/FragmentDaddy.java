@@ -36,6 +36,7 @@ public class FragmentDaddy extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_daddy, container, false);
         navView = view.findViewById(R.id.bottom_nav);
+        navView.setItemIconTintList(null);
         BadgeDrawable badgeDrawable = navView.getOrCreateBadge(R.id.nav_notification);
         badgeDrawable.setVisible(true);
         badgeDrawable.setNumber(10);

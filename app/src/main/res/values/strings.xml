@@ -8,15 +8,16 @@
     <string name="content_intro3">Griya is greatest Real Estate Mobile App platform in this century.</string>
     <string name="signin_title">Đăng Nhập</string>
     <string name="signin_title_email">Email</string>
+    <string name="signin_title_pass_hint">Mật khẩu</string>
     <string name="remember_pass">Nhớ mật khẩu</string>
     <string name="signin_button">Đăng nhập</string>
     <string name="forgot_pass_text">Quên mật khẩu?</string>
     <string name="text_question_signup">Bạn chưa có tài khoản</string>
     <string name="text_signup_now">Đăng kí ngay</string>
-    <string name="discover">Khám phá ngay</string>
+    <string name="discover">Bắt đầu sử dụng</string>
     <string name="text_setting">Cài đặt</string>
     <string name="text_setting_profile">Thông tin</string>
-    <string name="text_setting_notification">Thông báo</string>
+    <string name="text_setting_notification">Thông báo - Giao diện</string>
     <string name="text_setting_security">Bảo mật</string>
     <string name="text_setting_help">Trợ giúp</string>
     <string name="text_setting_contact">Liên hệ - Báo lỗi</string>
@@ -52,18 +53,31 @@
     <string name="content_help_7">Nội dung hướng dẫn 1</string>
     <string name="content_help_8">Nội dung hướng dẫn 1</string>
     <string name="content_help_9">Nội dung hướng dẫn 1</string>
-
-    <string name="contact_message_max">
-        Tối đa 250 kí tự</string>
+    <string name="security_title">Bảo mật</string>
+    <string name="security_faceid">Face ID</string>
+    <string name="security_touchid">Touch ID</string>
+    <string name="security_changepass">Đổi mật khẩu</string>
+    <string name="notification_title">Thông báo - Giao diện</string>
+    <string name="notification_bell">Âm thanh</string>
+    <string name="notification_ads">Nhận thông báo quảng cáo</string>
+    <string name="notification_vibrate">Rung</string>
+    <string name="user_title">Thông tin cá nhân</string>
+    <string name="user_fullname">Họ và Tên</string>
+    <string name="user_email">Email</string>
+    <string name="user_number">Số điện thoại</string>
+    <string name="user_btn">Lưu thay đổi</string>
+    <string name="user_dark">Giao diện tối</string>
+    <string name="user_change_language">Thay đổi ngôn ngữ</string>
+    <string name="contact_message_max">Tối đa 250 kí tự</string>
     <string name="contact_btn">Gửi tin nhắn</string>
-    <string name="signin_email">
-Email<font color="#F81212"> *</font>
+    <string name="signin_email">Email<font color="#F81212"> *</font>
     </string>
-    <string name="contact_name">
-Họ và Tên<font color="#F81212"> *</font>
+    <string name="contact_name">Họ và Tên<font color="#F81212"> *</font>
     </string>
-    <string name="contact_message">
-Tin nhắn<font color="#F81212"> *</font>
+    <string name="contact_message">Tin nhắn<font color="#F81212"> *</font>
     </string>
+    <string name="user_number_special">Số điện thoại<font color="#F81212"> *</font>
+    </string>
+    <string name="signin_title_pass">Mật khẩu<font color="#F81212"> *</font></string>
     <string name="signin_email_error">Email không đúng!</string>
 </resources>

@@ -1,6 +1,8 @@
 package com.example.datn.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -10,11 +12,13 @@ import android.view.ViewGroup;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.datn.R;
+import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -23,6 +27,7 @@ import java.util.Deque;
 
 public class FragmentDaddy extends Fragment {
     BottomNavigationView navView;
+    SharedPreferences sharedPreferences;
     Deque<Integer> integers = new ArrayDeque<>(4);
     boolean flag = true;
 
@@ -31,16 +36,29 @@ public class FragmentDaddy extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_daddy, container, false);
         navView = view.findViewById(R.id.bottom_nav);
+        BadgeDrawable badgeDrawable = navView.getOrCreateBadge(R.id.nav_notification);
+        badgeDrawable.setVisible(true);
+        badgeDrawable.setNumber(10);
+//        val badgeDrawable = bottomNavigation.getBadge(menuItemId)
+//        if (badgeDrawable != null) {
+//            badgeDrawable.isVisible = false
+//            badgeDrawable.clearNumber()
+//        }
+        sharedPreferences = getActivity().getSharedPreferences("dark", Context.MODE_PRIVATE);
+        Boolean bl = sharedPreferences.getBoolean("dark_mode", false);
+        if (bl == true) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
         if (getBoolean(getArguments(), "ProfileTerms") != null) {
             integers.push(R.id.nav_profile);
             replaceFragment(new FragmentProfile());
             navView.setSelectedItemId(R.id.nav_profile);
             navView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-                                                  @Override
-                                                  public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                                                      int id = item.getItemId();
-                                                      if (integers.contains(id)) {
-                                                          if (id == R.id.nav_profile) {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    int id = item.getItemId();
+                    if (integers.contains(id)) {
+                        if (id == R.id.nav_profile) {
                                                               if (integers.size() != 1) {
                                                                   if (flag) {
                                                                       integers.addFirst(R.id.nav_profile);

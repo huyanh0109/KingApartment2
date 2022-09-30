@@ -22,7 +22,7 @@
             android:layout_marginBottom="@dimen/padding_normal"
             android:layout_marginTop="@dimen/padding_large"
             android:fontFamily="@font/source_sans_pro_semibold"
-            android:text="@string/text_contact_title"
+            android:text="@string/user_title"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_xlarge" />
 
@@ -42,7 +42,7 @@
             android:background="@drawable/shape_edittext"
             android:fontFamily="@font/source_sans_pro_bold"
             android:padding="@dimen/padding_small"
-            android:hint="@string/contact_name_edt"
+            android:hint="@string/user_fullname"
             android:textColorHint="#EBEEF2"
             android:textColor="@color/text_color_black_tiny"
             android:textSize="@dimen/text_size_normal" />
@@ -63,8 +63,6 @@
             android:background="@drawable/shape_edittext"
             android:fontFamily="@font/source_sans_pro_bold"
             android:padding="@dimen/padding_small"
-            android:hint="@string/signin_title_email"
-            android:textColorHint="#EBEEF2"
             android:textColor="@color/text_color_black_tiny"
             android:textSize="@dimen/text_size_normal" />
 
@@ -82,38 +80,22 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:fontFamily="@font/source_sans_pro_semibold"
-                android:text="@string/contact_message"
+                android:text="@string/user_number_special"
                 android:textColor="@color/text_color_black_xtiny_"
                 android:textSize="@dimen/text_size_normal_tiny" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvright"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/text_size_special"
-                android:layout_gravity="end"
-                android:layout_marginBottom="@dimen/padding_normal"
-                android:fontFamily="@font/source_sans_pro_semibold"
-                android:gravity="right"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:text="@string/contact_message_max"
-                android:textColor="@color/text_color_black_xtiny_"
-                android:textSize="@dimen/text_size_normal_tiny" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatEditText
             android:layout_width="@dimen/button_size_weight_large"
-            android:layout_height="@dimen/button_size_small"
-            android:background="@drawable/shape_edittext_multitext"
+            android:layout_height="@dimen/button_size_height"
+            android:background="@drawable/shape_edittext"
             android:fontFamily="@font/source_sans_pro_bold"
             android:padding="@dimen/padding_small"
-            android:inputType="text|textMultiLine"
-            android:gravity="top"
-            android:hint="@string/contact_message_edt"
-            android:textColorHint="#EBEEF2"
             android:textColor="@color/text_color_black_tiny"
             android:textSize="@dimen/text_size_normal" />
+
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_signin"
@@ -121,7 +103,7 @@
             android:layout_height="@dimen/button_size_height"
             android:layout_marginTop="@dimen/padding_large"
             android:background="@drawable/shape_button_siliver"
-            android:text="@string/contact_btn"
+            android:text="@string/user_btn"
             android:textColor="@color/textcolor_white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

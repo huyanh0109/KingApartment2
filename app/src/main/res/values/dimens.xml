@@ -11,6 +11,7 @@
     <dimen name="text_size_large">22dp</dimen>
     <dimen name="text_size_xlarge">28dp</dimen>
     <dimen name="text_size_xxlarge">34dp</dimen>
+    <dimen name="text_size_special">20dp</dimen>
     <!-- logo size-->
     <dimen name="logo_size">100dp</dimen>
     <dimen name="logo_size_small">80dp</dimen>

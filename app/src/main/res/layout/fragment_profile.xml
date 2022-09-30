@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/men"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/margin_bottmnav"
-        android:layout_marginLeft="@dimen/padding_xlarge_x"
-        android:layout_marginRight="@dimen/padding_xlarge_x"
+        android:layout_marginLeft="@dimen/padding_large"
+        android:layout_marginRight="@dimen/padding_large"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -30,7 +31,9 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -50,18 +53,34 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="@dimen/_62dp"
                         android:layout_height="@dimen/_62dp"
-                        android:layout_marginLeft="@dimen/padding_large"
                         android:src="@drawable/ic_profile_setting" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="@dimen/padding_normal"
-                        android:fontFamily="@font/source_sans_pro_semibold"
-                        android:text="@string/text_setting_profile"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_normal" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/padding_normal"
+                            android:fontFamily="@font/source_sans_pro_semibold"
+                            android:text="@string/text_setting_profile"
+                            android:textColor="@color/black"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            android:textSize="@dimen/text_size_normal" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/size_icon_large"
+                            android:layout_height="@dimen/size_icon_large"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            android:src="@drawable/ic_next" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -78,18 +97,34 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="@dimen/_62dp"
                         android:layout_height="@dimen/_62dp"
-                        android:layout_marginLeft="@dimen/padding_large"
                         android:src="@drawable/ic_setting_notificaiton" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="@dimen/padding_normal"
-                        android:fontFamily="@font/source_sans_pro_semibold"
-                        android:text="@string/text_setting_notification"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_normal" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/padding_normal"
+                            android:fontFamily="@font/source_sans_pro_semibold"
+                            android:text="@string/text_setting_notification"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_normal" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/size_icon_large"
+                            android:layout_height="@dimen/size_icon_large"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            android:src="@drawable/ic_next" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
 
 
@@ -107,19 +142,34 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="@dimen/_62dp"
                         android:layout_height="@dimen/_62dp"
-                        android:layout_marginLeft="@dimen/padding_large"
-
                         android:src="@drawable/ic_setting_protect" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="@dimen/padding_normal"
-                        android:fontFamily="@font/source_sans_pro_semibold"
-                        android:text="@string/text_setting_security"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_normal" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/padding_normal"
+                            android:fontFamily="@font/source_sans_pro_semibold"
+                            android:text="@string/text_setting_security"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_normal" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/size_icon_large"
+                            android:layout_height="@dimen/size_icon_large"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            android:src="@drawable/ic_next" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -136,18 +186,34 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="@dimen/_62dp"
                         android:layout_height="@dimen/_62dp"
-                        android:layout_marginLeft="@dimen/padding_large"
                         android:src="@drawable/ic_setting_help" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="@dimen/padding_normal"
-                        android:fontFamily="@font/source_sans_pro_semibold"
-                        android:text="@string/text_setting_help"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_normal" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/padding_normal"
+                            android:fontFamily="@font/source_sans_pro_semibold"
+                            android:text="@string/text_setting_help"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_normal" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/size_icon_large"
+                            android:layout_height="@dimen/size_icon_large"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            android:src="@drawable/ic_next" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -164,19 +230,34 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="@dimen/_62dp"
                         android:layout_height="@dimen/_62dp"
-                        android:layout_marginLeft="@dimen/padding_large"
-
                         android:src="@drawable/ic_setting_contact" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="@dimen/padding_normal"
-                        android:fontFamily="@font/source_sans_pro_semibold"
-                        android:text="@string/text_setting_contact"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_normal" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/padding_normal"
+                            android:fontFamily="@font/source_sans_pro_semibold"
+                            android:text="@string/text_setting_contact"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_normal" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/size_icon_large"
+                            android:layout_height="@dimen/size_icon_large"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            android:src="@drawable/ic_next" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -192,19 +273,34 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="@dimen/_62dp"
                         android:layout_height="@dimen/_62dp"
-                        android:layout_marginLeft="@dimen/padding_large"
-
                         android:src="@drawable/ic_setting_term" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="@dimen/padding_normal"
-                        android:fontFamily="@font/source_sans_pro_semibold"
-                        android:text="@string/text_setting_term"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_normal" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/padding_normal"
+                            android:fontFamily="@font/source_sans_pro_semibold"
+                            android:text="@string/text_setting_term"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_normal" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/size_icon_large"
+                            android:layout_height="@dimen/size_icon_large"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            android:src="@drawable/ic_next" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -219,41 +315,39 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="@dimen/_62dp"
                         android:layout_height="@dimen/_62dp"
-                        android:layout_marginLeft="@dimen/padding_large"
-
                         android:src="@drawable/ic_setting_signout" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="@dimen/padding_normal"
-                        android:fontFamily="@font/source_sans_pro_semibold"
-                        android:text="@string/text_setting_signout"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_normal" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/padding_normal"
+                            android:fontFamily="@font/source_sans_pro_semibold"
+                            android:text="@string/text_setting_signout"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_normal" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/size_icon_large"
+                            android:layout_height="@dimen/size_icon_large"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            android:src="@drawable/ic_next" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
 
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav_profile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/padding_large"
-        android:layout_marginTop="651dp"
-        android:background="@drawable/shape_bottom_nav"
-        android:elevation="3dp"
-        app:itemIconTint="@drawable/nav_selector"
-        app:itemRippleColor="@color/textcolor_blue_blod"
-        app:labelVisibilityMode="unlabeled"
-
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:menu="@menu/bottom_navigation"></com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

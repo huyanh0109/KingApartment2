@@ -18,17 +18,32 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/padding_large_normal"
-            android:layout_marginBottom="@dimen/padding_normal"
-            android:layout_marginTop="@dimen/padding_large"
-            android:fontFamily="@font/source_sans_pro_semibold"
-            android:text="@string/text_setting"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_xlarge" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_large_normal"
+                android:layout_marginBottom="@dimen/padding_normal"
+                android:layout_marginTop="@dimen/padding_large"
+                android:fontFamily="@font/source_sans_pro_semibold"
+                android:text="@string/text_setting"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:textSize="@dimen/text_size_xlarge" />
+
+            <ImageView
+                android:id="@+id/btn_language"
+                android:layout_width="@dimen/size_icon_large_xlarge"
+                android:layout_height="@dimen/size_icon_large_xlarge"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -313,7 +328,7 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="@dimen/_62dp"
                         android:layout_height="@dimen/_62dp"
-                        android:src="@drawable/ic_setting_signout" />
+                        android:src="@drawable/ic_setting_logout" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_gravity="center"

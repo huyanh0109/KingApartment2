@@ -13,14 +13,14 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.datn.R;
 
-public class FragmentProfileSecurity extends Fragment {
+public class FragmentIndex extends Fragment {
     Bundle bundle = new Bundle();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profile_security, container, false);
-        bundle.putString("Callback", "Profile");
+        View view = inflater.inflate(R.layout.fragment_index, container, false);
+        bundle.putString("Callback", "Home");
         return view;
     }
 
@@ -30,7 +30,7 @@ public class FragmentProfileSecurity extends Fragment {
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                NavHostFragment.findNavController(FragmentProfileSecurity.this).navigate(R.id.action_fragmentProfileSecurity_to_fragmentDaddy, bundle);
+                NavHostFragment.findNavController(FragmentIndex.this).navigate(R.id.action_fragmentIndex_to_fragmentDaddy, bundle);
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);

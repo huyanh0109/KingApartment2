@@ -10,6 +10,5 @@ public class AloneMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //main cu don
     }
 }

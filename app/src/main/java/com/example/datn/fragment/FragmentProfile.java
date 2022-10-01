@@ -1,6 +1,9 @@
 package com.example.datn.fragment;
 
 import android.app.Dialog;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -10,24 +13,31 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.datn.R;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.Locale;
 
 public class FragmentProfile extends Fragment {
     LinearLayout btn_signout, btn_profile, btn_notification, btn_security, btn_term, btn_help, btn_contact;
-    BottomNavigationView navView;
+    ImageView btn_language;
+    String language;
+    SharedPreferences sharedPreferences;
+    Bundle bundle = new Bundle();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        bundle.putString("Callback", "Profile");
         initView(view);
         signOut();
         termS();
@@ -36,10 +46,26 @@ public class FragmentProfile extends Fragment {
         security();
         notification();
         user();
+        changeLanguage();
         return view;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sharedPreferences = getActivity().getSharedPreferences("language", Context.MODE_PRIVATE);
+        language = sharedPreferences.getString("language", "en");
+        String languageToLoad = language;
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getActivity().getResources().updateConfiguration(config,
+                getActivity().getResources().getDisplayMetrics());
+    }
+
     public void initView(View view) {
+        btn_language = view.findViewById(R.id.btn_language);
         btn_profile = view.findViewById(R.id.ll_setting_profile);
         btn_security = view.findViewById(R.id.ll_setting_security);
         btn_signout = view.findViewById(R.id.ll_setting_signout);
@@ -47,6 +73,36 @@ public class FragmentProfile extends Fragment {
         btn_notification = view.findViewById(R.id.ll_setting_notification);
         btn_contact = view.findViewById(R.id.ll_setting_contact);
         btn_term = view.findViewById(R.id.ll_setting_term);
+    }
+
+    public void changeLanguage() {
+        sharedPreferences = getActivity().getSharedPreferences("language", Context.MODE_PRIVATE);
+        language = sharedPreferences.getString("language", "en");
+        if (language.equals("vie")) {
+            btn_language.setBackgroundResource(R.drawable.us_flag);
+        } else {
+            btn_language.setBackgroundResource(R.drawable.vn_flag);
+        }
+        btn_language.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (language.equals("en")) {
+                    language = "vie";
+                    btn_language.setBackgroundResource(R.drawable.us_flag);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("language", "vie");
+                    editor.commit();
+                    Navigation.findNavController(view).navigate(R.id.action_fragmentDaddy_self, bundle);
+                } else {
+                    language = "en";
+                    btn_language.setBackgroundResource(R.drawable.vn_flag);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("language", "en");
+                    editor.commit();
+                    Navigation.findNavController(view).navigate(R.id.action_fragmentDaddy_self, bundle);
+                }
+            }
+        });
     }
 
     private void termS() {

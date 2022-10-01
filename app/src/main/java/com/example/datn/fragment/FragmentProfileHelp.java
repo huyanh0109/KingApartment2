@@ -32,7 +32,7 @@ public class FragmentProfileHelp extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile_help, container, false);
-        bundle.putString("Profile", "Profile");
+        bundle.putString("Callback", "Profile");
         tv_drop_1 = new TextView(getActivity());
 
         initView(view);

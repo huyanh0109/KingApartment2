@@ -3,6 +3,7 @@ package com.example.datn.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,9 +19,12 @@ import androidx.navigation.Navigation;
 
 import com.example.datn.R;
 
+import java.util.Locale;
+
 public class FragmentSignin extends Fragment {
     Button btn_signin;
     SharedPreferences sharedPreferences;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,8 +54,18 @@ public class FragmentSignin extends Fragment {
                 startActivity(setIntent);
             }
         };
-        requireActivity().getOnBackPressedDispatcher().addCallback(this,callback);;
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
+        ;
         super.onCreate(savedInstanceState);
+        sharedPreferences = getActivity().getSharedPreferences("language", Context.MODE_PRIVATE);
+        String language = sharedPreferences.getString("language", "en");
+        String languageToLoad = language;
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getActivity().getResources().updateConfiguration(config,
+                getActivity().getResources().getDisplayMetrics());
     }
 
 }

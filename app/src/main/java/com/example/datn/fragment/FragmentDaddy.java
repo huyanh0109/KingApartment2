@@ -3,6 +3,7 @@ package com.example.datn.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -24,6 +25,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.Locale;
 
 public class FragmentDaddy extends Fragment {
     BottomNavigationView navView;
@@ -50,33 +52,7 @@ public class FragmentDaddy extends Fragment {
         if (bl == true) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
-        if (getBoolean(getArguments(), "ProfileTerms") != null) {
-            integers.push(R.id.nav_profile);
-            replaceFragment(new FragmentProfile());
-            navView.setSelectedItemId(R.id.nav_profile);
-            navView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    int id = item.getItemId();
-                    if (integers.contains(id)) {
-                        if (id == R.id.nav_profile) {
-                                                              if (integers.size() != 1) {
-                                                                  if (flag) {
-                                                                      integers.addFirst(R.id.nav_profile);
-                                                                      flag = false;
-                                                                  }
-                                                              }
-                                                          }
-                                                          integers.remove(id);
-                                                      }
-                                                      integers.push(id);
-                                                      replaceFragment(getFragmentProfile(item.getItemId()));
-
-                                                      return false;
-                                                  }
-                                              }
-            );
-        } else if (getBoolean(getArguments(), "ProfileTerms") == null) {
+        if (getBoolean(getArguments(), "Callback") == null) {
             integers.push(R.id.nav_home);
             replaceFragment(new FragmentHome());
             navView.setSelectedItemId(R.id.nav_home);
@@ -102,13 +78,66 @@ public class FragmentDaddy extends Fragment {
                                                   }
                                               }
             );
+
+        } else if (getBoolean(getArguments(), "Callback") != null && getBoolean(getArguments(), "Callback").equals("Home")) {
+            integers.push(R.id.nav_home);
+            replaceFragment(new FragmentHome());
+            navView.setSelectedItemId(R.id.nav_home);
+            navView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+                                                  @Override
+                                                  public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                                                      int id = item.getItemId();
+                                                      if (integers.contains(id)) {
+                                                          if (id == R.id.nav_home) {
+                                                              if (integers.size() != 1) {
+                                                                  if (flag) {
+                                                                      integers.addFirst(R.id.nav_home);
+                                                                      flag = false;
+                                                                  }
+                                                              }
+                                                          }
+                                                          integers.remove(id);
+                                                      }
+                                                      integers.push(id);
+                                                      replaceFragment(getFragmentHome(item.getItemId()));
+
+                                                      return false;
+                                                  }
+                                              }
+            );
+        } else if (getBoolean(getArguments(), "Callback") != null && getBoolean(getArguments(), "Callback").equals("Profile")) {
+            integers.push(R.id.nav_profile);
+            replaceFragment(new FragmentProfile());
+            navView.setSelectedItemId(R.id.nav_profile);
+            navView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+                                                  @Override
+                                                  public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                                                      int id = item.getItemId();
+                                                      if (integers.contains(id)) {
+                                                          if (id == R.id.nav_profile) {
+                                                              if (integers.size() != 1) {
+                                                                  if (flag) {
+                                                                      integers.addFirst(R.id.nav_profile);
+                                                                      flag = false;
+                                                                  }
+                                                              }
+                                                          }
+                                                          integers.remove(id);
+                                                      }
+                                                      integers.push(id);
+                                                      replaceFragment(getFragmentProfile(item.getItemId()));
+
+                                                      return false;
+                                                  }
+                                              }
+            );
         }
         return view;
     }
 
-    public static Boolean getBoolean(Bundle arguments, String key) {
-        if (arguments != null && arguments.containsKey("Profile")) {
-            return arguments.getBoolean(key);
+    public static String getBoolean(Bundle arguments, String key) {
+        if (arguments != null && arguments.containsKey("Callback")) {
+            return arguments.getString(key);
         } else {
             return null;
         }
@@ -121,7 +150,7 @@ public class FragmentDaddy extends Fragment {
                 return new FragmentHome();
             case R.id.nav_favorite:
                 navView.getMenu().getItem(1).setChecked(true);
-                return new FragmentFavorite();
+                return new FragmentWishlist();
             case R.id.nav_notification:
                 navView.getMenu().getItem(2).setChecked(true);
                 return new FragmentNotification();
@@ -140,7 +169,7 @@ public class FragmentDaddy extends Fragment {
                 return new FragmentHome();
             case R.id.nav_favorite:
                 navView.getMenu().getItem(1).setChecked(true);
-                return new FragmentFavorite();
+                return new FragmentWishlist();
             case R.id.nav_notification:
                 navView.getMenu().getItem(2).setChecked(true);
                 return new FragmentNotification();
@@ -178,6 +207,15 @@ public class FragmentDaddy extends Fragment {
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
         ;
         super.onCreate(savedInstanceState);
+        sharedPreferences = getActivity().getSharedPreferences("language", Context.MODE_PRIVATE);
+        String language = sharedPreferences.getString("language", "en");
+        String languageToLoad = language;
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getActivity().getResources().updateConfiguration(config,
+                getActivity().getResources().getDisplayMetrics());
     }
 }
 

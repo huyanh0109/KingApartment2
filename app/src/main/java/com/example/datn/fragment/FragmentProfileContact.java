@@ -20,7 +20,7 @@ public class FragmentProfileContact extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile_contact, container, false);
-        bundle.putString("Profile", "Profile");
+        bundle.putString("Callback", "Profile");
         return view;
     }
 

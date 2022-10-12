@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="195dp"
+    android:layout_height="275dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_rcv_item"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:src="@android:drawable/sym_def_app_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_rcv_description"
+        android:layout_width="65dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="@dimen/padding_normal"
+        android:layout_marginLeft="@dimen/padding_small"
+        android:gravity="center"
+        android:fontFamily="@font/source_sans_pro"
+        android:textColor="@color/textcolor_blue_blod"
+        android:background="@drawable/shape_button_cancel"
+        android:textSize="@dimen/text_size_setting_tiny"
+        android:text="Cao cấp"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_rcv_item" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_rcv_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="18,00tr"
+        android:textSize="@dimen/text_size_normal_tiny"
+        android:layout_marginTop="@dimen/padding_normal"
+        android:fontFamily="@font/source_sans_pro_semibold"
+        android:textColor="@color/textcolor_blue_blod"
+        app:layout_constraintTop_toBottomOf="@id/img_rcv_item"
+        app:layout_constraintRight_toLeftOf="@id/tv_rcv_month" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_rcv_month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_large"
+        android:text="/tháng"
+        android:fontFamily="@font/source_sans_pro_semibold"
+        android:textColor="@color/text_month"
+        app:layout_constraintTop_toBottomOf="@id/img_rcv_item"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_rcv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/padding_small"
+        android:text="Time City"
+        android:textSize="@dimen/text_size_middle_large"
+        android:layout_marginTop="@dimen/padding_normal"
+        android:fontFamily="@font/source_sans_pro_semibold"
+        android:textColor="@color/textcolor_black"
+        app:layout_constraintTop_toBottomOf="@id/tv_rcv_description"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ic_location"
+        android:layout_width="@dimen/size_icon_tiny"
+        android:layout_height="@dimen/size_icon_tiny"
+        android:layout_marginTop="@dimen/padding_tiny_small"
+        android:src="@drawable/ic_location"
+        android:layout_marginLeft="@dimen/padding_small"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_rcv_name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_rcv_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_tiny_small"
+        android:text="Hai Bà Trưng,Hà Nội"
+        android:fontFamily="@font/source_sans_pro_semibold"
+        android:textSize="@dimen/text_size_small_tiny"
+        android:textColor="@color/text_color_black_tiny"
+        app:layout_constraintTop_toBottomOf="@id/tv_rcv_name"
+        app:layout_constraintLeft_toRightOf="@id/ic_location" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ic_wishlist_home"
+        android:layout_width="@dimen/size_icon_normal_tiny"
+        android:layout_height="@dimen/size_icon_normal_tiny"
+        android:layout_marginRight="@dimen/padding_small"
+        android:layout_marginTop="@dimen/padding_tiny_small"
+        android:src="@drawable/ic_wishlist"
+        android:layout_marginLeft="@dimen/padding_small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_rcv_name" />
+</androidx.constraintlayout.widget.ConstraintLayout>

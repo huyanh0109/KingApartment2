@@ -14,6 +14,13 @@
     <string name="forgot_pass_text">Quên mật khẩu?</string>
     <string name="text_question_signup">Bạn chưa có tài khoản</string>
     <string name="text_signup_now">Đăng kí ngay</string>
+
+    <string name="facebook_app_id">828260374981108</string>
+
+    <string name="fb_login_protocol_scheme" translatable="false">fb828260374981108</string>
+    <string name="facebook_client_token">c48ac28ec88df46ccc6015c680bc889d</string>
+
+
     <string name="discover">Bắt đầu sử dụng</string>
     <string name="text_setting">Cài đặt</string>
     <string name="text_setting_profile">Thông tin</string>

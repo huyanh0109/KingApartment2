@@ -5,46 +5,62 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.datn.R;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.SignInButton;
 
 import java.util.Locale;
 
 public class FragmentSignin extends Fragment {
-    Button btn_signin;
     SharedPreferences sharedPreferences;
+    GoogleSignInClient mGoogleSignInClient;
+    SignInButton login_gmail;
+    EditText input_number;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_signin, container, false);
-        btn_signin = view.findViewById(R.id.btn_signin);
+        login_gmail = view.findViewById(R.id.login_gmail);
+        input_number = view.findViewById(R.id.input_number);
+        login_gmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signIn();
+            }
+        });
         sharedPreferences = getActivity().getSharedPreferences("dark", Context.MODE_PRIVATE);
         Boolean bl = sharedPreferences.getBoolean("dark_mode", false);
         if (bl == true) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
-        btn_signin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_fragmentSignin_to_fragmentDaddy);
-            }
-        });
         return view;
     }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(getActivity(), gso);
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
@@ -68,4 +84,35 @@ public class FragmentSignin extends Fragment {
                 getActivity().getResources().getDisplayMetrics());
     }
 
+    @Override
+    public void onStart() {
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getActivity());
+        //updateUI(account);
+        super.onStart();
+
+    }
+
+    private void signIn() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, 1000);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
+        if (requestCode == 1000) {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            // The Task returned from this call is always completed, no need to attach
+            if (result.isSuccess()) {
+                GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getActivity());
+                Log.i("TAG", "" + account.getIdToken());
+                Log.i("TAG", "" + account.getId());
+                Log.i("TAG", "" + account.getEmail());
+                NavHostFragment.findNavController(FragmentSignin.this).navigate(R.id.action_fragmentSignin_to_fragmentDaddy);
+            } else {
+                Log.i("TAG", "onActivityResult: fail");
+            }
+        }
+    }
 }

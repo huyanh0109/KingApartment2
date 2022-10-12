@@ -1,4 +1,9 @@
 <resources>
+
+    <string name="facebook_app_id">828260374981108</string>
+    <string name="facebook_client_token">c48ac28ec88df46ccc6015c680bc889d</string>
+
+
     <string name="app_name" translatable="false">King Apartment</string>
     <string name="btn_intro">Tiếp Theo</string>
     <string name="text_skip">Bỏ qua</string>

@@ -18,4 +18,5 @@
     <color name="background_icon_setting">#EAF1FF</color>
     <color name="line_light">#EBEEF2</color>
     <color name="signout">#FFE8ED</color>
+    <color name="text_month">#7F8690</color>
 </resources>

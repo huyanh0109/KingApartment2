@@ -23,6 +23,9 @@ import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.datn.R;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 
 import java.util.Locale;
 
@@ -178,6 +181,12 @@ public class FragmentProfile extends Fragment {
                 btn_signout_dialog.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        GoogleSignInOptions gso = new GoogleSignInOptions.
+                                Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).
+                                build();
+
+                        GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(getActivity(), gso);
+                        googleSignInClient.signOut();
                         NavHostFragment.findNavController(FragmentProfile.this).navigate(R.id.action_fragmentDaddy_to_fragmentSignin);
                         dialog.dismiss();
                     }

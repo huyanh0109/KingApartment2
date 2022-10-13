@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/ic_logo"
-        android:layout_width="@dimen/logo_size_small"
-        android:layout_height="@dimen/logo_size_small"
-        android:background="@drawable/ic_logo"
+        android:layout_width="@dimen/_180dp"
+        android:layout_height="@dimen/_180dp"
+        app:lottie_rawRes="@raw/login_apartment"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
         app:layout_constraintBottom_toTopOf="@+id/ll_signin_top"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -18,21 +19,22 @@
         android:id="@+id/tv_singin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:fontFamily="@font/source_sans_pro_semibold"
         android:text="@string/signin_title"
-        android:textColor="@color/black"
+        android:textColor="@color/text_color_black_tiny"
         android:textSize="@dimen/text_size_large"
-        android:layout_gravity="center"
-        app:layout_constraintTop_toTopOf="@id/ic_logo"
-        app:layout_constraintBottom_toBottomOf="@+id/ll_signin_top"
+        app:layout_constraintBottom_toTopOf="@+id/ll_signin_top"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/ic_logo" />
 
     <LinearLayout
         android:id="@+id/ll_signin_top"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/button_size_weight_large"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
+        android:background="@drawable/shape_button_gradient"
         app:layout_constraintBottom_toTopOf="@+id/ic_logo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -50,17 +52,17 @@
         <!--            android:textColor="@color/text_color_light"-->
         <!--            app:layout_constraintTop_toBottomOf="@+id/ic_logo" />-->
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/input_number"
-            android:layout_width="@dimen/button_size_weight_large"
-            android:layout_height="@dimen/button_size_height"
-            android:background="@drawable/shape_edittext"
-            android:fontFamily="@font/source_sans_pro_bold"
-            android:padding="@dimen/padding_small"
-            android:hint="@string/signin_title_email"
-            android:textColorHint="#EBEEF2"
-            android:textColor="@color/text_color_black_tiny"
-            android:textSize="@dimen/text_size_normal" />
+        <!--        <androidx.appcompat.widget.AppCompatEditText-->
+        <!--            android:id="@+id/input_number"-->
+        <!--            android:layout_width="@dimen/button_size_weight_large"-->
+        <!--            android:layout_height="@dimen/button_size_height"-->
+        <!--            android:background="@drawable/shape_edittext"-->
+        <!--            android:fontFamily="@font/source_sans_pro_bold"-->
+        <!--            android:padding="@dimen/padding_small"-->
+        <!--            android:hint="@string/signin_title_email"-->
+        <!--            android:textColorHint="#EBEEF2"-->
+        <!--            android:textColor="@color/text_color_black_tiny"-->
+        <!--            android:textSize="@dimen/text_size_normal" />-->
 
         <!--        <androidx.appcompat.widget.AppCompatTextView-->
         <!--            android:layout_width="@dimen/button_size_weight_large"-->
@@ -126,24 +128,41 @@
         <!--            android:layout_gravity="center_horizontal"-->
         <!--            android:layout_marginTop="30dp"-->
         <!--            android:layout_marginBottom="30dp" />-->
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_signin"
-            android:layout_width="@dimen/button_size_weight_large"
-            android:layout_height="@dimen/button_size_height"
-            android:layout_marginTop="@dimen/padding_large"
-            android:background="@drawable/shape_button_siliver"
-            android:text="@string/signin_button"
-            android:textColor="@color/textcolor_white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ll_signin_top" />
+        <!--        <androidx.appcompat.widget.AppCompatButton-->
+        <!--            android:id="@+id/btn_signin"-->
+        <!--            android:layout_width="@dimen/button_size_weight_large"-->
+        <!--            android:layout_height="@dimen/button_size_height"-->
+        <!--            android:layout_marginTop="@dimen/padding_large"-->
+        <!--            android:background="@drawable/shape_button_siliver"-->
+        <!--            android:text="@string/signin_button"-->
+        <!--            android:textColor="@color/textcolor_white"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/ll_signin_top" />-->
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/size_icon_xxxlarge"
+            android:layout_height="@dimen/size_icon_xxxlarge"
+            android:layout_marginRight="@dimen/padding_large_xlarge"
+            android:background="@drawable/ic_google" />
 
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/login_gmail"
-            android:background="@drawable/shape_background_gradient"
-            android:layout_width="@dimen/button_size_weight_large"
-            android:layout_height="@dimen/button_size_height" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:padding="@dimen/padding_small"
+            android:layout_height="@dimen/button_size_height"
+            android:fontFamily="@font/source_sans_pro_semibold"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="@string/login_button"
+            android:textColor="@color/line_light"
+            android:textSize="@dimen/text_size_normal" />
+
+        <!--        <com.google.android.gms.common.SignInButton-->
+        <!--            android:id="@+id/login_gmail"-->
+        <!--            android:text="@string/login_button"-->
+        <!--            android:background="@color/textcolor_blue_blod"-->
+        <!--            android:layout_width="@dimen/button_size_weight_large"-->
+        <!--            android:layout_height="@dimen/_44dp" />-->
         <!--        <androidx.appcompat.widget.AppCompatTextView-->
         <!--            android:id="@+id/btn_forgotpass"-->
         <!--            android:layout_width="wrap_content"-->
@@ -195,5 +214,34 @@
         <!--            app:layout_constraintTop_toBottomOf="@+id/btn_signin" />-->
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/padding_normal"
+        app:layout_constraintTop_toBottomOf="@+id/ll_signin_top"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:orientation="horizontal">
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_onetouch"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/text_size_special"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:text="@string/signin_onetouch"
+            android:textColor="@color/text_color_light"
+            app:layout_constraintLeft_toRightOf="@id/lotte_onetouch"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_signin_top" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lotte_onetouch"
+            android:layout_width="@dimen/_85dp"
+            android:layout_height="@dimen/_85dp"
+            app:lottie_rawRes="@raw/onetouch_apartment"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:layout_constraintLeft_toRightOf="@+id/tv_onetouch" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

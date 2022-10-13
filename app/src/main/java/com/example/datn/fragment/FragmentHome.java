@@ -1,10 +1,14 @@
 package com.example.datn.fragment;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
@@ -29,12 +33,15 @@ public class FragmentHome extends Fragment {
     RecyclerView rcv_apartment_home;
     ApartmentItemHomeAdapter adapter;
     ApartmentPopulateViewModel apartmentPopulateViewmodelModel;
+    Dialog dialog;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         btnhome = view.findViewById(R.id.btn_home);
+        dialog = new Dialog(getActivity());
+        loadingApartment();
         rcv_apartment_home = view.findViewById(R.id.rcv_home_populate);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         layoutManager.scrollToPosition(0);
@@ -60,6 +67,15 @@ public class FragmentHome extends Fragment {
             listResultPopulate.addAll(apartmentList);
             Log.i("TAG", "getApartment a: " + listResultPopulate.size());
             adapter.notifyDataSetChanged();
+            dialog.dismiss();
         });
+    }
+
+    private void loadingApartment() {
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_loading);
+        dialog.show();
+        dialog.setCancelable(false);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 }

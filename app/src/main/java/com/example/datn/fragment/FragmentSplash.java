@@ -28,7 +28,11 @@ public class FragmentSplash extends Fragment {
                 @Override
                 public void run() {
                     if (finishIntro()) {
-                        Navigation.findNavController(view).navigate(R.id.action_fragmentSplash_to_fragmentSignin);
+                        if (autoLogin()) {
+                            Navigation.findNavController(view).navigate(R.id.action_fragmentSplash_to_fragmentDaddy);
+                        } else {
+                            Navigation.findNavController(view).navigate(R.id.action_fragmentSplash_to_fragmentSignin);
+                        }
                     } else {
                         Navigation.findNavController(view).navigate(R.id.action_fragmentSplash_to_fragmentIntro);
                     }
@@ -46,7 +50,7 @@ public class FragmentSplash extends Fragment {
                 getActivity().finishAffinity();
             }
         };
-        requireActivity().getOnBackPressedDispatcher().addCallback(this,callback);
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
         super.onCreate(savedInstanceState);
     }
 
@@ -54,6 +58,11 @@ public class FragmentSplash extends Fragment {
         SharedPreferences preferences = getActivity().getSharedPreferences("intro", Context.MODE_PRIVATE);
 
         return preferences.getBoolean("finish", false);
+    }
+
+    private boolean autoLogin() {
+        SharedPreferences preferences = getActivity().getSharedPreferences("autologin", Context.MODE_PRIVATE);
+        return preferences.getBoolean("auto", false);
     }
 
 }

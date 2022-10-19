@@ -204,4 +204,5 @@ public class ResultPopulate {
     public void setIdOwner(String idOwner) {
         this.idOwner = idOwner;
     }
+
 }

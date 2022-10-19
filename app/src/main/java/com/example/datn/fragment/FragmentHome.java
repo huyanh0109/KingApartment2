@@ -1,8 +1,11 @@
 package com.example.datn.fragment;
 
 import android.app.Dialog;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +22,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.datn.BroadcastReload;
 import com.example.datn.R;
 import com.example.datn.adapter.ApartmentItemHomeAdapter;
 import com.example.datn.model.ResultPopulate;
@@ -30,11 +34,12 @@ import java.util.List;
 public class FragmentHome extends Fragment {
     Button btnhome;
     ArrayList<ResultPopulate> listResultPopulate = new ArrayList<>();
+    List<String> listImageApartment = new ArrayList<>();
     RecyclerView rcv_apartment_home;
     ApartmentItemHomeAdapter adapter;
     ApartmentPopulateViewModel apartmentPopulateViewmodelModel;
     Dialog dialog;
-
+    BroadcastReceiver broadcastReceiver;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -62,11 +67,20 @@ public class FragmentHome extends Fragment {
 
     private void getApartmentPopulate() {
         apartmentPopulateViewmodelModel.getliveDataPopulate().observe(getActivity(), listApartment -> {
-            List<ResultPopulate> apartmentList = listApartment.getListApartmentPopulate().getApartmentResult();
-            Log.i("TAG", "getApartment: " + apartmentList);
-            listResultPopulate.addAll(apartmentList);
-            Log.i("TAG", "getApartment a: " + listResultPopulate.size());
-            adapter.notifyDataSetChanged();
+            if (listApartment != null && listApartment.getListApartmentPopulate().getApartmentResult() != null
+                    && !listApartment.getListApartmentPopulate().getApartmentResult().isEmpty()) {
+                List<ResultPopulate> apartmentList = listApartment.getListApartmentPopulate().getApartmentResult();
+                Log.i("TAG", "getApartment: " + apartmentList);
+                listResultPopulate.addAll(apartmentList);
+                ResultPopulate resultPopulate = new ResultPopulate();
+                resultPopulate.getPhotos();
+                Log.i("TAG", "getApartment a: " + listResultPopulate.size());
+                adapter.notifyDataSetChanged();
+
+            }
+            if (listApartment == null) {
+                reloadConnect();
+            }
             dialog.dismiss();
         });
     }
@@ -77,5 +91,16 @@ public class FragmentHome extends Fragment {
         dialog.show();
         dialog.setCancelable(false);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    }
+
+    //    public boolean isOnline() {
+//        ConnectivityManager connMgr = (ConnectivityManager)
+//                getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+//        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+//        return (networkInfo != null && networkInfo.isConnected());
+//    }
+    private void reloadConnect() {
+        broadcastReceiver = new BroadcastReload();
+        requireActivity().registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
     }
 }

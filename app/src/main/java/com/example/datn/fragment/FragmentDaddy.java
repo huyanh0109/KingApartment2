@@ -43,8 +43,9 @@ public class FragmentDaddy extends Fragment {
         View view = inflater.inflate(R.layout.fragment_daddy, container, false);
         navView = view.findViewById(R.id.bottom_nav);
         navView.setItemIconTintList(null);
-        checkConnect();
         autoLogin();
+        checkConnect();
+        createView();
         BadgeDrawable badgeDrawable = navView.getOrCreateBadge(R.id.nav_notification);
         badgeDrawable.setVisible(true);
         badgeDrawable.setNumber(10);
@@ -58,6 +59,10 @@ public class FragmentDaddy extends Fragment {
         if (bl == true) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
+        return view;
+    }
+
+    private void createView() {
         if (getBoolean(getArguments(), "Callback") == null) {
             integers.push(R.id.nav_home);
             replaceFragment(new FragmentHome());
@@ -138,9 +143,7 @@ public class FragmentDaddy extends Fragment {
                                               }
             );
         }
-        return view;
     }
-
     public static String getBoolean(Bundle arguments, String key) {
         if (arguments != null && arguments.containsKey("Callback")) {
             return arguments.getString(key);
@@ -224,16 +227,17 @@ public class FragmentDaddy extends Fragment {
                 getActivity().getResources().getDisplayMetrics());
     }
 
-    private void checkConnect() {
-        broadcastReceiver = new NetworkBroadcast();
-        requireActivity().registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
-    }
 
     private void autoLogin() {
         SharedPreferences preferences = getActivity().getSharedPreferences("autologin", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("auto", true);
         editor.apply();
+    }
+
+    private void checkConnect() {
+        broadcastReceiver = new NetworkBroadcast();
+        requireActivity().registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
     }
 }
 

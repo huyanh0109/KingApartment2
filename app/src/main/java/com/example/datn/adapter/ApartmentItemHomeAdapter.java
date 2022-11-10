@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.datn.R;
 import com.example.datn.model.ResultPopulate;
 
@@ -43,7 +44,18 @@ public class ApartmentItemHomeAdapter extends RecyclerView.Adapter<ApartmentItem
         holder.tv_rcv_itemhome_addess.setText(this.list.get(position).getAddress());
         holder.tv_rcv_itemhome_price.setText(this.list.get(position).getPrice());
         holder.tv_rcv_itemhome_desciption.setText(this.list.get(position).getDescription());
+        Glide.with(context).load(this.list.get(position).getPhotos()).centerCrop().placeholder(
+                R.drawable.animation_loading).error(R.drawable.ic_error_img).into(holder.img_rcv_itemhome);
+//        Drawable drawable = holder.img_rcv_itemhome.getDrawable();
+//        if (drawable instanceof AnimatedVectorDrawableCompat) {
+//            AnimatedVectorDrawableCompat avd = (AnimatedVectorDrawableCompat) drawable;
+//            avd.start();
+//        }else if (drawable instanceof  AnimatedVectorDrawable){
+//            AnimatedVectorDrawable adv = (AnimatedVectorDrawable) drawable;
+//            adv.start();
+//        }
     }
+
 
     @Override
     public int getItemCount() {

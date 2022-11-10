@@ -1,21 +1,17 @@
 package com.example.datn;
 
 import android.app.Dialog;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 
-public class NetworkBroadcast extends BroadcastReceiver {
-    ConnectivityManager connectivityManager;
+public class BroadcastReload extends NetworkBroadcast {
     @Override
     public void onReceive(Context context, Intent intent) {
         if (!isNetworkConnected(context)) {
@@ -28,6 +24,7 @@ public class NetworkBroadcast extends BroadcastReceiver {
                 public void onClick(View view) {
                     if (isNetworkConnected(context)) {
                         dialog.dismiss();
+                        restart(context);
                     }
                 }
             });
@@ -38,22 +35,5 @@ public class NetworkBroadcast extends BroadcastReceiver {
             dialog.getWindow().getAttributes().windowAnimations = R.style.dialogAnimation;
             dialog.getWindow().setGravity(Gravity.BOTTOM);
         }
-    }
-
-    public boolean isNetworkConnected(Context context) {
-        try {
-            connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-            return networkInfo != null && networkInfo.isConnected();
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    public void restart(Context context) {
-        Intent intent = new Intent(context, AloneMain.class);
-        context.startActivity(intent);
-        System.exit(0);
     }
 }

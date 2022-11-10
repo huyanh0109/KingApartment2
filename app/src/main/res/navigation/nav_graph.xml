@@ -139,7 +139,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentIndex"
-        android:name="com.example.datn.fragment.FragmentIndex"
+        android:name="com.example.datn.fragment.FragmentIndexApartment"
         android:label="FragmentIndex">
         <action
             android:id="@+id/action_fragmentIndex_to_fragmentDaddy"

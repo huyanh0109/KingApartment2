@@ -6,6 +6,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface APIservice {
-    @GET("apartment/populate")
+    @GET("apartment/popular")
     Call<ApartmentPopulate> getServerData();
 }

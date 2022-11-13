@@ -37,8 +37,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
@@ -51,7 +49,7 @@ public class FragmentSignin extends Fragment {
     GoogleSignInClient mGoogleSignInClient;
     LinearLayout login_gmail;
     private BroadcastReceiver broadcastReceiver;
-    FusedLocationProviderClient fusedLocationProviderClient;
+//    FusedLocationProviderClient fusedLocationProviderClient;
     public final static int REQUEST_CODE = 100;
     TextView tv_signin;
 
@@ -64,7 +62,7 @@ public class FragmentSignin extends Fragment {
         autoLogin();
         tv_signin = view.findViewById(R.id.tv_singin);
 
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
+//        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
         tv_signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -159,15 +157,25 @@ public class FragmentSignin extends Fragment {
         }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == REQUEST_CODE) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                getLocation();
-            } else {
-            }
-        }
-    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        if (requestCode == REQUEST_CODE) {
+//            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                getLocation();
+//            } else {
+//            }
+//        }
+//    }
+//
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        if (requestCode == REQUEST_CODE) {
+//            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                getLocation();
+//            } else {
+//            }
+//        }
+//    }
 
     private void checkConnect() {
         broadcastReceiver = new NetworkBroadcast();
@@ -193,27 +201,27 @@ public class FragmentSignin extends Fragment {
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
-            @Override
-            public void onComplete(@NonNull Task<Location> task) {
-                Location location = task.getResult();
-
-                if (location != null) {
-                    try {
-                        Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
-                        List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location
-                                .getLongitude(), 1);
-                        Log.i("TAG", "onSuccess: latidue" + addresses.get(0).getLatitude());
-                        Log.i("TAG", "onSuccess: longtidue" + addresses.get(0).getLongitude());
-                        Log.i("TAG", "onSuccess: address" + addresses.get(0).getAddressLine(0));
-                        Log.i("TAG", "onSuccess: city" + addresses.get(0).getLocality());
-                        Log.i("TAG", "onSuccess: country" + addresses.get(0).getCountryName());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
+//        fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Location> task) {
+//                Location location = task.getResult();
+//
+//                if (location != null) {
+//                    try {
+//                        Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
+//                        List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location
+//                                .getLongitude(), 1);
+//                        Log.i("TAG", "onSuccess: latidue" + addresses.get(0).getLatitude());
+//                        Log.i("TAG", "onSuccess: longtidue" + addresses.get(0).getLongitude());
+//                        Log.i("TAG", "onSuccess: address" + addresses.get(0).getAddressLine(0));
+//                        Log.i("TAG", "onSuccess: city" + addresses.get(0).getLocality());
+//                        Log.i("TAG", "onSuccess: country" + addresses.get(0).getCountryName());
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        });
     }
 
     private void askPermission() {

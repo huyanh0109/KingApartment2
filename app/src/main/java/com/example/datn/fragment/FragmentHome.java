@@ -25,7 +25,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.datn.BroadcastReload;
 import com.example.datn.R;
 import com.example.datn.adapter.ApartmentItemHomeAdapter;
-import com.example.datn.model.ResultPopulate;
+import com.example.datn.model.AccountUser;
+import com.example.datn.model.ResultPopular;
+import com.example.datn.viewmodel.AccountUserViewModel;
 import com.example.datn.viewmodel.ApartmentPopulateViewModel;
 
 import java.util.ArrayList;
@@ -33,12 +35,13 @@ import java.util.List;
 
 public class FragmentHome extends Fragment {
     Button btnhome;
-    ArrayList<ResultPopulate> listResultPopulate = new ArrayList<>();
-    List<String> listImageApartment = new ArrayList<>();
+    ArrayList<ResultPopular> listResultPopular = new ArrayList<>();
     RecyclerView rcv_apartment_home;
     ApartmentItemHomeAdapter adapter;
     ApartmentPopulateViewModel apartmentPopulateViewmodelModel;
+    AccountUserViewModel accountUserViewModel;
     Dialog dialog;
+    ArrayList<AccountUser> accountUserList = new ArrayList<AccountUser>();
     BroadcastReceiver broadcastReceiver;
     @Nullable
     @Override
@@ -52,8 +55,8 @@ public class FragmentHome extends Fragment {
         layoutManager.scrollToPosition(0);
         rcv_apartment_home.setLayoutManager(layoutManager);
         apartmentPopulateViewmodelModel = new ViewModelProvider(getActivity(), getDefaultViewModelProviderFactory()).get(ApartmentPopulateViewModel.class);
-
-        adapter = new ApartmentItemHomeAdapter(getActivity(), listResultPopulate);
+        accountUserViewModel.setAccountUserLiveData();
+        adapter = new ApartmentItemHomeAdapter(getActivity(), listResultPopular);
         rcv_apartment_home.setAdapter(adapter);
         getApartmentPopulate();
         btnhome.setOnClickListener(new View.OnClickListener() {
@@ -65,16 +68,18 @@ public class FragmentHome extends Fragment {
         return view;
     }
 
+    private AccountUser accountUser() {
+        AccountUser accountUser = new AccountUser("none", "HuyDEpTrai", "huy@gmail.cmom");
+        return accountUser;
+    }
+
     private void getApartmentPopulate() {
         apartmentPopulateViewmodelModel.getliveDataPopulate().observe(getActivity(), listApartment -> {
             if (listApartment != null && listApartment.getListApartmentPopulate().getApartmentResult() != null
                     && !listApartment.getListApartmentPopulate().getApartmentResult().isEmpty()) {
-                List<ResultPopulate> apartmentList = listApartment.getListApartmentPopulate().getApartmentResult();
+                List<ResultPopular> apartmentList = listApartment.getListApartmentPopulate().getApartmentResult();
                 Log.i("TAG", "getApartment: " + apartmentList);
-                listResultPopulate.addAll(apartmentList);
-                ResultPopulate resultPopulate = new ResultPopulate();
-                resultPopulate.getPhotos();
-                Log.i("TAG", "getApartment a: " + listResultPopulate.size());
+                listResultPopular.addAll(apartmentList);
                 adapter.notifyDataSetChanged();
 
             }
@@ -84,7 +89,6 @@ public class FragmentHome extends Fragment {
             dialog.dismiss();
         });
     }
-
     private void loadingApartment() {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_loading);

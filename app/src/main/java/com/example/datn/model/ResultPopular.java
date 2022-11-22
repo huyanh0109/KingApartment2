@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ResultPopulate {
+public class ResultPopular {
     @SerializedName("_id")
     @Expose
     private String id;

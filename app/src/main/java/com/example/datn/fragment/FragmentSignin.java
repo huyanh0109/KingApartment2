@@ -39,8 +39,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.io.IOException;
 import java.util.List;
@@ -63,25 +62,18 @@ public class FragmentSignin extends Fragment {
         checkConnect();
         autoLogin();
         tv_signin = view.findViewById(R.id.tv_singin);
-
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
-        tv_signin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
-                        == PackageManager.PERMISSION_GRANTED) {
-                    getLocation();
-                } else {
-                    askPermission();
-                }
-            }
-        });
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            getLocation();
+        } else {
+            askPermission();
+        }
 
         login_gmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 signIn();
-
             }
         });
         sharedPreferences = getActivity().getSharedPreferences("dark", Context.MODE_PRIVATE);
@@ -97,6 +89,7 @@ public class FragmentSignin extends Fragment {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
+        Log.i("TAG", "onCreate: gso "+gso);
         mGoogleSignInClient = GoogleSignIn.getClient(getActivity(), gso);
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {
             @Override
@@ -108,7 +101,6 @@ public class FragmentSignin extends Fragment {
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
-        ;
         super.onCreate(savedInstanceState);
         sharedPreferences = getActivity().getSharedPreferences("language", Context.MODE_PRIVATE);
         String language = sharedPreferences.getString("language", "en");
@@ -131,6 +123,7 @@ public class FragmentSignin extends Fragment {
 
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        Log.i("TAG", "signIn: " + signInIntent);
         startActivityForResult(signInIntent, 1000);
     }
 
@@ -165,9 +158,20 @@ public class FragmentSignin extends Fragment {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 getLocation();
             } else {
+                Log.i("TAG", "onRequestPermissionsResult: +required");
             }
         }
     }
+//
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        if (requestCode == REQUEST_CODE) {
+//            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                getLocation();
+//            } else {
+//            }
+//        }
+//    }
 
     private void checkConnect() {
         broadcastReceiver = new NetworkBroadcast();
@@ -183,37 +187,29 @@ public class FragmentSignin extends Fragment {
 
     private void getLocation() {
 
-        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
-            @Override
-            public void onComplete(@NonNull Task<Location> task) {
-                Location location = task.getResult();
-
-                if (location != null) {
+        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+//                && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+        ) {
+            fusedLocationProviderClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
+                @Override
+                public void onSuccess(Location location) {
+                    Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
+                    List<Address> addresses = null;
                     try {
-                        Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
-                        List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location
-                                .getLongitude(), 1);
+                        addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
                         Log.i("TAG", "onSuccess: latidue" + addresses.get(0).getLatitude());
                         Log.i("TAG", "onSuccess: longtidue" + addresses.get(0).getLongitude());
                         Log.i("TAG", "onSuccess: address" + addresses.get(0).getAddressLine(0));
+                        tv_signin.setText(addresses.get(0).getLatitude()+"");
                         Log.i("TAG", "onSuccess: city" + addresses.get(0).getLocality());
                         Log.i("TAG", "onSuccess: country" + addresses.get(0).getCountryName());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+
                 }
-            }
-        });
+            });
+        }
     }
 
     private void askPermission() {

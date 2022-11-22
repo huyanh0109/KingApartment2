@@ -3,7 +3,7 @@ package com.example.datn.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ApartmentPopulate {
+public class ApartmentPopular {
     @SerializedName("status")
     @Expose
     private String status;
@@ -18,13 +18,13 @@ public class ApartmentPopulate {
 
     @SerializedName("apartments")
     @Expose
-    private PagePopulate pagePopulate;
+    private PagePopular pagePopulate;
 
-    public PagePopulate getListApartmentPopulate() {
+    public PagePopular getListApartmentPopulate() {
         return pagePopulate;
     }
 
-    public void setListApartmentPopulate(PagePopulate pagePopulate) {
+    public void setListApartmentPopulate(PagePopular pagePopulate) {
         this.pagePopulate = pagePopulate;
     }
 }

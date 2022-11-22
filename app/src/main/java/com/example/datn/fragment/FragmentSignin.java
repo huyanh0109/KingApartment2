@@ -39,9 +39,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 
 import java.io.IOException;
 import java.util.List;
@@ -211,27 +209,6 @@ public class FragmentSignin extends Fragment {
 
                 }
             });
-//                addOnCompleteListener(new OnCompleteListener<Location>() {
-//            @Override
-//            public void onComplete(@NonNull Task<Location> task) {
-//                Location location = task.getResult();
-//
-//                if (location != null) {
-//                    try {
-//                        Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
-//                        List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location
-//                                .getLongitude(), 1);
-//                        Log.i("TAG", "onSuccess: latidue" + addresses.get(0).getLatitude());
-//                        Log.i("TAG", "onSuccess: longtidue" + addresses.get(0).getLongitude());
-//                        Log.i("TAG", "onSuccess: address" + addresses.get(0).getAddressLine(0));
-//                        Log.i("TAG", "onSuccess: city" + addresses.get(0).getLocality());
-//                        Log.i("TAG", "onSuccess: country" + addresses.get(0).getCountryName());
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-
         }
     }
 

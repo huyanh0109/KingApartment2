@@ -13,20 +13,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.datn.R;
-import com.example.datn.model.ResultPopulate;
+import com.example.datn.model.ResultPopular;
 
 import java.util.List;
 
 public class ApartmentItemHomeAdapter extends RecyclerView.Adapter<ApartmentItemHomeAdapter.ViewHolder> {
     private Context context;
-    private List<ResultPopulate> list;
+    private List<ResultPopular> list;
 
-    public ApartmentItemHomeAdapter(Context context, List<ResultPopulate> list) {
+    public ApartmentItemHomeAdapter(Context context, List<ResultPopular> list) {
         this.context = context;
         this.list = list;
     }
 
-    public void setApartment(List<ResultPopulate> resultPopulate) {
+    public void setApartment(List<ResultPopular> resultPopulate) {
         this.list = resultPopulate;
         notifyDataSetChanged();
     }
@@ -44,7 +44,7 @@ public class ApartmentItemHomeAdapter extends RecyclerView.Adapter<ApartmentItem
         holder.tv_rcv_itemhome_addess.setText(this.list.get(position).getAddress());
         holder.tv_rcv_itemhome_price.setText(this.list.get(position).getPrice());
         holder.tv_rcv_itemhome_desciption.setText(this.list.get(position).getDescription());
-        Glide.with(context).load(this.list.get(position).getPhotos()).centerCrop().placeholder(
+        Glide.with(context).load(this.list.get(position).getPhotos().get(0)).centerCrop().placeholder(
                 R.drawable.animation_loading).error(R.drawable.ic_error_img).into(holder.img_rcv_itemhome);
 //        Drawable drawable = holder.img_rcv_itemhome.getDrawable();
 //        if (drawable instanceof AnimatedVectorDrawableCompat) {

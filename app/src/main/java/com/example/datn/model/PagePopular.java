@@ -5,25 +5,25 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class PagePopulate {
+public class PagePopular {
     @SerializedName("totalPage")
     @Expose
     private Integer totalPage;
     @SerializedName("result")
     @Expose
-    private List<ResultPopulate> resultPopulates;
+    private List<ResultPopular> resultPopulates;
 
-    public List<ResultPopulate> getApartmentResult() {
+    public List<ResultPopular> getApartmentResult() {
         return resultPopulates;
     }
 
 
-    public List<ResultPopulate> getApartmentPopulatesList() {
+    public List<ResultPopular> getApartmentPopulatesList() {
         return resultPopulates;
     }
 
 
-    public void setApartmentPopulates(List<ResultPopulate> resultPopulates) {
+    public void setApartmentPopulates(List<ResultPopular> resultPopulates) {
         this.resultPopulates = resultPopulates;
     }
 

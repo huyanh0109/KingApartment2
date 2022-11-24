@@ -1,9 +1,12 @@
 package com.example.datn.fragment;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -18,6 +21,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.datn.NetworkBroadcast;
 import com.example.datn.R;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -32,13 +36,16 @@ public class FragmentDaddy extends Fragment {
     SharedPreferences sharedPreferences;
     Deque<Integer> integers = new ArrayDeque<>(4);
     boolean flag = true;
-
+    BroadcastReceiver broadcastReceiver;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_daddy, container, false);
         navView = view.findViewById(R.id.bottom_nav);
         navView.setItemIconTintList(null);
+        autoLogin();
+        checkConnect();
+        createView();
         BadgeDrawable badgeDrawable = navView.getOrCreateBadge(R.id.nav_notification);
         badgeDrawable.setVisible(true);
         badgeDrawable.setNumber(10);
@@ -52,6 +59,10 @@ public class FragmentDaddy extends Fragment {
         if (bl == true) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
+        return view;
+    }
+
+    private void createView() {
         if (getBoolean(getArguments(), "Callback") == null) {
             integers.push(R.id.nav_home);
             replaceFragment(new FragmentHome());
@@ -132,9 +143,7 @@ public class FragmentDaddy extends Fragment {
                                               }
             );
         }
-        return view;
     }
-
     public static String getBoolean(Bundle arguments, String key) {
         if (arguments != null && arguments.containsKey("Callback")) {
             return arguments.getString(key);
@@ -216,6 +225,19 @@ public class FragmentDaddy extends Fragment {
         config.locale = locale;
         getActivity().getResources().updateConfiguration(config,
                 getActivity().getResources().getDisplayMetrics());
+    }
+
+
+    private void autoLogin() {
+        SharedPreferences preferences = getActivity().getSharedPreferences("autologin", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("auto", true);
+        editor.apply();
+    }
+
+    private void checkConnect() {
+        broadcastReceiver = new NetworkBroadcast();
+        requireActivity().registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
     }
 }
 

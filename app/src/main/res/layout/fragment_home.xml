@@ -3,25 +3,77 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginBottom="@dimen/margin_bottmnav"
-    android:layout_marginLeft="@dimen/padding_large"
-    android:layout_marginRight="@dimen/padding_large"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/button_size_height"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/padding_small"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/ll_home_search">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/size_icon_large"
+            android:layout_height="@dimen/size_icon_large"
+            android:src="@drawable/ic_location"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_home_location"
+            android:paddingLeft="@dimen/_4dp"
+            android:textColor="@color/textcolor_blue_blod"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:textSize="@dimen/text_size_normal"
+            android:layout_width="wrap_content"
+            android:maxLines="1"
+            android:layout_height="wrap_content"
+            android:text="jgjfdshjghjfdhsjgh"/>
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/ll_home_search"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:layout_margin="@dimen/padding_small"
+        android:layout_marginTop="@dimen/padding_large_xlarge"
         android:orientation="horizontal"
+        android:gravity="center"
+        android:elevation="25dp"
+        android:background="@drawable/shape_shadow_search"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/rcv_home_populate" />
-
+        app:layout_constraintBottom_toTopOf="@+id/rcv_home_populate" >
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="@dimen/button_size_weight_large"
+            android:layout_height="@dimen/button_size_height"
+            android:fontFamily="@font/source_sans_pro"
+            android:textSize="@dimen/text_size_normal"
+            android:textColor="@color/text_color_black_xtiny_"
+            android:paddingLeft="@dimen/padding_large"
+            android:paddingRight="@dimen/padding_normal"
+            android:background="@drawable/shape_search"
+            android:text="@string/home_search"
+            android:drawableEnd="@drawable/ic_search"
+            />
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_title_item_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/source_sans_pro_semibold"
+        android:text="@string/text_setting_profile"
+        android:textColor="@color/black"
+        android:layout_marginLeft="@dimen/padding_large"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/rcv_home_populate"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="@dimen/text_size_normal" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_home_populate"
         android:layout_width="match_parent"
         android:layout_height="300dp"
+        android:layout_marginTop="@dimen/padding_large"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="153dp"
         app:layout_constraintRight_toRightOf="parent"

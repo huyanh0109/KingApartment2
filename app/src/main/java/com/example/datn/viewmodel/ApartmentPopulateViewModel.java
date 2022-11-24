@@ -6,11 +6,11 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.datn.model.ApartmentPopulate;
+import com.example.datn.model.ApartmentPopular;
 import com.example.datn.repository.ApartmentRepository;
 
 public class ApartmentPopulateViewModel extends AndroidViewModel {
-    public LiveData<ApartmentPopulate> liveDataPopulate;
+    public LiveData<ApartmentPopular> liveDataPopulate;
     public ApartmentRepository apartmentRepository;
 
     public ApartmentPopulateViewModel(@NonNull Application application) {
@@ -19,7 +19,7 @@ public class ApartmentPopulateViewModel extends AndroidViewModel {
         this.liveDataPopulate = apartmentRepository.getApartmentPopulateData();
     }
 
-    public LiveData<ApartmentPopulate> getliveDataPopulate() {
+    public LiveData<ApartmentPopular> getliveDataPopulate() {
         return liveDataPopulate;
     }
 }

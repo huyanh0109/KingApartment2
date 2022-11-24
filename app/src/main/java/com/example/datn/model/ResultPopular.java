@@ -3,9 +3,10 @@ package com.example.datn.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ResultPopulate {
+public class ResultPopular implements Serializable {
     @SerializedName("_id")
     @Expose
     private String id;
@@ -30,10 +31,10 @@ public class ResultPopulate {
     @SerializedName("priority")
     @Expose
     private Integer priority;
-    @SerializedName("longitude")
+    @SerializedName("lng")
     @Expose
     private String longitude;
-    @SerializedName("latitude")
+    @SerializedName("lat")
     @Expose
     private String latitude;
     @SerializedName("createdAt")
@@ -51,6 +52,18 @@ public class ResultPopulate {
     @SerializedName("contactPhoneNumber")
     @Expose
     private String contactPhoneNumber;
+    @SerializedName("sumBedroom")
+    @Expose
+    private String sumBedroom;
+
+    public String getSumBedroom() {
+        return sumBedroom;
+    }
+
+    public void setSumBedroom(String sumBedroom) {
+        this.sumBedroom = sumBedroom;
+    }
+
     @SerializedName("sumToilet")
     @Expose
     private String sumToilet;
@@ -204,4 +217,5 @@ public class ResultPopulate {
     public void setIdOwner(String idOwner) {
         this.idOwner = idOwner;
     }
+
 }

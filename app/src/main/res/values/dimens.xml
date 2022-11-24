@@ -18,6 +18,7 @@
     <!-- button size-->
     <dimen name="button_size_height">46dp</dimen>
     <dimen name="button_size_weight_large">300dp</dimen>
+    <dimen name="button_size_weight_normal">225dp</dimen>
     <dimen name="bottom_sheet_hight">330dp</dimen>
     <dimen name="button_size_small">150dp</dimen>
     <!-- margin size bottomnav-->
@@ -73,6 +74,8 @@
     <dimen name="_62dp">62dp</dimen>
     <dimen name="_39dp">39dp</dimen>
     <dimen name="_85dp">85dp</dimen>
+    <dimen name="_100dp">100dp</dimen>
+    <dimen name="_120dp">120dp</dimen>
     <dimen name="_180dp">180dp</dimen>
     <dimen name="_300dp">300dp</dimen>
     <dimen name="_380dp">380dp</dimen>

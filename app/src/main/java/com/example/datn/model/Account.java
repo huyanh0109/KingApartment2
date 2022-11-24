@@ -8,11 +8,11 @@ public class Account {
     @Expose
     private AccountUser account;
 
-    public AccountUser getAccount() {
+    public AccountUser getAccountUser() {
         return account;
     }
 
-    public void setAccount(AccountUser account) {
+    public void setAccountUser(AccountUser account) {
         this.account = account;
     }
 }

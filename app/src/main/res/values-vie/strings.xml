@@ -73,6 +73,14 @@
     <string name="user_number">Số điện thoại</string>
     <string name="user_btn">Lưu thay đổi</string>
     <string name="user_dark">Giao diện tối</string>
+    <string name="home_search">Tìm kiếm</string>
+    <string name="detail_apartment_overview">Tổng quan</string>
+    <string name="detail_apartment_location">Địa điểm</string>
+    <string name="detail_apartment_features">Đặc điểm</string>
+    <string name="detail_apartment_album">Hình ảnh</string>
+    <string name="detail_apartment_price">Giá thuê</string>
+    <string name="detail_apartment_month">/tháng</string>
+    <string name="detail_apartment_contactnow">Liên Hệ Ngay</string>
     <string name="user_change_language">Thay đổi ngôn ngữ</string>
     <string name="contact_message_max">Tối đa 250 kí tự</string>
     <string name="contact_btn">Gửi tin nhắn</string>

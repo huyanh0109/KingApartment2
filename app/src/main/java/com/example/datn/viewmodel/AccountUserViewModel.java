@@ -15,8 +15,8 @@ public class AccountUserViewModel extends AndroidViewModel {
 
     public AccountUserViewModel(@NonNull Application application) {
         super(application);
-        apartmentRepository = new ApartmentRepository();
-        this.liveDataAccount = apartmentRepository.setAccountUserData();
+//        apartmentRepository = new ApartmentRepository();
+//        this.liveDataAccount = apartmentRepository.setAccountUserData();
     }
 
     public LiveData<Account> setAccountUserLiveData() {

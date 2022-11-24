@@ -40,7 +40,11 @@
     <fragment
         android:id="@+id/fragmentHome"
         android:name="com.example.datn.fragment.FragmentHome"
-        android:label="FragmentHome" />
+        android:label="FragmentHome" >
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentIndex"
+            app:destination="@id/fragmentIndex" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentFavorite"
         android:name="com.example.datn.fragment.FragmentWishlist"
@@ -139,7 +143,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentIndex"
-        android:name="com.example.datn.fragment.FragmentIndexApartment"
+        android:name="com.example.datn.fragment.FragmentDetailApartment"
         android:label="FragmentIndex">
         <action
             android:id="@+id/action_fragmentIndex_to_fragmentDaddy"

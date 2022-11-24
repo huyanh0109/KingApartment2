@@ -31,6 +31,10 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.datn.NetworkBroadcast;
 import com.example.datn.R;
+import com.example.datn.api.APIClient;
+import com.example.datn.api.APIservice;
+import com.example.datn.model.Account;
+import com.example.datn.model.AccountUser;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -45,6 +49,10 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class FragmentSignin extends Fragment {
     SharedPreferences sharedPreferences;
     GoogleSignInClient mGoogleSignInClient;
@@ -53,7 +61,7 @@ public class FragmentSignin extends Fragment {
     FusedLocationProviderClient fusedLocationProviderClient;
     public final static int REQUEST_CODE = 100;
     TextView tv_signin;
-
+    Account user = new Account();
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -145,6 +153,8 @@ public class FragmentSignin extends Fragment {
                 Log.i("TAG", "" + account.getIdToken());
                 Log.i("TAG", "" + account.getId());
                 Log.i("TAG", "" + account.getEmail());
+                user.setAccountUser(new AccountUser("none", account.getDisplayName(), account.getEmail()));
+                postAccountUserData(user);
                 NavHostFragment.findNavController(FragmentSignin.this).navigate(R.id.action_fragmentSignin_to_fragmentDaddy);
             } else {
                 Log.i("TAG", "onActivityResult: fail");
@@ -184,7 +194,24 @@ public class FragmentSignin extends Fragment {
         editor.putBoolean("auto", false);
         editor.apply();
     }
+    private void postAccountUserData(Account account){
+        APIservice apIservice = APIClient.getClient().create(APIservice.class);
+        Call<Account> call  = apIservice.postAccountData(user);
+        call.enqueue(new Callback<Account>() {
+            @Override
+            public void onResponse(Call<Account> call, Response<Account> response) {
+                Log.i("TAG", "onResponse: +ss");
+                Account account = response.body();
+                Log.i("TAG", String.format(account.getAccountUser().getEmail() + account.getAccountUser().getEmail()));
 
+            }
+
+            @Override
+            public void onFailure(Call<Account> call, Throwable t) {
+
+            }
+        });
+    }
     private void getLocation() {
 
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
@@ -203,6 +230,7 @@ public class FragmentSignin extends Fragment {
                         tv_signin.setText(addresses.get(0).getLatitude()+"");
                         Log.i("TAG", "onSuccess: city" + addresses.get(0).getLocality());
                         Log.i("TAG", "onSuccess: country" + addresses.get(0).getCountryName());
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

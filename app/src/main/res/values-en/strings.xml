@@ -71,6 +71,14 @@
     <string name="user_title">Thông tin cá nhân</string>
     <string name="user_fullname">Họ và Tên</string>
     <string name="user_email">Email</string>
+    <string name="home_search">Search</string>
+    <string name="detail_apartment_overview">OverView</string>
+    <string name="detail_apartment_location">Location</string>
+    <string name="detail_apartment_features">Features</string>
+    <string name="detail_apartment_album">Album</string>
+    <string name="detail_apartment_price">Price</string>
+    <string name="detail_apartment_month">/month</string>
+    <string name="detail_apartment_contactnow">Contact Now</string>
     <string name="user_number">Số điện thoại</string>
     <string name="user_btn">Lưu thay đổi</string>
     <string name="user_dark">Giao diện tối</string>

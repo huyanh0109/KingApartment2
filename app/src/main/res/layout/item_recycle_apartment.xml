@@ -2,16 +2,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="195dp"
     android:layout_height="275dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/custom_item_apartment"
+    android:layout_marginLeft="@dimen/padding_large">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/img_rcv_item"
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:src="@android:drawable/sym_def_app_icon"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:shapeAppearanceOverlay="@style/border_radius_image"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_rcv_description"
@@ -46,6 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding_large"
+        android:layout_marginRight="@dimen/_5dp"
         android:text="/tháng"
         android:fontFamily="@font/source_sans_pro_semibold"
         android:textColor="@color/text_month"
@@ -56,6 +59,8 @@
         android:id="@+id/tv_rcv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:maxLength="15"
+        android:maxLines="1"
         android:layout_marginLeft="@dimen/padding_small"
         android:text="Time City"
         android:textSize="@dimen/text_size_middle_large"
@@ -77,12 +82,14 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_rcv_address"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/logo_size"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding_tiny_small"
         android:text="Hai Bà Trưng,Hà Nội"
+        android:ellipsize="end"
         android:fontFamily="@font/source_sans_pro_semibold"
         android:textSize="@dimen/text_size_small_tiny"
+        android:maxLines="1"
         android:textColor="@color/text_color_black_tiny"
         app:layout_constraintTop_toBottomOf="@id/tv_rcv_name"
         app:layout_constraintLeft_toRightOf="@id/ic_location" />
@@ -97,4 +104,4 @@
         android:layout_marginLeft="@dimen/padding_small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_rcv_name" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>

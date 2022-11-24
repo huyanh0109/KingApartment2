@@ -52,7 +52,7 @@ public class FragmentProfileHelp extends Fragment {
         dropdown_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dropdown_1.setBackgroundResource(R.drawable.shape_line);
+                dropdown_1.setBackgroundResource(R.drawable.shape_line_bottom);
                 if (tv_drop_1.getParent() != null) {
                     ((ViewGroup) tv_drop_1.getParent()).removeView(tv_drop_1);
                 }

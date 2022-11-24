@@ -11,6 +11,7 @@ public class AccountUser {
     @Expose
     private String fullname;
 
+
     public AccountUser(String avatar, String fullname, String email) {
         this.avatar = avatar;
         this.fullname = fullname;
@@ -43,5 +44,9 @@ public class AccountUser {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    @Override
+    public String toString(){
+        return "User("+ getFullname() + getEmail();
     }
 }

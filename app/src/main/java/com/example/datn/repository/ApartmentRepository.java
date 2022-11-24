@@ -19,7 +19,6 @@ import retrofit2.Response;
 public class ApartmentRepository {
 
     private final APIservice apIservice;
-    Account account;
 
     public ApartmentRepository() {
         apIservice = APIClient.getClient().create(APIservice.class);
@@ -46,19 +45,4 @@ public class ApartmentRepository {
         return populateData;
     }
 
-    public LiveData<Account> setAccountUserData() {
-        final MutableLiveData<Account> accountData = new MutableLiveData<>();
-        apIservice.postAccountData(new AccountUser("none", "HuyDEpTrai", "huy@gmail.cmom")).enqueue(new Callback<Account>() {
-            @Override
-            public void onResponse(Call<Account> call, Response<Account> response) {
-                Log.i("TAG", "onResponse: ss");
-            }
-
-            @Override
-            public void onFailure(Call<Account> call, Throwable t) {
-                Log.i("TAG", "onResponse:   fail");
-            }
-        });
-        return accountData;
-    }
 }

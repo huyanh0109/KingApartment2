@@ -14,5 +14,5 @@ public interface APIservice {
     Call<ApartmentPopular> getServerData();
 
     @POST("login")
-    Call<Account> postAccountData(@Body AccountUser account);
+    Call<Account> postAccountData(@Body Account account);
 }

@@ -37,6 +37,7 @@
             android:textSize="@dimen/text_size_normal_tiny" />
 
         <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edt_profile_contact_fullname"
             android:layout_width="@dimen/button_size_weight_large"
             android:layout_height="@dimen/button_size_height"
             android:background="@drawable/shape_edittext"
@@ -58,6 +59,7 @@
             android:textSize="@dimen/text_size_normal_tiny" />
 
         <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edt_profile_contact_email"
             android:layout_width="@dimen/button_size_weight_large"
             android:layout_height="@dimen/button_size_height"
             android:background="@drawable/shape_edittext"
@@ -103,6 +105,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edt_profile_contact_message"
             android:layout_width="@dimen/button_size_weight_large"
             android:layout_height="@dimen/button_size_small"
             android:background="@drawable/shape_edittext_multitext"
@@ -116,7 +119,7 @@
             android:textSize="@dimen/text_size_normal" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_signin"
+            android:id="@+id/btn_profile_contact"
             android:layout_width="@dimen/button_size_weight_large"
             android:layout_height="@dimen/button_size_height"
             android:layout_marginTop="@dimen/padding_large"

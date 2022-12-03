@@ -7,6 +7,7 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,23 +16,35 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.bumptech.glide.Glide;
 import com.example.datn.R;
+import com.example.datn.model.Account;
+import com.example.datn.model.AccountUser;
+import com.example.datn.viewmodel.AccountUserViewModel;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.material.imageview.ShapeableImageView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
+import java.util.List;
 import java.util.Locale;
 
 public class FragmentProfile extends Fragment {
     LinearLayout btn_signout, btn_profile, btn_notification, btn_security, btn_term, btn_help, btn_contact;
-    ImageView btn_language;
+    ImageView btn_language,image_profile_avataruser;
+    TextView tv_profile_fullname, tv_profile_email;
     String language;
     SharedPreferences sharedPreferences;
     Bundle bundle = new Bundle();
@@ -42,6 +55,7 @@ public class FragmentProfile extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         bundle.putString("Callback", "Profile");
         initView(view);
+        postAccountUserData();
         signOut();
         termS();
         contact();
@@ -76,7 +90,22 @@ public class FragmentProfile extends Fragment {
         btn_notification = view.findViewById(R.id.ll_setting_notification);
         btn_contact = view.findViewById(R.id.ll_setting_contact);
         btn_term = view.findViewById(R.id.ll_setting_term);
+        tv_profile_fullname = view.findViewById(R.id.tv_profile_fullname);
+        tv_profile_email = view.findViewById(R.id.tv_profile_email);
+        image_profile_avataruser = view.findViewById(R.id.image_profile_avataruser);
     }
+
+    private void postAccountUserData() {
+        sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString(FragmentSignin.KEY_ACCOUNTUSER, "");
+        AccountUser user = gson.fromJson(json, AccountUser.class);
+        tv_profile_email.setText(user.getEmail());
+        tv_profile_fullname.setText(user.getFullname());
+        Glide.with(getContext()).load(user.getAvatar()).centerCrop().placeholder(
+                R.drawable.animation_loading).error(R.drawable.avatar_user).circleCrop().into(image_profile_avataruser);
+    }
+
 
     public void changeLanguage() {
         sharedPreferences = getActivity().getSharedPreferences("language", Context.MODE_PRIVATE);

@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginBottom="@dimen/margin_bottmnav"
     android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/ll_home_viewgroup"
     android:layout_height="match_parent">
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/button_size_height"
         android:orientation="horizontal"
-        android:layout_margin="@dimen/padding_small"
+        android:layout_marginLeft="@dimen/padding_large"
+        android:layout_marginTop="@dimen/padding_normal"
+        android:layout_marginRight="@dimen/padding_large"
         android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,26 +29,32 @@
             android:textColor="@color/textcolor_blue_blod"
             android:fontFamily="@font/source_sans_pro_bold"
             android:textSize="@dimen/text_size_normal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:maxLines="1"
             android:layout_height="wrap_content"
             android:text="jgjfdshjghjfdhsjgh"/>
     </LinearLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:background="@drawable/shape_line_bottom">
     <LinearLayout
         android:id="@+id/ll_home_search"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_margin="@dimen/padding_small"
-        android:layout_marginTop="@dimen/padding_large_xlarge"
+        android:layout_marginLeft="@dimen/padding_large"
+        android:layout_marginRight="@dimen/padding_large"
         android:orientation="horizontal"
         android:gravity="center"
-        android:elevation="25dp"
+        android:elevation="15dp"
+        android:layout_gravity="center"
         android:background="@drawable/shape_shadow_search"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/rcv_home_populate" >
+        app:layout_constraintBottom_toTopOf="@+id/rcv_home" >
         <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edt_home_search"
             android:layout_width="@dimen/button_size_weight_large"
             android:layout_height="@dimen/button_size_height"
             android:fontFamily="@font/source_sans_pro"
@@ -57,38 +67,18 @@
             android:drawableEnd="@drawable/ic_search"
             />
     </LinearLayout>
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_title_item_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/source_sans_pro_semibold"
-        android:text="@string/text_setting_profile"
-        android:textColor="@color/black"
-        android:layout_marginLeft="@dimen/padding_large"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/rcv_home_populate"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:textSize="@dimen/text_size_normal" />
+</FrameLayout>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcv_home_populate"
+        android:id="@+id/rcv_home"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="@dimen/padding_large"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:nestedScrollingEnabled="false"
+        android:layout_marginLeft="@dimen/padding_large"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="153dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ll_home_search" />
-
-    <Button
-        android:id="@+id/btn_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.905"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

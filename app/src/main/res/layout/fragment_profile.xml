@@ -55,7 +55,54 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/ll_setting_Accountuser"
 
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_line_bottom"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/padding_normal"
+                    android:paddingBottom="@dimen/padding_normal">
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/image_profile_avataruser"
+                        android:layout_width="@dimen/_100dp"
+                        app:shapeAppearanceOverlay="@style/roundedCorners"
+                        android:layout_height="@dimen/_100dp" />
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_profile_fullname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/padding_normal"
+                            android:fontFamily="@font/source_sans_pro_semibold"
+                            android:text="@string/text_setting_profile"
+                            android:textColor="@color/black"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            android:textSize="@dimen/text_size_large" />
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_profile_email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/padding_normal"
+                            android:fontFamily="@font/source_sans_pro_semibold"
+                            android:text="@string/text_setting_profile"
+                            android:textColor="@color/text_color_black_xtiny_"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            android:textSize="@dimen/text_size_normal" />
+                    </LinearLayout>
+                </LinearLayout>
                 <LinearLayout
                     android:id="@+id/ll_setting_profile"
 

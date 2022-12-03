@@ -27,6 +27,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.datn.NetworkBroadcast;
@@ -35,6 +36,8 @@ import com.example.datn.api.APIClient;
 import com.example.datn.api.APIservice;
 import com.example.datn.model.Account;
 import com.example.datn.model.AccountUser;
+import com.example.datn.model.ResultApartment;
+import com.example.datn.viewmodel.AccountUserViewModel;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -44,23 +47,28 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import okhttp3.Connection;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class FragmentSignin extends Fragment {
+    public static final String KEY_ACCOUNTUSER= "accountUser";
     SharedPreferences sharedPreferences;
     GoogleSignInClient mGoogleSignInClient;
     LinearLayout login_gmail;
     private BroadcastReceiver broadcastReceiver;
+    AccountUserViewModel accountUserViewModel;
     FusedLocationProviderClient fusedLocationProviderClient;
     public final static int REQUEST_CODE = 100;
-    TextView tv_signin;
     Account user = new Account();
     @Nullable
     @Override
@@ -69,7 +77,6 @@ public class FragmentSignin extends Fragment {
         login_gmail = view.findViewById(R.id.ll_signin_top);
         checkConnect();
         autoLogin();
-        tv_signin = view.findViewById(R.id.tv_singin);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
@@ -153,8 +160,25 @@ public class FragmentSignin extends Fragment {
                 Log.i("TAG", "" + account.getIdToken());
                 Log.i("TAG", "" + account.getId());
                 Log.i("TAG", "" + account.getEmail());
+                Log.i("TAG", "" + account.getDisplayName());
                 user.setAccountUser(new AccountUser("none", account.getDisplayName(), account.getEmail()));
-                postAccountUserData(user);
+                postAccountUserData();
+                sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+                if (account.getPhotoUrl() == null) {
+                    AccountUser users = new AccountUser("none", account.getDisplayName(), account.getEmail());
+                    SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
+                    Gson gson = new Gson();
+                    String json = gson.toJson(users);
+                    prefsEditor.putString(KEY_ACCOUNTUSER, json);
+                    prefsEditor.commit();
+                }else {
+                    AccountUser users = new AccountUser(account.getPhotoUrl().toString(), account.getDisplayName(), account.getEmail());
+                    SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
+                    Gson gson = new Gson();
+                    String json = gson.toJson(users);
+                    prefsEditor.putString(KEY_ACCOUNTUSER, json);
+                    prefsEditor.commit();
+                }
                 NavHostFragment.findNavController(FragmentSignin.this).navigate(R.id.action_fragmentSignin_to_fragmentDaddy);
             } else {
                 Log.i("TAG", "onActivityResult: fail");
@@ -172,17 +196,6 @@ public class FragmentSignin extends Fragment {
             }
         }
     }
-//
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        if (requestCode == REQUEST_CODE) {
-//            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                getLocation();
-//            } else {
-//            }
-//        }
-//    }
-
     private void checkConnect() {
         broadcastReceiver = new NetworkBroadcast();
         requireActivity().registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
@@ -194,23 +207,13 @@ public class FragmentSignin extends Fragment {
         editor.putBoolean("auto", false);
         editor.apply();
     }
-    private void postAccountUserData(Account account){
-        APIservice apIservice = APIClient.getClient().create(APIservice.class);
-        Call<Account> call  = apIservice.postAccountData(user);
-        call.enqueue(new Callback<Account>() {
-            @Override
-            public void onResponse(Call<Account> call, Response<Account> response) {
-                Log.i("TAG", "onResponse: +ss");
-                Account account = response.body();
-                Log.i("TAG", String.format(account.getAccountUser().getEmail() + account.getAccountUser().getEmail()));
-
-            }
-
-            @Override
-            public void onFailure(Call<Account> call, Throwable t) {
-
-            }
-        });
+    private void postAccountUserData(){
+        accountUserViewModel = new ViewModelProvider(getActivity(),getDefaultViewModelProviderFactory()).get(AccountUserViewModel.class);
+        accountUserViewModel.setAccountUserLiveData(user).observe(getActivity(), listAccountUser -> {
+            if (listAccountUser != null && listAccountUser.getAccountUser() != null) {
+                AccountUser accountUser = listAccountUser.getAccountUser();
+        }
+    });
     }
     private void getLocation() {
 
@@ -227,7 +230,6 @@ public class FragmentSignin extends Fragment {
                         Log.i("TAG", "onSuccess: latidue" + addresses.get(0).getLatitude());
                         Log.i("TAG", "onSuccess: longtidue" + addresses.get(0).getLongitude());
                         Log.i("TAG", "onSuccess: address" + addresses.get(0).getAddressLine(0));
-                        tv_signin.setText(addresses.get(0).getLatitude()+"");
                         Log.i("TAG", "onSuccess: city" + addresses.get(0).getLocality());
                         Log.i("TAG", "onSuccess: country" + addresses.get(0).getCountryName());
 

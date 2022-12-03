@@ -1,7 +1,6 @@
 package com.example.datn.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,31 +11,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.datn.ItemClickListener;
 import com.example.datn.R;
-import com.example.datn.fragment.FragmentHome;
 import com.example.datn.model.ResultApartment;
 
 import java.text.DecimalFormat;
 import java.util.List;
 
-public class ApartmentItemHomeAdapter extends RecyclerView.Adapter<ApartmentItemHomeAdapter.ViewHolder> {
+public class ApartmentItemWishListAdapter extends RecyclerView.Adapter<ApartmentItemWishListAdapter.ViewHolder> {
     private Context context;
     private List<ResultApartment> list;
-    private Double userLongitude,userLatitude;
-    private Integer viewType;
-    public ApartmentItemHomeAdapter(Context context, List<ResultApartment> list, Double userLongitude,
-                                    Double userLatitude, Integer viewType) {
+    public ApartmentItemWishListAdapter(Context context, List<ResultApartment> list) {
         this.context = context;
         this.list = list;
-        this.userLatitude = userLatitude;
-        this.userLongitude = userLongitude;
-        this.viewType = viewType;
     }
     public void setApartment(List<ResultApartment> resultPopulate) {
         this.list = resultPopulate;
@@ -46,7 +36,7 @@ public class ApartmentItemHomeAdapter extends RecyclerView.Adapter<ApartmentItem
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_recycler_apartment, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_recycler_wishlist, parent, false);
         return new ViewHolder(view);
     }
 
@@ -54,22 +44,7 @@ public class ApartmentItemHomeAdapter extends RecyclerView.Adapter<ApartmentItem
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ResultApartment resultApartment = list.get(position);
         holder.tv_rcv_itemhome_name.setText(resultApartment.getName());
-        Location startPoint=new Location("locationA");
-        startPoint.setLatitude(Double.parseDouble(resultApartment.getLatitude()));
-        startPoint.setLongitude(Double.parseDouble(resultApartment.getLongitude()));
-        Location endPoint=new Location("locationA");
-        endPoint.setLatitude(userLatitude);
-        endPoint.setLongitude(userLongitude);
-        double distance=startPoint.distanceTo(endPoint);
-        float v = (float) Math.round(distance * 0.1) / 100;
-        switch (viewType) {
-            case 1:
-                holder.tv_rcv_itemhome_addess.setText(resultApartment.getAddress());
-                break;
-            case 2:
-                holder.tv_rcv_itemhome_addess.setText(v + "Km");
-                break;
-        }
+        holder.tv_rcv_itemhome_addess.setText(resultApartment.getAddress());
         DecimalFormat formatterPrice = new DecimalFormat("#,##");
         double formatPrice  =Double.parseDouble(this.list.get(position).getPrice())/10000;
         holder.tv_rcv_itemhome_price.setText(formatterPrice.format(formatPrice)+"tr");
@@ -88,14 +63,6 @@ public class ApartmentItemHomeAdapter extends RecyclerView.Adapter<ApartmentItem
         });
         Glide.with(context).load(this.list.get(position).getPhotos().get(0)).centerCrop().placeholder(
                 R.drawable.animation_loading).error(R.drawable.ic_error_img).into(holder.img_rcv_itemhome);
-//        Drawable drawable = holder.img_rcv_itemhome.getDrawable();
-//        if (drawable instanceof AnimatedVectorDrawableCompat) {
-//            AnimatedVectorDrawableCompat avd = (AnimatedVectorDrawableCompat) drawable;
-//            avd.start();
-//        }else if (drawable instanceof  AnimatedVectorDrawable){
-//            AnimatedVectorDrawable adv = (AnimatedVectorDrawable) drawable;
-//            adv.start();
-//        }
     }
 
 
@@ -113,11 +80,11 @@ public class ApartmentItemHomeAdapter extends RecyclerView.Adapter<ApartmentItem
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tv_rcv_itemhome_desciption = (TextView) itemView.findViewById(R.id.tv_rcv_description);
-            tv_rcv_itemhome_addess = itemView.findViewById(R.id.tv_rcv_address);
-            tv_rcv_itemhome_price = itemView.findViewById(R.id.tv_rcv_price);
-            tv_rcv_itemhome_name = itemView.findViewById(R.id.tv_rcv_name);
-            img_rcv_itemhome = itemView.findViewById(R.id.img_rcv_item);
+            tv_rcv_itemhome_desciption = (TextView) itemView.findViewById(R.id.tv_rcv_description_wishlist);
+            tv_rcv_itemhome_addess = itemView.findViewById(R.id.tv_rcv_address_wishlist);
+            tv_rcv_itemhome_price = itemView.findViewById(R.id.tv_rcv_price_wishlist);
+            tv_rcv_itemhome_name = itemView.findViewById(R.id.tv_rcv_name_wishlist);
+            img_rcv_itemhome = itemView.findViewById(R.id.img_rcv_item_wishlist);
         }
     }
 }

@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_fragmentIntro_to_fragmentSignin"
             app:destination="@id/fragmentSignin" />
+        <action
+            android:id="@+id/action_fragmentIntro_to_fragmentDaddy"
+            app:destination="@id/fragmentDaddy" />
     </fragment>
     <fragment
         android:id="@+id/fragmentSignin"
@@ -43,7 +46,9 @@
         android:label="FragmentHome" >
         <action
             android:id="@+id/action_fragmentHome_to_fragmentIndex"
-            app:destination="@id/fragmentIndex" />
+            app:destination="@id/fragmentIndex"
+            app:popUpToInclusive="true"
+            app:popUpTo="@+id/fragmentIndex"/>
     </fragment>
     <fragment
         android:id="@+id/fragmentFavorite"

@@ -13,14 +13,14 @@ import com.example.datn.repository.ApartmentRepository;
 import java.util.List;
 
 public class AddWishListViewModel extends AndroidViewModel {
-    LiveData<List<Message>> addwishlistLiveData;
+    LiveData<String> addwishlistLiveData;
     public ApartmentRepository apartmentRepository;
     public AddWishListViewModel(@NonNull Application application) {
         super(application);
         apartmentRepository = new ApartmentRepository();
         this.addwishlistLiveData = apartmentRepository.postToAddWishListData();
     }
-    public LiveData<List<Message>> postAddWishListLiveData(String email, String idApartment){
+    public LiveData<String> postAddWishListLiveData(String email, String idApartment){
         apartmentRepository.addWishListData(email,idApartment);
         return addwishlistLiveData;
     }

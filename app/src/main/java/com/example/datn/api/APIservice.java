@@ -24,14 +24,22 @@ public interface APIservice {
     @GET("apartment/near-you")
     Call<ApartmentPopular> getServerDataApartmentNearYou(@Query("longitude") Double longitude,
                                                          @Query("latitude") Double latitude);
+    @GET("apartment/search")
+    Call<List<ResultApartment>> getDataSearch(@Query("pattern") String pattern);
 
     @Headers({"Content-Type: application/json"})
     @POST("login")
     Call<Account> postAccountData(@Body AccountUser account);
+
     @FormUrlEncoded
     @POST("apartment/favorite/add")
-    Call<List<Message>> postToAddWishListData(@Field("email") String email, @Field("idApartment") String idApartment);
+    Call<String> postToAddWishListData(@Field("email") String email, @Field("idApartment") String idApartment);
+
     @FormUrlEncoded
     @POST("apartment/favorite")
     Call<List<ResultApartment>> postToCallWishListData(@Field("email") String email);
+
+    @FormUrlEncoded
+    @POST("apartment/favorite/remove")
+    Call<String> postToRemoveWishListData(@Field("email") String email, @Field("idApartment") String idApartment);
 }

@@ -4,7 +4,7 @@
     android:layout_height="275dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/custom_item_apartment"
-    android:layout_marginBottom="@dimen/padding_tiny_small">
+    android:layout_marginTop="@dimen/padding_large">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/img_rcv_item_wishlist"
@@ -95,12 +95,12 @@
         app:layout_constraintLeft_toRightOf="@id/ic_location_wishlist" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ic_wishlist_home_wishlist"
+        android:id="@+id/ic_wishlist_detail_remove"
         android:layout_width="@dimen/size_icon_normal_tiny"
         android:layout_height="@dimen/size_icon_normal_tiny"
         android:layout_marginRight="@dimen/padding_small"
         android:layout_marginTop="@dimen/padding_tiny_small"
-        android:src="@drawable/ic_wishlist"
+        android:src="@drawable/ic_wishlist_add"
         android:layout_marginLeft="@dimen/padding_small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_rcv_name_wishlist" />

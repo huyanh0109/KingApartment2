@@ -14,9 +14,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.datn.R;
@@ -167,13 +169,15 @@ public class FragmentProfileContact extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                NavHostFragment.findNavController(FragmentProfileContact.this).navigate(R.id.action_fragmentProfileContact_to_fragmentDaddy, bundle);
+                NavHostFragment.findNavController(FragmentProfileContact.this).navigate(R.id.action_fragmentProfileContact_to_fragmentDaddy,bundle);
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
         ;
     }
+
 }

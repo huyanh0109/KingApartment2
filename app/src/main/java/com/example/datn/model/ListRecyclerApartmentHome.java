@@ -1,8 +1,9 @@
 package com.example.datn.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ListRecyclerApartmentHome {
+public class ListRecyclerApartmentHome implements Serializable {
     private String listTitle;
     private List<ResultApartment> listresult;
     private Integer viewType;

@@ -23,7 +23,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.datn.NetworkBroadcast;
 import com.example.datn.R;
-import com.example.datn.model.AccountUser;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -151,6 +150,27 @@ public class FragmentDaddy extends Fragment {
         } else {
             return null;
         }
+//        loadFragment(new FragmentHome());
+//        navView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                switch (item.getItemId()) {
+//                    case R.id.nav_home:
+//                        loadFragment(new FragmentHome());
+//                        break;
+//                    case R.id.nav_favorite:
+//                        loadFragment(new FragmentWishlist());
+//                        break;
+//                    case R.id.nav_notification:
+//                        loadFragment(new FragmentNotification());
+//                        break;
+//                    case R.id.nav_profile:
+//                        loadFragment(new FragmentProfile());
+//                        break;
+//                }
+//                return true;
+//            }
+//        });
     }
 
     private Fragment getFragmentHome(int itemId) {
@@ -190,16 +210,23 @@ public class FragmentDaddy extends Fragment {
         navView.getMenu().getItem(3).setChecked(true);
         return new FragmentProfile();
     }
-
+    private void loadFragment(Fragment fragment) {
+        // load fragment
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_container, fragment);
+        transaction.addToBackStack(fragment.getClass().getSimpleName());
+        transaction.commit();
+    }
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.main_container, fragment, fragment.getClass().getSimpleName());
+        fragmentTransaction.replace(R.id.frame_container, fragment, fragment.getClass().getSimpleName());
         fragmentTransaction.commit();
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
@@ -217,6 +244,11 @@ public class FragmentDaddy extends Fragment {
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
         ;
         super.onCreate(savedInstanceState);
+
+
+
+
+
         sharedPreferences = getActivity().getSharedPreferences("language", Context.MODE_PRIVATE);
         String language = sharedPreferences.getString("language", "en");
         String languageToLoad = language;

@@ -90,9 +90,14 @@
     <string name="home_all_list">See All</string>
     <string name="home_type_popular">Popular</string>
     <string name="home_type_nearyou">Near you</string>
+    <string name="home_type_wishlist">yêu thích</string>
     <string name="wishlist_title">Yêu thích</string>
     <string name="wishlist_results">Căn hộ yêu thích</string>
     <string name="wishlist_count">kết quả</string>
+    <string name="search_title">Search</string>
+    <string name="search_hint">search</string>
+    <string name="search_result_title">kết quả</string>
+    <string name="search_text_hint">search something ...</string>
     <string name="signin_email">Email<font color="#F81212"> *</font>
     </string>
     <string name="contact_name">Họ và Tên<font color="#F81212"> *</font>

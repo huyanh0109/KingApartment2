@@ -49,6 +49,9 @@
             app:destination="@id/fragmentIndex"
             app:popUpToInclusive="true"
             app:popUpTo="@+id/fragmentIndex"/>
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentSearch"
+            app:destination="@id/fragmentSearch" />
     </fragment>
     <fragment
         android:id="@+id/fragmentFavorite"
@@ -64,7 +67,8 @@
         android:label="FragmentProfile">
         <action
             android:id="@+id/action_fragmentProfile_to_fragmentSignin"
-            app:destination="@id/fragmentSignin" />
+            app:destination="@id/fragmentSignin"
+            />
     </fragment>
     <fragment
         android:id="@+id/fragmentDaddy"
@@ -97,6 +101,15 @@
         <action
             android:id="@+id/action_fragmentDaddy_to_fragmentIndex"
             app:destination="@id/fragmentIndex" />
+        <action
+            android:id="@+id/action_fragmentDaddy_self2"
+            app:destination="@id/fragmentDaddy" />
+        <action
+            android:id="@+id/action_fragmentDaddy_to_fragmentSearch"
+            app:destination="@id/fragmentSearch" />
+        <action
+            android:id="@+id/action_fragmentDaddy_to_fragmentAllApartment"
+            app:destination="@id/fragmentAllApartment" />
     </fragment>
     <fragment
         android:id="@+id/fragmentProfileTerms"
@@ -112,7 +125,15 @@
         android:label="FragmentProfileContact">
         <action
             android:id="@+id/action_fragmentProfileContact_to_fragmentDaddy"
-            app:destination="@id/fragmentDaddy" />
+            app:destination="@id/fragmentDaddy"
+            app:popUpTo="@id/fragmentDaddy"
+            app:popUpToInclusive="true"
+            />
+        <action
+            android:id="@+id/action_fragmentProfileContact_to_fragmentProfile"
+            app:destination="@id/fragmentProfile"
+/>
+
     </fragment>
     <fragment
         android:id="@+id/fragmentProfileHelp"
@@ -152,6 +173,25 @@
         android:label="FragmentIndex">
         <action
             android:id="@+id/action_fragmentIndex_to_fragmentDaddy"
+            app:destination="@id/fragmentDaddy" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentSearch"
+        android:name="com.example.datn.fragment.FragmentSearch"
+        android:label="FragmentSearch" >
+        <action
+            android:id="@+id/action_fragmentSearch_to_fragmentIndex"
+            app:destination="@id/fragmentIndex" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAllApartment"
+        android:name="com.example.datn.fragment.FragmentAllApartment"
+        android:label="FragmentAllApartment" >
+        <action
+            android:id="@+id/action_fragmentAllApartment_to_fragmentIndex"
+            app:destination="@id/fragmentIndex" />
+        <action
+            android:id="@+id/action_fragmentAllApartment_to_fragmentDaddy"
             app:destination="@id/fragmentDaddy" />
     </fragment>
 </navigation>

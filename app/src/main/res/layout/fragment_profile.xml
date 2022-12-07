@@ -67,6 +67,7 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/image_profile_avataruser"
                         android:layout_width="@dimen/_100dp"
+                        android:background="@color/white"
                         app:shapeAppearanceOverlay="@style/roundedCorners"
                         android:layout_height="@dimen/_100dp" />
                     <LinearLayout

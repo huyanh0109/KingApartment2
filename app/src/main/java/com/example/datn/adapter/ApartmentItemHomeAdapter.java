@@ -23,6 +23,7 @@ import com.example.datn.fragment.FragmentHome;
 import com.example.datn.model.ResultApartment;
 
 import java.text.DecimalFormat;
+import java.util.Arrays;
 import java.util.List;
 
 public class ApartmentItemHomeAdapter extends RecyclerView.Adapter<ApartmentItemHomeAdapter.ViewHolder> {

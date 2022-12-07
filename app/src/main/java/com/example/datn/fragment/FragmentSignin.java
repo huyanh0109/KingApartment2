@@ -104,7 +104,6 @@ public class FragmentSignin extends Fragment {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
-        Log.i("TAG", "onCreate: gso "+gso);
         mGoogleSignInClient = GoogleSignIn.getClient(getActivity(), gso);
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {
             @Override

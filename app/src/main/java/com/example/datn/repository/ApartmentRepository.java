@@ -92,7 +92,12 @@ public class ApartmentRepository {
         apIservice.postToCallWishListData(email).enqueue(new Callback<List<ResultApartment>>() {
             @Override
             public void onResponse(Call<List<ResultApartment>> call, Response<List<ResultApartment>> response) {
-                wishListData.postValue(response.body());
+                if (response.body() != null) {
+                    List<ResultApartment> resultApartment = response.body();
+                    wishListData.postValue(resultApartment);
+                }else {
+                    wishListData.postValue(null);
+                }
             }
 
             @Override
@@ -101,21 +106,57 @@ public class ApartmentRepository {
             }
         });
     }
-    final MutableLiveData<List<Message>> addWishListData  = new MutableLiveData<>();
-    public LiveData<List<Message>> postToAddWishListData(){
+    final MutableLiveData<String> addWishListData  = new MutableLiveData<>();
+    public LiveData<String> postToAddWishListData(){
         return addWishListData;
     }
     public void addWishListData(String email,String idApartment){
-        apIservice.postToAddWishListData(email,idApartment).enqueue(new Callback<List<Message>>() {
+        apIservice.postToAddWishListData(email,idApartment).enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<List<Message>> call, Response<List<Message>> response) {
-                addWishListData.postValue(response.body());
-                Log.i("TAG", "onResponse: " + addWishListData);
+            public void onResponse(Call<String> call, Response<String> response) {
+                String messageList = response.body();
+                addWishListData.postValue(messageList);
             }
 
             @Override
-            public void onFailure(Call<List<Message>> call, Throwable t) {
+            public void onFailure(Call<String> call, Throwable t) {
                 wishListData.postValue(null);
+            }
+        });
+    }
+        final MutableLiveData<List<ResultApartment>> searchData  = new MutableLiveData<>();
+    public LiveData<List<ResultApartment>> getSearchData(){
+        return searchData;
+    }
+    public void searchData(String pattern){
+        apIservice.getDataSearch(pattern).enqueue(new Callback<List<ResultApartment>>() {
+            @Override
+            public void onResponse(Call<List<ResultApartment>> call, Response<List<ResultApartment>> response) {
+                List<ResultApartment> getDataSearch = response.body();
+                searchData.postValue(getDataSearch);
+            }
+
+            @Override
+            public void onFailure(Call<List<ResultApartment>> call, Throwable t) {
+                searchData.postValue(null);
+            }
+        });
+    }
+    final MutableLiveData<String> postToRemoveLiveData  = new MutableLiveData<>();
+    public LiveData<String> postToRemoveData(){
+        return postToRemoveLiveData;
+    }
+    public void postToRemoveLiveData(String email,String idApartment){
+        apIservice.postToRemoveWishListData(email,idApartment).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                String removeData = response.body();
+                postToRemoveLiveData.postValue(removeData);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                postToRemoveLiveData.postValue(null);
             }
         });
     }

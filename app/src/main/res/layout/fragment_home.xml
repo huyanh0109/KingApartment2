@@ -5,6 +5,7 @@
     android:layout_marginBottom="@dimen/margin_bottmnav"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     android:id="@+id/ll_home_viewgroup"
     android:layout_height="match_parent">
     <LinearLayout
@@ -32,12 +33,13 @@
             android:layout_width="match_parent"
             android:maxLines="1"
             android:layout_height="wrap_content"
-            android:text="jgjfdshjghjfdhsjgh"/>
+            android:text=""/>
     </LinearLayout>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="110dp"
         android:background="@drawable/shape_line_bottom">
+
     <LinearLayout
         android:id="@+id/ll_home_search"
         android:layout_width="match_parent"
@@ -62,6 +64,7 @@
             android:textColor="@color/text_color_black_xtiny_"
             android:paddingLeft="@dimen/padding_large"
             android:paddingRight="@dimen/padding_normal"
+            android:focusable="false"
             android:background="@drawable/shape_search"
             android:text="@string/home_search"
             android:drawableEnd="@drawable/ic_search"
@@ -76,8 +79,6 @@
         android:scrollbars="none"
         android:nestedScrollingEnabled="false"
         android:layout_marginLeft="@dimen/padding_large"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="153dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ll_home_search" />

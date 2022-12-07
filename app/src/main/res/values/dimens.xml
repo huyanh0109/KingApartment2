@@ -77,6 +77,7 @@
     <dimen name="_100dp">100dp</dimen>
     <dimen name="_120dp">120dp</dimen>
     <dimen name="_180dp">180dp</dimen>
+    <dimen name="_230dp">230dp</dimen>
     <dimen name="_300dp">300dp</dimen>
     <dimen name="_380dp">380dp</dimen>
     <dimen name="_426dp">426dp</dimen>

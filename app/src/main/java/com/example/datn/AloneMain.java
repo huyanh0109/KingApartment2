@@ -2,7 +2,10 @@ package com.example.datn;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.datn.fragment.FragmentDaddy;
 
 public class AloneMain extends AppCompatActivity {
     @Override

@@ -104,6 +104,7 @@ public class FragmentProfile extends Fragment {
         tv_profile_fullname.setText(user.getFullname());
         Glide.with(getContext()).load(user.getAvatar()).centerCrop().placeholder(
                 R.drawable.animation_loading).error(R.drawable.avatar_user).circleCrop().into(image_profile_avataruser);
+        image_profile_avataruser.setBackgroundResource(R.color.white);
     }
 
 

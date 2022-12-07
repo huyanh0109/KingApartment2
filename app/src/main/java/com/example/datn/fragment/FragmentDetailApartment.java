@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -59,7 +60,6 @@ public class FragmentDetailApartment extends Fragment implements OnMapReadyCallb
     private GoogleMap mMap;
     MapView mapView;
     ResultApartment resultApartment;
-    ArrayList<Message> messageArrayList =  new ArrayList<>();
     TextView tv_detail_apartment_createBy, tv_detail_apartment_name, tv_detail_apartment_address,
             tv_detail_apartment_desciption, tv_detail_apartment_price, tv_detail_apartment_bed,
             tv_detail_apartment_shower, tv_detail_apartment_square, tv_detail_square_result, tv_detail_year_result;
@@ -80,7 +80,6 @@ public class FragmentDetailApartment extends Fragment implements OnMapReadyCallb
         initData();
         return view;
     }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -98,7 +97,6 @@ public class FragmentDetailApartment extends Fragment implements OnMapReadyCallb
             @Override
             public void handleOnBackPressed() {
                 NavHostFragment.findNavController(FragmentDetailApartment.this).navigate(R.id.action_fragmentIndex_to_fragmentDaddy, bundle);
-//                getParentFragmentManager().popBackStack();
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
@@ -123,9 +121,12 @@ public class FragmentDetailApartment extends Fragment implements OnMapReadyCallb
     }
 
     public void initData() {
+        if (resultApartment.getCreateBy() == null){
+            tv_detail_apartment_createBy.setText("Shoper");
+        } else
         if (resultApartment.getCreateBy().equals("admin")) {
             tv_detail_apartment_createBy.setText("King Mall");
-        } else {
+        } else{
             tv_detail_apartment_createBy.setText("Shoper");
         }
         tv_detail_apartment_address.setText(resultApartment.getAddress());
@@ -159,7 +160,6 @@ public class FragmentDetailApartment extends Fragment implements OnMapReadyCallb
         for (int i = 0; i < resultApartment.getPhotos().size(); i++) {
             listImage.add(resultApartment.getPhotos().get(i));
         }
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         layoutManager.scrollToPosition(0);
         rcv_listimage_detail.setLayoutManager(layoutManager);
@@ -168,7 +168,6 @@ public class FragmentDetailApartment extends Fragment implements OnMapReadyCallb
         ic_wishlist_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                postAccountUserData();
                 addWishlist();
             }
         });
@@ -179,34 +178,10 @@ public class FragmentDetailApartment extends Fragment implements OnMapReadyCallb
         Gson gson = new Gson();
         String json = sharedPreferences.getString(FragmentSignin.KEY_ACCOUNTUSER, "");
         AccountUser user = gson.fromJson(json, AccountUser.class);
-        Log.i("TAG", "messageRecicver: " + user.getEmail()+ "/"+ resultApartment.getId());
         addWishListViewModel.postAddWishListLiveData(user.getEmail(),resultApartment.getId()).observe(getActivity(), message -> {
-                List<Message> messageRecicver = message;
-                messageArrayList.addAll(messageRecicver);
-                Log.i("TAG", "messageRecicver: " + messageArrayList.size());
-                Message message1 = messageArrayList.get(0);
-                Toast.makeText(getContext(), "messageRecicver: " + messageArrayList.size() + message1.getStatus(), Toast.LENGTH_SHORT).show();
         });
+        Toast.makeText(getContext(), "Added to your wishlist <3", Toast.LENGTH_SHORT).show();
     }
-//    private void postAccountUserData(){
-//        APIservice apIservice = APIClient.getClient().create(APIservice.class);
-//        Call<List<Message>> call  = apIservice.postToAddWishListData("huyanh0109@gmail.com",resultApartment.getId());
-//        call.enqueue(new Callback<List<Message>>() {
-//            @Override
-//            public void onResponse(Call<List<Message>> call, Response<List<Message>> response) {
-//                Log.i("TAG", "onResponse: +ss");
-//                List<Message> account = response.body();
-//                Log.i("TAG","onResponse"+account.size());
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Message>> call, Throwable t) {
-//
-//            }
-//        });
-//    }
-
     @Override
     public void onPause() {
         super.onPause();

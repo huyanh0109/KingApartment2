@@ -6,10 +6,8 @@ class Utils {
     companion object {
         fun sortList(list: List<ResultApartment>): ArrayList<ResultApartment> {
             val listSorted = ArrayList<ResultApartment>()
-            list.sortedBy { it.distance }.forEach {
-                listSorted.add(it)
-            }
-            return listSorted
+            listSorted.addAll(list.sortedBy { it.distance })
+            return arrayListOf()
         }
     }
 }

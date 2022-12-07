@@ -89,10 +89,7 @@ public class FragmentHome extends Fragment {
                     apartmentPopulateViewmodelModel = new ViewModelProvider(getActivity(), getDefaultViewModelProviderFactory()).get(ApartmentPopulateViewModel.class);
                     apartmentNearYouViewModel = new ViewModelProvider(getActivity(), getDefaultViewModelProviderFactory()).get(ApartmentNearYouViewModel.class);
                     wishListViewModel = new ViewModelProvider(getActivity(), getDefaultViewModelProviderFactory()).get(WishListViewModel.class);
-                    for (ResultApartment apartment : listResultNearYou) {
-                        apartment.setDistance(distance(apartment));
-                    }
-                    listApdapter = new ListOfListHomeApdapter(getActivity(), getlistdata(listResultPopular, Utils.Companion.sortList(listResultNearYou), listResultWishlist),
+                    listApdapter = new ListOfListHomeApdapter(getActivity(), getlistdata(listResultPopular, listResultNearYou, listResultWishlist),
                             longitude, latitude);
                     LinearLayoutManager layoutManagerlist = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
                     layoutManagerlist.scrollToPosition(0);
@@ -184,7 +181,10 @@ public class FragmentHome extends Fragment {
             if (listApartment != null && listApartment.getListApartmentPopulate().getApartmentResult() != null
                     && !listApartment.getListApartmentPopulate().getApartmentResult().isEmpty()) {
                 List<ResultApartment> apartmentList = listApartment.getListApartmentPopulate().getApartmentResult();
-                listResultNearYou.addAll(apartmentList);
+                for (ResultApartment apartment : apartmentList) {
+                    apartment.setDistance(distance(apartment));
+                }
+                listResultNearYou.addAll(Utils.Companion.sortList(apartmentList));
                 listApdapter.notifyDataSetChanged();
             }
             if (listApartment == null) {

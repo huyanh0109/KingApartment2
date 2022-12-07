@@ -1,7 +1,6 @@
 package com.example.datn.fragment;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -15,8 +14,6 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.os.Looper;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,20 +26,18 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datn.BroadcastReload;
-import com.example.datn.ItemClickListener;
 import com.example.datn.R;
 import com.example.datn.adapter.ListOfListHomeApdapter;
+import com.example.datn.core.Utils;
 import com.example.datn.model.AccountUser;
 import com.example.datn.model.ListRecyclerApartmentHome;
 import com.example.datn.model.ResultApartment;
-import com.example.datn.model.UserLocation;
 import com.example.datn.viewmodel.ApartmentNearYouViewModel;
 import com.example.datn.viewmodel.ApartmentPopulateViewModel;
 import com.example.datn.viewmodel.WishListViewModel;
@@ -94,7 +89,10 @@ public class FragmentHome extends Fragment {
                     apartmentPopulateViewmodelModel = new ViewModelProvider(getActivity(), getDefaultViewModelProviderFactory()).get(ApartmentPopulateViewModel.class);
                     apartmentNearYouViewModel = new ViewModelProvider(getActivity(), getDefaultViewModelProviderFactory()).get(ApartmentNearYouViewModel.class);
                     wishListViewModel = new ViewModelProvider(getActivity(), getDefaultViewModelProviderFactory()).get(WishListViewModel.class);
-                    listApdapter = new ListOfListHomeApdapter(getActivity(), getlistdata(listResultPopular, listResultNearYou, listResultWishlist),
+                    for (ResultApartment apartment : listResultNearYou) {
+                        apartment.setDistance(distance(apartment));
+                    }
+                    listApdapter = new ListOfListHomeApdapter(getActivity(), getlistdata(listResultPopular, Utils.Companion.sortList(listResultNearYou), listResultWishlist),
                             longitude, latitude);
                     LinearLayoutManager layoutManagerlist = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
                     layoutManagerlist.scrollToPosition(0);
@@ -110,6 +108,17 @@ public class FragmentHome extends Fragment {
         }
         goToSearchDetail();
         return view;
+    }
+
+    private float distance(ResultApartment resultApartment) {
+        Location startPoint = new Location("locationA");
+        startPoint.setLatitude(Double.parseDouble(resultApartment.getLatitude()));
+        startPoint.setLongitude(Double.parseDouble(resultApartment.getLongitude()));
+        Location endPoint = new Location("locationA");
+        endPoint.setLatitude(latitude);
+        endPoint.setLongitude(longitude);
+        float distance = startPoint.distanceTo(endPoint);
+        return Math.round(distance * 0.1) / 100f;
     }
 
     private List<ListRecyclerApartmentHome> getlistdata(ArrayList<ResultApartment> resultApartmentPopular

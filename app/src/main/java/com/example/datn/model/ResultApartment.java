@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
-public class ResultPopular implements Serializable {
+public class ResultApartment implements Serializable {
     @SerializedName("_id")
     @Expose
     private String id;

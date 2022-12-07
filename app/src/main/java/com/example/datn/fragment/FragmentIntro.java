@@ -59,6 +59,7 @@ public class FragmentIntro extends Fragment {
             @Override
             public void onClick(View view) {
                 Navigation.findNavController(view).navigate(R.id.action_fragmentIntro_to_fragmentSignin);
+                finishedIntro();
             }
         });
         return view;
@@ -69,7 +70,7 @@ public class FragmentIntro extends Fragment {
     private void finishedIntro(){
         SharedPreferences preferences = getActivity().getSharedPreferences("intro",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("finish",true);
+        editor.putBoolean(FragmentSplash.KEY_FINISHINTRO,true);
         editor.apply();
     }
 

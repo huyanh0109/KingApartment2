@@ -5,4 +5,8 @@
         <item name="cornerFamilyTopRight">rounded</item>
         <item name="cornerSize">@dimen/_16dp</item>
     </style>
+    <style name="roundedCorners" >
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">250dp</item>
+    </style>
 </resources>

@@ -2,6 +2,7 @@ package com.example.datn.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,30 +10,36 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.datn.ItemClickListener;
 import com.example.datn.R;
 import com.example.datn.fragment.FragmentHome;
-import com.example.datn.model.ResultPopular;
+import com.example.datn.model.ResultApartment;
 
 import java.text.DecimalFormat;
+import java.util.Arrays;
 import java.util.List;
 
 public class ApartmentItemHomeAdapter extends RecyclerView.Adapter<ApartmentItemHomeAdapter.ViewHolder> {
     private Context context;
-    private List<ResultPopular> list;
-    public ApartmentItemHomeAdapter(Context context, List<ResultPopular> list) {
+    private List<ResultApartment> list;
+    private Double userLongitude,userLatitude;
+    private Integer viewType;
+    public ApartmentItemHomeAdapter(Context context, List<ResultApartment> list, Double userLongitude,
+                                    Double userLatitude, Integer viewType) {
         this.context = context;
         this.list = list;
+        this.userLatitude = userLatitude;
+        this.userLongitude = userLongitude;
+        this.viewType = viewType;
     }
-
-    public void setApartment(List<ResultPopular> resultPopulate) {
+    public void setApartment(List<ResultApartment> resultPopulate) {
         this.list = resultPopulate;
         notifyDataSetChanged();
     }
@@ -40,19 +47,33 @@ public class ApartmentItemHomeAdapter extends RecyclerView.Adapter<ApartmentItem
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_recycle_apartment, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_recycler_apartment, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ResultPopular resultPopular = list.get(position);
-        Log.i("TAG", "onBindViewHolder: "+resultPopular);
-        holder.tv_rcv_itemhome_name.setText(resultPopular.getName());
-        holder.tv_rcv_itemhome_addess.setText(this.list.get(position).getAddress());
-        DecimalFormat formatter = new DecimalFormat("#,##");
+        ResultApartment resultApartment = list.get(position);
+        holder.tv_rcv_itemhome_name.setText(resultApartment.getName());
+        Location startPoint=new Location("locationA");
+        startPoint.setLatitude(Double.parseDouble(resultApartment.getLatitude()));
+        startPoint.setLongitude(Double.parseDouble(resultApartment.getLongitude()));
+        Location endPoint=new Location("locationA");
+        endPoint.setLatitude(userLatitude);
+        endPoint.setLongitude(userLongitude);
+        double distance=startPoint.distanceTo(endPoint);
+        float v = (float) Math.round(distance * 0.1) / 100;
+        switch (viewType) {
+            case 1:
+                holder.tv_rcv_itemhome_addess.setText(resultApartment.getAddress());
+                break;
+            case 2:
+                holder.tv_rcv_itemhome_addess.setText(v + "Km");
+                break;
+        }
+        DecimalFormat formatterPrice = new DecimalFormat("#,##");
         double formatPrice  =Double.parseDouble(this.list.get(position).getPrice())/10000;
-        holder.tv_rcv_itemhome_price.setText(formatter.format(formatPrice)+"tr");
+        holder.tv_rcv_itemhome_price.setText(formatterPrice.format(formatPrice)+"tr");
         if (this.list.get(position).getCreateBy().equals("admin")) {
             holder.tv_rcv_itemhome_desciption.setText("King Mall");
         }else {
@@ -61,9 +82,8 @@ public class ApartmentItemHomeAdapter extends RecyclerView.Adapter<ApartmentItem
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i  = new Intent(context,FragmentHome.class);
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("dataApartment",resultPopular);
+                bundle.putSerializable("dataApartment", resultApartment);
                 Navigation.findNavController(v).navigate(R.id.action_fragmentDaddy_to_fragmentIndex,bundle);
             }
         });
@@ -83,13 +103,9 @@ public class ApartmentItemHomeAdapter extends RecyclerView.Adapter<ApartmentItem
     @Override
     public int getItemCount() {
         if (this.list != null) {
-            Log.i("TAG", "list.size: " + list.size());
             return this.list.size();
         }
         return 0;
-    }
-        private void sendDataToIndex(ResultPopular resultPopular){
-
     }
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tv_rcv_itemhome_desciption, tv_rcv_itemhome_price, tv_rcv_itemhome_name,

@@ -17,6 +17,8 @@ import androidx.navigation.Navigation;
 import com.example.datn.R;
 
 public class FragmentSplash extends Fragment {
+    public final static String KEY_FINISHINTRO = "finish";
+    public final static String KEY_AUTOLOGIN = "auto";
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -56,13 +58,12 @@ public class FragmentSplash extends Fragment {
 
     private boolean finishIntro() {
         SharedPreferences preferences = getActivity().getSharedPreferences("intro", Context.MODE_PRIVATE);
-
-        return preferences.getBoolean("finish", false);
+        return preferences.getBoolean(KEY_FINISHINTRO, false);
     }
 
     private boolean autoLogin() {
         SharedPreferences preferences = getActivity().getSharedPreferences("autologin", Context.MODE_PRIVATE);
-        return preferences.getBoolean("auto", false);
+        return preferences.getBoolean(KEY_AUTOLOGIN, false);
     }
 
 }

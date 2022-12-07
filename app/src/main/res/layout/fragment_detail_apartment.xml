@@ -22,6 +22,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="360dp"
                 android:src="@drawable/img_intro"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_detail_apartment_createby"
                 android:layout_width="65dp"
@@ -36,7 +40,21 @@
                 android:text="Cao cấp"
                 app:layout_constraintLeft_toRightOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/img_rcv_item" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ic_wishlist_detail"
+                android:layout_width="@dimen/size_icon_large"
+                android:layout_height="@dimen/size_icon_normal"
+                android:layout_marginRight="@dimen/padding_large_xlarge"
+                android:layout_marginTop="@dimen/padding_large_xlarge"
+                android:src="@drawable/ic_wishlist_add"
+                android:layout_marginLeft="@dimen/padding_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_detail_apartment_name"
                 android:layout_width="wrap_content"

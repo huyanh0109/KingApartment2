@@ -11,19 +11,19 @@ public class PagePopular {
     private Integer totalPage;
     @SerializedName("result")
     @Expose
-    private List<ResultPopular> resultPopulates;
+    private List<ResultApartment> resultPopulates;
 
-    public List<ResultPopular> getApartmentResult() {
+    public List<ResultApartment> getApartmentResult() {
         return resultPopulates;
     }
 
 
-    public List<ResultPopular> getApartmentPopulatesList() {
+    public List<ResultApartment> getApartmentPopulatesList() {
         return resultPopulates;
     }
 
 
-    public void setApartmentPopulates(List<ResultPopular> resultPopulates) {
+    public void setApartmentPopulates(List<ResultApartment> resultPopulates) {
         this.resultPopulates = resultPopulates;
     }
 

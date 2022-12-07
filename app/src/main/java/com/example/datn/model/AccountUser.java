@@ -3,7 +3,9 @@ package com.example.datn.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class AccountUser {
+import java.io.Serializable;
+
+public class AccountUser implements Serializable {
     @SerializedName("avatar")
     @Expose
     private String avatar;

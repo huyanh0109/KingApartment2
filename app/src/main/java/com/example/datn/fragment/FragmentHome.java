@@ -14,6 +14,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -114,6 +115,7 @@ public class FragmentHome extends Fragment {
         Location endPoint = new Location("locationA");
         endPoint.setLatitude(latitude);
         endPoint.setLongitude(longitude);
+        Log.i("TAG", "distance: " + latitude +  resultApartment.getLatitude());
         float distance = startPoint.distanceTo(endPoint);
         return Math.round(distance * 0.1) / 100f;
     }
@@ -184,6 +186,7 @@ public class FragmentHome extends Fragment {
                 for (ResultApartment apartment : apartmentList) {
                     apartment.setDistance(distance(apartment));
                 }
+                listResultNearYou.clear();
                 listResultNearYou.addAll(Utils.Companion.sortList(apartmentList));
                 listApdapter.notifyDataSetChanged();
             }
@@ -229,8 +232,8 @@ public class FragmentHome extends Fragment {
                 public void onSuccess(Location location) {
                     Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
                     List<Address> addresses = null;
-                    longitude = 10.0;
-                    latitude = 10.0;
+                    longitude = location.getLongitude();
+                    latitude = location.getLatitude();
 //                    if (location != null) {
 //                        UserLocation userLocation = new UserLocation(location.getLongitude(), location.getLatitude());
 //                        SharedPreferences.Editor prefsEditor = sharedPreferences.edit();

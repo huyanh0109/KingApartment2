@@ -144,6 +144,7 @@ public class FragmentHome extends Fragment {
             if (listApartment != null && listApartment.getListApartmentPopulate().getApartmentResult() != null
                     && !listApartment.getListApartmentPopulate().getApartmentResult().isEmpty()) {
                 List<ResultApartment> apartmentList = listApartment.getListApartmentPopulate().getApartmentResult();
+                listResultPopular.clear();
                 listResultPopular.addAll(apartmentList);
                 listApdapter.notifyDataSetChanged();
             }
@@ -162,6 +163,7 @@ public class FragmentHome extends Fragment {
         wishListViewModel.postToCallWishListLiveData(user.getEmail()).observe(getActivity(), listApartment -> {
             if (listApartment != null && !listApartment.isEmpty()) {
                 List<ResultApartment> apartmentWishlist = listApartment;
+                listResultWishlist.clear();
                 listResultWishlist.addAll(apartmentWishlist);
                 listApdapter.notifyDataSetChanged();
             } else {
@@ -175,6 +177,7 @@ public class FragmentHome extends Fragment {
             if (listApartment != null && listApartment.getListApartmentPopulate().getApartmentResult() != null
                     && !listApartment.getListApartmentPopulate().getApartmentResult().isEmpty()) {
                 List<ResultApartment> apartmentList = listApartment.getListApartmentPopulate().getApartmentResult();
+                listResultNearYou.clear();
                 listResultNearYou.addAll(apartmentList);
                 listApdapter.notifyDataSetChanged();
             }

@@ -102,7 +102,18 @@ public class FragmentHome extends Fragment {
                 }
             });
         } else {
-            askPermission();
+            apartmentPopulateViewmodelModel = new ViewModelProvider(getActivity(), getDefaultViewModelProviderFactory()).get(ApartmentPopulateViewModel.class);
+            apartmentNearYouViewModel = new ViewModelProvider(getActivity(), getDefaultViewModelProviderFactory()).get(ApartmentNearYouViewModel.class);
+            wishListViewModel = new ViewModelProvider(getActivity(), getDefaultViewModelProviderFactory()).get(WishListViewModel.class);
+            listApdapter = new ListOfListHomeApdapter(getActivity(), getlistdata(listResultPopular, listResultNearYou, listResultWishlist),
+                    longitude, latitude);
+            LinearLayoutManager layoutManagerlist = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+            layoutManagerlist.scrollToPosition(0);
+            rcv_home_list = view.findViewById(R.id.rcv_home);
+            rcv_home_list.setLayoutManager(layoutManagerlist);
+            rcv_home_list.setAdapter(listApdapter);
+            getApartmentPopulate();
+            getApartmentWishlist();
         }
         goToSearchDetail();
         return view;
@@ -232,9 +243,10 @@ public class FragmentHome extends Fragment {
                 public void onSuccess(Location location) {
                     Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
                     List<Address> addresses = null;
-                    longitude = location.getLongitude();
-                    latitude = location.getLatitude();
-//                    if (location != null) {
+
+                    if (location != null) {
+                        longitude = location.getLongitude();
+                        latitude = location.getLatitude();
 //                        UserLocation userLocation = new UserLocation(location.getLongitude(), location.getLatitude());
 //                        SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
 //                        Gson gson = new Gson();
@@ -243,7 +255,10 @@ public class FragmentHome extends Fragment {
 //                        prefsEditor.commit();
 //                        longitude = userLocation.getLongitdute();
 //                        latitude = userLocation.getLatitude();
-//                    }else {
+                    }else {
+                        longitude =  105.74682301726565;
+                        latitude = 21.038326755567013;
+                    }
 //                        sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
 //                        Gson gson = new Gson();
 //                        String json = sharedPreferences.getString(KEY_LOCATION, "");

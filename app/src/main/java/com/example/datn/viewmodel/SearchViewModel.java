@@ -21,8 +21,8 @@ public class SearchViewModel extends AndroidViewModel {
         apartmentRepository =  new ApartmentRepository();
         this.searchLiveData = apartmentRepository.getSearchData();
     }
-    public LiveData<List<ResultApartment>> getSearchLiveData(String pattern){
+
+    public void getSearchLiveData(String pattern){
         apartmentRepository.searchData(pattern);
-        return searchLiveData;
     }
 }

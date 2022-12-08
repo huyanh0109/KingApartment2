@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
-import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -30,10 +28,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.datn.R;
 import com.example.datn.adapter.ListImageDetailAdapter;
-import com.example.datn.api.APIClient;
-import com.example.datn.api.APIservice;
 import com.example.datn.model.AccountUser;
-import com.example.datn.model.Message;
 import com.example.datn.model.ResultApartment;
 import com.example.datn.viewmodel.AddWishListViewModel;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -48,14 +43,9 @@ import com.google.gson.Gson;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-public class FragmentDetailApartment extends Fragment implements OnMapReadyCallback {
+public class FragmentWishlistlApartment extends Fragment implements OnMapReadyCallback {
     Bundle bundle = new Bundle();
     private GoogleMap mMap;
     MapView mapView;
@@ -73,8 +63,8 @@ public class FragmentDetailApartment extends Fragment implements OnMapReadyCallb
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_detail_apartment, container, false);
-        bundle.putString("Callback", "Home");
+        View view = inflater.inflate(R.layout.fragment_wishlist_apartment, container, false);
+        bundle.putString("Callback", "Wishlist");
         resultApartment = (ResultApartment) getArguments().getSerializable("dataApartment");
         initView(view);
         initData();
@@ -89,6 +79,19 @@ public class FragmentDetailApartment extends Fragment implements OnMapReadyCallb
         mapView.getMapAsync(this);
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                NavHostFragment.findNavController(FragmentWishlistlApartment.this).navigate(R.id.action_fragmentWishlistlApartment_to_fragmentDaddy, bundle);
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
+        ;
+    }
 
     public void initView(View view) {
         tv_detail_apartment_address = view.findViewById(R.id.tv_detail_apartment_address);
@@ -104,7 +107,7 @@ public class FragmentDetailApartment extends Fragment implements OnMapReadyCallb
         rcv_listimage_detail = view.findViewById(R.id.rcv_detail_listimage);
         tv_detail_square_result = view.findViewById(R.id.tv_detail_square);
         tv_detail_year_result = view.findViewById(R.id.tv_detail_year);
-        ic_wishlist_home = view.findViewById(R.id.ic_wishlist_detail);
+//        ic_wishlist_home = view.findViewById(R.id.ic_wishlist_detail);
     }
 
     public void initData() {
@@ -152,12 +155,12 @@ public class FragmentDetailApartment extends Fragment implements OnMapReadyCallb
         rcv_listimage_detail.setLayoutManager(layoutManager);
         detailAdapter = new ListImageDetailAdapter(getActivity(), resultApartment.getPhotos());
         rcv_listimage_detail.setAdapter(detailAdapter);
-        ic_wishlist_home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addWishlist();
-            }
-        });
+//        ic_wishlist_home.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                addWishlist();
+//            }
+//        });
     }
     public void addWishlist(){
         addWishListViewModel = new ViewModelProvider(getActivity(),getDefaultViewModelProviderFactory()).get(AddWishListViewModel.class);

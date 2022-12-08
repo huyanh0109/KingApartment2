@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
-import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -30,10 +28,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.datn.R;
 import com.example.datn.adapter.ListImageDetailAdapter;
-import com.example.datn.api.APIClient;
-import com.example.datn.api.APIservice;
 import com.example.datn.model.AccountUser;
-import com.example.datn.model.Message;
 import com.example.datn.model.ResultApartment;
 import com.example.datn.viewmodel.AddWishListViewModel;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -48,14 +43,9 @@ import com.google.gson.Gson;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-public class FragmentDetailApartment extends Fragment implements OnMapReadyCallback {
+public class FragmentHomeApartment extends Fragment implements OnMapReadyCallback {
     Bundle bundle = new Bundle();
     private GoogleMap mMap;
     MapView mapView;
@@ -89,6 +79,19 @@ public class FragmentDetailApartment extends Fragment implements OnMapReadyCallb
         mapView.getMapAsync(this);
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                NavHostFragment.findNavController(FragmentHomeApartment.this).navigate(R.id.action_fragmentDaddy_to_fragmentHomeApartment, bundle);
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
+        ;
+    }
 
     public void initView(View view) {
         tv_detail_apartment_address = view.findViewById(R.id.tv_detail_apartment_address);

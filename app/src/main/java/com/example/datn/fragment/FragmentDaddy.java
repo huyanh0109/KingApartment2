@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -63,6 +64,7 @@ public class FragmentDaddy extends Fragment {
     }
 
     private void createView() {
+        Log.i("TAG", "getBoolean: "+getBoolean(getArguments(), "Callback"));
         if (getBoolean(getArguments(), "Callback") == null) {
             integers.push(R.id.nav_home);
             replaceFragment(new FragmentHome());
@@ -142,6 +144,32 @@ public class FragmentDaddy extends Fragment {
                                                   }
                                               }
             );
+        }else if (getBoolean(getArguments(), "Callback") != null && getBoolean(getArguments(), "Callback").equals("Wishlist")) {
+            integers.push(R.id.nav_favorite);
+            replaceFragment(new FragmentWishlist());
+            navView.setSelectedItemId(R.id.nav_favorite);
+            navView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+                                                  @Override
+                                                  public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                                                      int id = item.getItemId();
+                                                      if (integers.contains(id)) {
+                                                          if (id == R.id.nav_favorite) {
+                                                              if (integers.size() != 1) {
+                                                                  if (flag) {
+                                                                      integers.addFirst(R.id.nav_favorite);
+                                                                      flag = false;
+                                                                  }
+                                                              }
+                                                          }
+                                                          integers.remove(id);
+                                                      }
+                                                      integers.push(id);
+                                                      replaceFragment(getFragmentWishlist(item.getItemId()));
+
+                                                      return false;
+                                                  }
+                                              }
+            );
         }
     }
     public static String getBoolean(Bundle arguments, String key) {
@@ -209,6 +237,24 @@ public class FragmentDaddy extends Fragment {
         }
         navView.getMenu().getItem(3).setChecked(true);
         return new FragmentProfile();
+    }
+    private Fragment getFragmentWishlist(int itemId) {
+        switch (itemId) {
+            case R.id.nav_home:
+                navView.getMenu().getItem(0).setChecked(true);
+                return new FragmentHome();
+            case R.id.nav_favorite:
+                navView.getMenu().getItem(1).setChecked(true);
+                return new FragmentWishlist();
+            case R.id.nav_notification:
+                navView.getMenu().getItem(2).setChecked(true);
+                return new FragmentNotification();
+            case R.id.nav_profile:
+                navView.getMenu().getItem(3).setChecked(true);
+                return new FragmentProfile();
+        }
+        navView.getMenu().getItem(1).setChecked(true);
+        return new FragmentWishlist();
     }
     private void loadFragment(Fragment fragment) {
         // load fragment

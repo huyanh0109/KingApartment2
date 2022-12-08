@@ -1,7 +1,6 @@
 package com.example.datn.fragment;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -15,7 +14,6 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,20 +27,18 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datn.BroadcastReload;
-import com.example.datn.ItemClickListener;
 import com.example.datn.R;
 import com.example.datn.adapter.ListOfListHomeApdapter;
+import com.example.datn.core.Utils;
 import com.example.datn.model.AccountUser;
 import com.example.datn.model.ListRecyclerApartmentHome;
 import com.example.datn.model.ResultApartment;
-import com.example.datn.model.UserLocation;
 import com.example.datn.viewmodel.ApartmentNearYouViewModel;
 import com.example.datn.viewmodel.ApartmentPopulateViewModel;
 import com.example.datn.viewmodel.WishListViewModel;
@@ -112,6 +108,18 @@ public class FragmentHome extends Fragment {
         return view;
     }
 
+    private float distance(ResultApartment resultApartment) {
+        Location startPoint = new Location("locationA");
+        startPoint.setLatitude(Double.parseDouble(resultApartment.getLatitude()));
+        startPoint.setLongitude(Double.parseDouble(resultApartment.getLongitude()));
+        Location endPoint = new Location("locationA");
+        endPoint.setLatitude(latitude);
+        endPoint.setLongitude(longitude);
+        Log.i("TAG", "distance: " + latitude + resultApartment.getLatitude());
+        float distance = startPoint.distanceTo(endPoint);
+        return Math.round(distance * 0.1) / 100f;
+    }
+
     private List<ListRecyclerApartmentHome> getlistdata(ArrayList<ResultApartment> resultApartmentPopular
             , ArrayList<ResultApartment> resultApartmentNearYou, ArrayList<ResultApartment> resultApartmentWishlist) {
         List<ListRecyclerApartmentHome> list = new ArrayList<>();
@@ -177,8 +185,11 @@ public class FragmentHome extends Fragment {
             if (listApartment != null && listApartment.getListApartmentPopulate().getApartmentResult() != null
                     && !listApartment.getListApartmentPopulate().getApartmentResult().isEmpty()) {
                 List<ResultApartment> apartmentList = listApartment.getListApartmentPopulate().getApartmentResult();
+                for (ResultApartment apartment : apartmentList) {
+                    apartment.setDistance(distance(apartment));
+                }
                 listResultNearYou.clear();
-                listResultNearYou.addAll(apartmentList);
+                listResultNearYou.addAll(Utils.Companion.sortList(apartmentList));
                 listApdapter.notifyDataSetChanged();
             }
             if (listApartment == null) {
@@ -225,6 +236,10 @@ public class FragmentHome extends Fragment {
                     List<Address> addresses = null;
                     longitude = 10.0;
                     latitude = 10.0;
+                    if (location != null) {
+                        longitude = location.getLongitude();
+                        latitude = location.getLatitude();
+                    }
 //                    if (location != null) {
 //                        UserLocation userLocation = new UserLocation(location.getLongitude(), location.getLatitude());
 //                        SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
@@ -263,7 +278,6 @@ public class FragmentHome extends Fragment {
                     callLocation.callBackLocation(longitude, latitude);
                     try {
                         addresses = geocoder.getFromLocation(latitude, longitude, 1);
-
                         getApartmentNearYou();
                         tv_home_location.setText(addresses.get(0).getAddressLine(0));
                     } catch (IOException e) {

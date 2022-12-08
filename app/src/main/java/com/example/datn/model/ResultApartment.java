@@ -74,6 +74,8 @@ public class ResultApartment implements Serializable {
     @Expose
     private String idOwner;
 
+    private float distance;
+
     public String getId() {
         return id;
     }
@@ -218,4 +220,11 @@ public class ResultApartment implements Serializable {
         this.idOwner = idOwner;
     }
 
+    public float getDistance() {
+        return distance;
+    }
+
+    public void setDistance(float distance) {
+        this.distance = distance;
+    }
 }

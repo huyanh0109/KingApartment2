@@ -26,6 +26,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.bumptech.glide.Glide;
+import com.example.datn.AloneMain;
 import com.example.datn.R;
 import com.example.datn.model.Account;
 import com.example.datn.model.AccountUser;
@@ -70,8 +71,8 @@ public class FragmentProfile extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        sharedPreferences = getActivity().getSharedPreferences("language", Context.MODE_PRIVATE);
-        language = sharedPreferences.getString("language", "en");
+        sharedPreferences = getActivity().getSharedPreferences(AloneMain.NAME_LANGUAGE, Context.MODE_PRIVATE);
+        language = sharedPreferences.getString(AloneMain.KEY_BL_LANGUAGE, "en");
         String languageToLoad = language;
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
@@ -98,7 +99,7 @@ public class FragmentProfile extends Fragment {
     private void postAccountUserData() {
         sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
         Gson gson = new Gson();
-        String json = sharedPreferences.getString(FragmentSignin.KEY_ACCOUNTUSER, "");
+        String json = sharedPreferences.getString(AloneMain.KEY_ACCOUNTUSER, "");
         AccountUser user = gson.fromJson(json, AccountUser.class);
         tv_profile_email.setText(user.getEmail());
         tv_profile_fullname.setText(user.getFullname());
@@ -109,8 +110,8 @@ public class FragmentProfile extends Fragment {
 
 
     public void changeLanguage() {
-        sharedPreferences = getActivity().getSharedPreferences("language", Context.MODE_PRIVATE);
-        language = sharedPreferences.getString("language", "en");
+        sharedPreferences = getActivity().getSharedPreferences(AloneMain.NAME_LANGUAGE, Context.MODE_PRIVATE);
+        language = sharedPreferences.getString(AloneMain.KEY_BL_LANGUAGE, "en");
         if (language.equals("vie")) {
             btn_language.setBackgroundResource(R.drawable.us_flag);
         } else {
@@ -123,14 +124,14 @@ public class FragmentProfile extends Fragment {
                     language = "vie";
                     btn_language.setBackgroundResource(R.drawable.us_flag);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("language", "vie");
+                    editor.putString(AloneMain.KEY_BL_LANGUAGE, "vie");
                     editor.commit();
                     Navigation.findNavController(view).navigate(R.id.action_fragmentDaddy_self, bundle);
                 } else {
                     language = "en";
                     btn_language.setBackgroundResource(R.drawable.vn_flag);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("language", "en");
+                    editor.putString(AloneMain.KEY_BL_LANGUAGE, "en");
                     editor.commit();
                     Navigation.findNavController(view).navigate(R.id.action_fragmentDaddy_self, bundle);
                 }

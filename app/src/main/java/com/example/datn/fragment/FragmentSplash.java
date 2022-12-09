@@ -14,11 +14,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.example.datn.AloneMain;
 import com.example.datn.R;
 
 public class FragmentSplash extends Fragment {
-    public final static String KEY_FINISHINTRO = "finish";
-    public final static String KEY_AUTOLOGIN = "auto";
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -57,13 +57,13 @@ public class FragmentSplash extends Fragment {
     }
 
     private boolean finishIntro() {
-        SharedPreferences preferences = getActivity().getSharedPreferences("intro", Context.MODE_PRIVATE);
-        return preferences.getBoolean(KEY_FINISHINTRO, false);
+        SharedPreferences preferences = getActivity().getSharedPreferences(AloneMain.NAME_INTRO, Context.MODE_PRIVATE);
+        return preferences.getBoolean(AloneMain.KEY_BL_FINISHINTRO, false);
     }
 
     private boolean autoLogin() {
-        SharedPreferences preferences = getActivity().getSharedPreferences("autologin", Context.MODE_PRIVATE);
-        return preferences.getBoolean(KEY_AUTOLOGIN, false);
+        SharedPreferences preferences = getActivity().getSharedPreferences(AloneMain.NAME_AUTOLOGIN, Context.MODE_PRIVATE);
+        return preferences.getBoolean(AloneMain.KEY_BL_AUTOLOGIN, false);
     }
 
 }

@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -32,6 +33,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.datn.AloneMain;
 import com.example.datn.BroadcastReload;
 import com.example.datn.R;
 import com.example.datn.adapter.ListOfListHomeApdapter;
@@ -53,7 +55,6 @@ import java.util.List;
 import java.util.Locale;
 
 public class FragmentHome extends Fragment {
-    public static final String KEY_LOCATION = "locationUser";
     public static final int VIEWTYPE_NORMAL = 1;
     public static final int VIEWTYPE_LOCATION = 2;
     TextView tv_home_location;
@@ -177,7 +178,7 @@ public class FragmentHome extends Fragment {
     private void getApartmentWishlist() {
         sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
         Gson gson = new Gson();
-        String json = sharedPreferences.getString(FragmentSignin.KEY_ACCOUNTUSER, "");
+        String json = sharedPreferences.getString(AloneMain.KEY_ACCOUNTUSER, "");
         AccountUser user = gson.fromJson(json, AccountUser.class);
         wishListViewModel.postToCallWishListLiveData(user.getEmail()).observe(getActivity(), listApartment -> {
             if (listApartment != null && !listApartment.isEmpty()) {
@@ -291,7 +292,7 @@ public class FragmentHome extends Fragment {
                         addresses = geocoder.getFromLocation(latitude, longitude, 1);
                         getApartmentNearYou();
                         tv_home_location.setText(addresses.get(0).getAddressLine(0));
-                    } catch (IOException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
 

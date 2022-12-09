@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.datn.AloneMain;
 import com.example.datn.adapter.IntroAdapter;
 import com.example.datn.R;
 
@@ -68,9 +69,9 @@ public class FragmentIntro extends Fragment {
         return vpg_intro.getCurrentItem() + i;
     }
     private void finishedIntro(){
-        SharedPreferences preferences = getActivity().getSharedPreferences("intro",Context.MODE_PRIVATE);
+        SharedPreferences preferences = getActivity().getSharedPreferences(AloneMain.NAME_INTRO,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean(FragmentSplash.KEY_FINISHINTRO,true);
+        editor.putBoolean(AloneMain.KEY_BL_FINISHINTRO,true);
         editor.apply();
     }
 

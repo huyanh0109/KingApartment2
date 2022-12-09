@@ -12,7 +12,6 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.datn.ItemClickListener;
 import com.example.datn.R;
 import com.example.datn.model.ListRecyclerApartmentHome;
 import com.example.datn.model.ResultApartment;

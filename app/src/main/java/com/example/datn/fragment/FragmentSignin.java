@@ -80,7 +80,7 @@ public class FragmentSignin extends Fragment {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
-            getLocation();
+//            getLocation();
         } else {
             askPermission();
         }

@@ -77,7 +77,7 @@ public class FragmentWishlist extends Fragment {
                 new ApartmentItemWishListAdapter.OnClickItemApartment() {
                     @Override
                     public void onClickDetailItemApartment(Bundle bundle) {
-                        NavHostFragment.findNavController(FragmentWishlist.this).navigate(R.id.action_fragmentDaddy_to_fragmentIndex,bundle);
+                        NavHostFragment.findNavController(FragmentWishlist.this).navigate(R.id.action_fragmentDaddy_to_fragmentWishlistlApartment,bundle);
                     }
                 }
         );

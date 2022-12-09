@@ -110,6 +110,12 @@
         <action
             android:id="@+id/action_fragmentDaddy_to_fragmentAllApartment"
             app:destination="@id/fragmentAllApartment" />
+        <action
+            android:id="@+id/action_fragmentDaddy_to_fragmentWishlistlApartment"
+            app:destination="@id/fragmentWishlistlApartment" />
+        <action
+            android:id="@+id/action_fragmentDaddy_to_fragmentHomeApartment"
+            app:destination="@id/fragmentHomeApartment" />
     </fragment>
     <fragment
         android:id="@+id/fragmentProfileTerms"
@@ -194,4 +200,16 @@
             android:id="@+id/action_fragmentAllApartment_to_fragmentDaddy"
             app:destination="@id/fragmentDaddy" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentWishlistlApartment"
+        android:name="com.example.datn.fragment.FragmentWishlistlApartment"
+        android:label="FragmentWishlistlApartment" >
+        <action
+            android:id="@+id/action_fragmentWishlistlApartment_to_fragmentDaddy"
+            app:destination="@id/fragmentDaddy" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentHomeApartment"
+        android:name="com.example.datn.fragment.FragmentHomeApartment"
+        android:label="FragmentHomeApartment" />
 </navigation>

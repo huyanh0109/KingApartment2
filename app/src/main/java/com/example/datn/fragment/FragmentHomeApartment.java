@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.datn.AloneMain;
 import com.example.datn.R;
 import com.example.datn.adapter.ListImageDetailAdapter;
 import com.example.datn.model.AccountUser;
@@ -166,7 +167,7 @@ public class FragmentHomeApartment extends Fragment implements OnMapReadyCallbac
         addWishListViewModel = new ViewModelProvider(getActivity(),getDefaultViewModelProviderFactory()).get(AddWishListViewModel.class);
         sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
         Gson gson = new Gson();
-        String json = sharedPreferences.getString(FragmentSignin.KEY_ACCOUNTUSER, "");
+        String json = sharedPreferences.getString(AloneMain.KEY_ACCOUNTUSER, "");
         AccountUser user = gson.fromJson(json, AccountUser.class);
         addWishListViewModel.postAddWishListLiveData(user.getEmail(),resultApartment.getId()).observe(getActivity(), message -> {
         });

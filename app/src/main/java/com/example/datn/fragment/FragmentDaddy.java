@@ -55,11 +55,6 @@ public class FragmentDaddy extends Fragment {
 //            badgeDrawable.isVisible = false
 //            badgeDrawable.clearNumber()
 //        }
-        sharedPreferences = getActivity().getSharedPreferences("dark", Context.MODE_PRIVATE);
-        Boolean bl = sharedPreferences.getBoolean("dark_mode", false);
-        if (bl == true) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        }
         return view;
     }
 
@@ -272,7 +267,6 @@ public class FragmentDaddy extends Fragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
@@ -290,11 +284,6 @@ public class FragmentDaddy extends Fragment {
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
         ;
         super.onCreate(savedInstanceState);
-
-
-
-
-
         sharedPreferences = getActivity().getSharedPreferences("language", Context.MODE_PRIVATE);
         String language = sharedPreferences.getString("language", "en");
         String languageToLoad = language;

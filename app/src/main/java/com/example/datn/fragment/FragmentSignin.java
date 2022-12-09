@@ -30,6 +30,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.datn.AloneMain;
 import com.example.datn.NetworkBroadcast;
 import com.example.datn.R;
 import com.example.datn.api.APIClient;
@@ -61,7 +62,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class FragmentSignin extends Fragment {
-    public static final String KEY_ACCOUNTUSER= "accountUser";
+
     SharedPreferences sharedPreferences;
     GoogleSignInClient mGoogleSignInClient;
     LinearLayout login_gmail;
@@ -91,11 +92,6 @@ public class FragmentSignin extends Fragment {
                 signIn();
             }
         });
-        sharedPreferences = getActivity().getSharedPreferences("dark", Context.MODE_PRIVATE);
-        Boolean bl = sharedPreferences.getBoolean("dark_mode", false);
-        if (bl == true) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        }
         return view;
     }
 
@@ -116,8 +112,8 @@ public class FragmentSignin extends Fragment {
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
         super.onCreate(savedInstanceState);
-        sharedPreferences = getActivity().getSharedPreferences("language", Context.MODE_PRIVATE);
-        String language = sharedPreferences.getString("language", "en");
+        sharedPreferences = getActivity().getSharedPreferences(AloneMain.NAME_LANGUAGE, Context.MODE_PRIVATE);
+        String language = sharedPreferences.getString(AloneMain.KEY_BL_LANGUAGE, "en");
         String languageToLoad = language;
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
@@ -137,7 +133,6 @@ public class FragmentSignin extends Fragment {
 
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        Log.i("TAG", "signIn: " + signInIntent);
         startActivityForResult(signInIntent, 1000);
     }
 
@@ -168,19 +163,19 @@ public class FragmentSignin extends Fragment {
                     SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
                     Gson gson = new Gson();
                     String json = gson.toJson(users);
-                    prefsEditor.putString(KEY_ACCOUNTUSER, json);
+                    prefsEditor.putString(AloneMain.KEY_ACCOUNTUSER, json);
                     prefsEditor.commit();
                 }else {
                     AccountUser users = new AccountUser(account.getPhotoUrl().toString(), account.getDisplayName(), account.getEmail());
                     SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
                     Gson gson = new Gson();
                     String json = gson.toJson(users);
-                    prefsEditor.putString(KEY_ACCOUNTUSER, json);
+                    prefsEditor.putString(AloneMain.KEY_ACCOUNTUSER, json);
                     prefsEditor.commit();
                 }
                 NavHostFragment.findNavController(FragmentSignin.this).navigate(R.id.action_fragmentSignin_to_fragmentDaddy);
             } else {
-                Log.i("TAG", "onActivityResult: fail");
+                Log.i("TAG", "login: fail");
             }
         }
     }
@@ -189,9 +184,8 @@ public class FragmentSignin extends Fragment {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                getLocation();
+//                getLocation();
             } else {
-                Log.i("TAG", "onRequestPermissionsResult: +required");
             }
         }
     }
@@ -201,9 +195,9 @@ public class FragmentSignin extends Fragment {
     }
 
     private void autoLogin() {
-        SharedPreferences preferences = getActivity().getSharedPreferences("autologin", Context.MODE_PRIVATE);
+        SharedPreferences preferences = getActivity().getSharedPreferences(AloneMain.NAME_AUTOLOGIN, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("auto", false);
+        editor.putBoolean(AloneMain.KEY_BL_AUTOLOGIN, false);
         editor.apply();
     }
     private void postAccountUserData(){

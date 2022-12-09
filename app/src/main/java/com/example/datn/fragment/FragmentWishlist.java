@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
@@ -24,6 +25,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.datn.AloneMain;
 import com.example.datn.R;
 import com.example.datn.adapter.ApartmentItemHomeAdapter;
 import com.example.datn.adapter.ApartmentItemWishListAdapter;
@@ -69,7 +71,7 @@ public class FragmentWishlist extends Fragment {
     public void initData() {
         sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
         Gson gson = new Gson();
-        String json = sharedPreferences.getString(FragmentSignin.KEY_ACCOUNTUSER, "");
+        String json = sharedPreferences.getString(AloneMain.KEY_ACCOUNTUSER, "");
         AccountUser user = gson.fromJson(json, AccountUser.class);
         email = user.getEmail();
         wishListViewModel = new ViewModelProvider(getActivity(), getDefaultViewModelProviderFactory()).get(WishListViewModel.class);

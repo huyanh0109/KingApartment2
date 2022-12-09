@@ -16,6 +16,7 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.datn.AloneMain;
 import com.example.datn.R;
 
 public class FragmentProfileNotification extends Fragment {
@@ -38,8 +39,8 @@ public class FragmentProfileNotification extends Fragment {
     }
 
     public void dark() {
-        sharedPreferences = getActivity().getSharedPreferences("dark", Context.MODE_PRIVATE);
-        Boolean bl = sharedPreferences.getBoolean("dark_mode", false);
+        sharedPreferences = getActivity().getSharedPreferences(AloneMain.NAME_NIGHTLIGHT, Context.MODE_PRIVATE);
+        Boolean bl = sharedPreferences.getBoolean(AloneMain.KEY_BL_NIGHTLIGHT, false);
         if (bl == true) {
             sw_dark.setChecked(true);
         }

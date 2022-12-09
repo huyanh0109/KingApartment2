@@ -126,7 +126,7 @@ public class FragmentHome extends Fragment {
         Location endPoint = new Location("locationA");
         endPoint.setLatitude(latitude);
         endPoint.setLongitude(longitude);
-        Log.i("TAG", "distance: " + latitude +  resultApartment.getLatitude());
+        Log.i("TAG", "distance: " + latitude + resultApartment.getLatitude());
         float distance = startPoint.distanceTo(endPoint);
         return Math.round(distance * 0.1) / 100f;
     }
@@ -163,6 +163,7 @@ public class FragmentHome extends Fragment {
             if (listApartment != null && listApartment.getListApartmentPopulate().getApartmentResult() != null
                     && !listApartment.getListApartmentPopulate().getApartmentResult().isEmpty()) {
                 List<ResultApartment> apartmentList = listApartment.getListApartmentPopulate().getApartmentResult();
+                listResultPopular.clear();
                 listResultPopular.addAll(apartmentList);
                 listApdapter.notifyDataSetChanged();
             }
@@ -181,6 +182,7 @@ public class FragmentHome extends Fragment {
         wishListViewModel.postToCallWishListLiveData(user.getEmail()).observe(getActivity(), listApartment -> {
             if (listApartment != null && !listApartment.isEmpty()) {
                 List<ResultApartment> apartmentWishlist = listApartment;
+                listResultWishlist.clear();
                 listResultWishlist.addAll(apartmentWishlist);
                 listApdapter.notifyDataSetChanged();
             } else {
@@ -243,10 +245,10 @@ public class FragmentHome extends Fragment {
                 public void onSuccess(Location location) {
                     Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
                     List<Address> addresses = null;
-
                     if (location != null) {
                         longitude = location.getLongitude();
                         latitude = location.getLatitude();
+//                    if (location != null) {
 //                        UserLocation userLocation = new UserLocation(location.getLongitude(), location.getLatitude());
 //                        SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
 //                        Gson gson = new Gson();
@@ -287,7 +289,6 @@ public class FragmentHome extends Fragment {
                     callLocation.callBackLocation(longitude, latitude);
                     try {
                         addresses = geocoder.getFromLocation(latitude, longitude, 1);
-
                         getApartmentNearYou();
                         tv_home_location.setText(addresses.get(0).getAddressLine(0));
                     } catch (IOException e) {

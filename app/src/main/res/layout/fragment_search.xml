@@ -40,7 +40,6 @@
             android:drawableEnd="@drawable/ic_search"
             android:focusable="true"
             />
-        <requestFocus/>
     </FrameLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

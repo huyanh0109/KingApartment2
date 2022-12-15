@@ -11,7 +11,6 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/padding_xlarge_x"
         android:layout_marginRight="@dimen/padding_xlarge_x"
-        android:layout_marginBottom="@dimen/margin_bottmnav"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -80,7 +79,7 @@
 
 
                     <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-                        android:id="@+id/dropview2"
+                        android:id="@+id/dropview_2"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/button_size_height"
                         android:background="@drawable/shape_none"

@@ -3,9 +3,11 @@
     <string name="btn_intro">Tiếp Theo</string>
     <string name="text_skip">Bỏ qua</string>
     <string name="title_intro_1">Ứng Dụng Bất Động Sản cập nhật nhanh nhất</string>
-    <string name="content_intro">Griya is greatest Real Estate Mobile App platform in this century.</string>
-    <string name="content_intro2">Griya is greatdsadsadsadsadsadsadsadsadatform in this century.</string>
-    <string name="content_intro3">Griya is greatest Real Estate Mobile App platform in this century.</string>
+    <string name="title_intro_2">Ứng Dụng Bất Động Sản đầy đủ nhất</string>
+    <string name="title_intro_3">Ứng Dụng Bất Động Sản chính xác nhất</string>
+    <string name="content_intro">Với đội ngũ nhân viên hoạt động 24/7 ứng dụng cập nhật thông tin nhanh nhất chính xác nhất</string>
+    <string name="content_intro2">Với độ phủ sóng rộng khắp khu vực Cầu Giấy luôn có nguồn dữ liệu đầy đủ chi tiết nhất </string>
+    <string name="content_intro3">Với dữ liệu được lấy từ những nguồn uy tín cam kết tất cả các thông tin đều là chính xác</string>
     <string name="signin_title">Đăng Nhập</string>
     <string name="signin_onetouch">Đăng Nhập và đăng kí chỉ với một chạm</string>
     <string name="signin_title_email">Email</string>

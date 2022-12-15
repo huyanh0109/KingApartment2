@@ -172,20 +172,6 @@
                     app:track="@drawable/custom_track" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_security_changepass"
-                android:layout_width="@dimen/button_size_weight_large"
-                android:layout_height="@dimen/button_size_height"
-                android:layout_marginTop="@dimen/padding_large"
-                android:layout_gravity="center"
-                android:background="@drawable/shape_button_cancel"
-                android:text="@string/user_change_language"
-                android:textColor="@color/textcolor_blue_blod"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ll_signin_top" />
-
         </LinearLayout>
     </LinearLayout>
 

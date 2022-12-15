@@ -34,12 +34,12 @@ public class IntroAdapter extends RecyclerView.Adapter<IntroAdapter.ViewHolder> 
                 holder.tv_content.setText(R.string.content_intro);
                 break;
             case 1:
-                holder.tv_title.setText("@string/title_intro_1");
-                holder.tv_content.setText("@string/content_intro2");
+                holder.tv_title.setText(R.string.title_intro_2);
+                holder.tv_content.setText(R.string.content_intro2);
                 break;
             case 2:
-                holder.tv_title.setText("@string/title_intro_1");
-                holder.tv_content.setText("@string/content_intro");
+                holder.tv_title.setText(R.string.title_intro_3);
+                holder.tv_content.setText(R.string.content_intro3);
                 break;
         }
     }

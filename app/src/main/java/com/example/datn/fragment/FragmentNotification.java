@@ -30,10 +30,12 @@ public class FragmentNotification extends Fragment {
 
         calendar.add(Calendar.DAY_OF_YEAR, -1);
         Date tomorrow = calendar.getTime();
-        String currentDateToday = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(today);
-        tv_notification_date_today.setText(R.string.notification_today+", " + currentDateToday);
-        String currentDateTomorrow = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(tomorrow);
-        tv_notification_date_tomorrow.setText(R.string.notification_tomorrow+", " + currentDateTomorrow);
+        String currentDateToday = new SimpleDateFormat("dd MM yyyy", Locale.getDefault()).format(today);
+        String todaytext = getResources().getString(R.string.notification_today);
+        String tomorrowtext = getResources().getString(R.string.notification_tomorrow);
+        tv_notification_date_today.setText(todaytext+ ", " + currentDateToday);
+        String currentDateTomorrow = new SimpleDateFormat("dd MM yyyy", Locale.getDefault()).format(tomorrow);
+        tv_notification_date_tomorrow.setText(tomorrowtext+ ", " + currentDateTomorrow);
         return view;
     }
 }

@@ -16,6 +16,7 @@ public class AloneMain extends AppCompatActivity {
     public final static String NAME_AUTOLOGIN = "autologin";
     public static final String NAME_NOTIFICATION = "notifi";
     public static final String NAME_RING= "ring";
+    public static final String NAME_ADS= "ads";
     public final static String KEY_BL_NIGHTLIGHT = "dark_mode";
     public final static String KEY_BL_LANGUAGE = "language";
     public final static String KEY_BL_FINISHINTRO = "finish";
@@ -23,6 +24,7 @@ public class AloneMain extends AppCompatActivity {
     public static final String KEY_ACCOUNTUSER= "accountUser";
     public static final String KEY_BL_NOTIFICATION= "notification";
     public static final String KEY_BL_RING= "blring";
+    public static final String KEY_BL_ADS= "adstarget";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

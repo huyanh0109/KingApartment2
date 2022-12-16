@@ -42,24 +42,37 @@ public class ListOfListHomeApdapter extends RecyclerView.Adapter<ListOfListHomeA
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ListRecyclerApartmentHome listRecyclerApartmentHome = listRecycleViews.get(position);
-        holder.tv_title_list.setText(listRecyclerApartmentHome.getListTitle());
-        holder.tv_all_list.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putSerializable(KEY_DATAALLFRAGMENT, (Serializable) listRecyclerApartmentHome);
-                Navigation.findNavController(v).navigate(R.id.action_fragmentDaddy_to_fragmentAllApartment,bundle);
-            }
-        });
-        LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
-        layoutManager.setInitialPrefetchItemCount(listRecyclerApartmentHome.getListresult().size());
-        ApartmentItemHomeAdapter apartmentItemHomeAdapter = new ApartmentItemHomeAdapter(
-                context, listRecyclerApartmentHome.getListresult(), userLongitude, userLatitude,
-                listRecyclerApartmentHome.getViewType());
-        holder.rcv_listoflist.setLayoutManager(layoutManager);
-        holder.rcv_listoflist.setAdapter(apartmentItemHomeAdapter);
-        holder.rcv_listoflist.setRecycledViewPool(viewPool);
-
+        if (position < 3) {
+            holder.tv_title_list.setText(listRecyclerApartmentHome.getListTitle());
+            holder.tv_all_list.setText(R.string.home_all_list);
+            holder.tv_all_list.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(KEY_DATAALLFRAGMENT, (Serializable) listRecyclerApartmentHome);
+                    Navigation.findNavController(v).navigate(R.id.action_fragmentDaddy_to_fragmentAllApartment, bundle);
+                }
+            });
+            LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
+            layoutManager.setInitialPrefetchItemCount(listRecyclerApartmentHome.getListresult().size());
+            ApartmentItemHomeAdapter apartmentItemHomeAdapter = new ApartmentItemHomeAdapter(
+                    context, listRecyclerApartmentHome.getListresult(), userLongitude, userLatitude,
+                    listRecyclerApartmentHome.getViewType());
+            holder.rcv_listoflist.setLayoutManager(layoutManager);
+            holder.rcv_listoflist.setAdapter(apartmentItemHomeAdapter);
+            holder.rcv_listoflist.setRecycledViewPool(viewPool);
+        }else {
+            holder.tv_title_list.setText("");
+            holder.tv_all_list.setText("");
+            LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+            layoutManager.setInitialPrefetchItemCount(listRecyclerApartmentHome.getListresult().size());
+            ApartmentItemHomeAdapter apartmentItemHomeAdapter = new ApartmentItemHomeAdapter(
+                    context, listRecyclerApartmentHome.getListresult(), userLongitude, userLatitude,
+                    listRecyclerApartmentHome.getViewType());
+            holder.rcv_listoflist.setLayoutManager(layoutManager);
+            holder.rcv_listoflist.setAdapter(apartmentItemHomeAdapter);
+            holder.rcv_listoflist.setRecycledViewPool(viewPool);
+        }
     }
 
     @Override

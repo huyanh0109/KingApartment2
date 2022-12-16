@@ -65,8 +65,10 @@
     <string name="content_help_9">Để thuê chung cư bạn chỉ cần click vào nút LIÊN HỆ NGAY trong trang chi tiết chung cư</string>
     <string name="security_title">Bảo mật</string>
     <string name="security_faceid">Face ID</string>
-    <string name="security_touchid">Touch ID</string>
-    <string name="security_changepass">Đổi mật khẩu</string>
+    <string name="security_ads_title">Quảng cáo nhắm mục tiêu</string>
+    <string name="security_ads_content">Làm cho quảng cáo phù hợp hơn với bạn bằng cách bật Cá Nhân Hóa Quảng Cáo. Nếu tính năng này bị tắt bạn có thể thấy
+    cùng một số lượng quảng cáo nhưng chúng có thể không liên quan đến bạn</string>
+    <string name="security_changepass">Xóa Cache</string>
     <string name="notification_title">Thông báo - Giao diện</string>
     <string name="notification_bell">Âm thanh - Rung</string>
     <string name="notification_ads">Nhận thông báo quảng cáo</string>
@@ -95,6 +97,8 @@
     <string name="wishlist_title">Yêu thích</string>
     <string name="wishlist_results">Căn hộ đã thích</string>
     <string name="wishlist_count">kết quả</string>
+    <string name="wishlist_remove_title">Bỏ thích căn này nhé?</string>
+    <string name="wishlist_remove_button">Ok</string>
     <string name="search_title">Tìm kiếm</string>
     <string name="search_hint">bạn cần tìm gì</string>
     <string name="search_result_title">kết quả</string>

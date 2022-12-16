@@ -69,8 +69,9 @@
     <string name="content_help_8">Nội dung hướng dẫn 1</string>
     <string name="content_help_9">Nội dung hướng dẫn 1</string>
     <string name="security_title">Bảo mật</string>
-    <string name="security_faceid">Face ID</string>
-    <string name="security_touchid">Touch ID</string>
+    <string name="security_faceid">Cá nhân hóa quảng cáo</string>
+    <string name="security_ads_title">Targeted Ads</string>
+    <string name="security_ads_content">Targeted Ads</string>
     <string name="security_changepass">Đổi mật khẩu</string>
     <string name="notification_title">Thông báo - Giao diện</string>
     <string name="notification_bell">Âm thanh</string>
@@ -100,6 +101,8 @@
     <string name="wishlist_title">Yêu thích</string>
     <string name="wishlist_results">Căn hộ yêu thích</string>
     <string name="wishlist_count">kết quả</string>
+    <string name="wishlist_remove_title">Bỏ thích căn này nhé?</string>
+    <string name="wishlist_remove_button">Ok</string>
     <string name="search_title">Search</string>
     <string name="search_hint">search</string>
     <string name="search_result_title">kết quả</string>

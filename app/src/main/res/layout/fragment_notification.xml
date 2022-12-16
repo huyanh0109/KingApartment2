@@ -29,7 +29,7 @@
                 android:layout_marginBottom="@dimen/padding_normal"
                 android:layout_marginTop="@dimen/padding_large"
                 android:fontFamily="@font/source_sans_pro_semibold"
-                android:text="@string/text_setting"
+                android:text="@string/notification_title_text"
                 android:textColor="@color/black"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"

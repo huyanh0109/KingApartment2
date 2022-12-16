@@ -94,14 +94,14 @@
         app:layout_constraintTop_toBottomOf="@id/tv_rcv_name_wishlist"
         app:layout_constraintLeft_toRightOf="@id/ic_location_wishlist" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ic_wishlist_detail_remove"
-        android:layout_width="@dimen/size_icon_normal_tiny"
-        android:layout_height="@dimen/size_icon_normal_tiny"
-        android:layout_marginRight="@dimen/padding_small"
-        android:layout_marginTop="@dimen/padding_tiny_small"
-        android:src="@drawable/ic_remove_wishlist"
-        android:layout_marginLeft="@dimen/padding_small"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_rcv_name_wishlist" />
+<!--    <androidx.appcompat.widget.AppCompatImageView-->
+<!--        android:id="@+id/ic_wishlist_detail_remove"-->
+<!--        android:layout_width="@dimen/size_icon_normal_tiny"-->
+<!--        android:layout_height="@dimen/size_icon_normal_tiny"-->
+<!--        android:layout_marginRight="@dimen/padding_small"-->
+<!--        android:layout_marginTop="@dimen/padding_tiny_small"-->
+<!--        android:src="@drawable/ic_remove_wishlist"-->
+<!--        android:layout_marginLeft="@dimen/padding_small"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tv_rcv_name_wishlist" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

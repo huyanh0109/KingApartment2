@@ -55,6 +55,8 @@ import java.util.Locale;
 public class FragmentHome extends Fragment {
     public static final int VIEWTYPE_NORMAL = 1;
     public static final int VIEWTYPE_LOCATION = 2;
+    public static final int VIEWTYPE_WISHLIST = 3;
+    public static final int VIEWTYPE_FULL = 4;
     TextView tv_home_location;
     RecyclerView rcv_home_list;
     EditText edt_home_search;
@@ -136,8 +138,9 @@ public class FragmentHome extends Fragment {
         list.add(new ListRecyclerApartmentHome(getResources().getString(R.string.home_type_popular), resultApartmentPopular, VIEWTYPE_NORMAL));
         list.add(new ListRecyclerApartmentHome(getResources().getString(R.string.home_type_nearyou), resultApartmentNearYou, VIEWTYPE_LOCATION));
         if (resultApartmentWishlist != null) {
-            list.add(new ListRecyclerApartmentHome(getResources().getString(R.string.home_type_wishlist), resultApartmentWishlist, VIEWTYPE_NORMAL));
+            list.add(new ListRecyclerApartmentHome(getResources().getString(R.string.home_type_wishlist), resultApartmentWishlist, VIEWTYPE_WISHLIST));
         }
+        list.add(new ListRecyclerApartmentHome("", resultApartmentPopular, VIEWTYPE_FULL));
         return list;
     }
 

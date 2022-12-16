@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datn.R;
+import com.example.datn.adapter.ApartmentItemAllApartmentAdapter;
 import com.example.datn.adapter.ApartmentItemWishListAdapter;
 import com.example.datn.adapter.ListOfListHomeApdapter;
 import com.example.datn.model.ListRecyclerApartmentHome;
@@ -42,8 +43,8 @@ public class FragmentAllApartment extends Fragment {
         ListRecyclerApartmentHome listRecyclerApartmentHome = (ListRecyclerApartmentHome) getArguments().getSerializable(ListOfListHomeApdapter.KEY_DATAALLFRAGMENT);
         resultApartmentList = listRecyclerApartmentHome.getListresult();
         tv_title_all_apartment.setText(listRecyclerApartmentHome.getListTitle()+"");
-        ApartmentItemWishListAdapter apartmentItemWishListAdapter = new ApartmentItemWishListAdapter(getContext(), resultApartmentList, null,
-                new ApartmentItemWishListAdapter.OnClickItemApartment() {
+        ApartmentItemAllApartmentAdapter apartmentItemAllApartmentAdapter = new ApartmentItemAllApartmentAdapter(getContext(), resultApartmentList, null,
+                new ApartmentItemAllApartmentAdapter.OnClickItemApartment() {
                     @Override
                     public void onClickDetailItemApartment(Bundle bundle) {
                         NavHostFragment.findNavController(FragmentAllApartment.this).navigate(R.id.action_fragmentAllApartment_to_fragmentIndex,bundle);
@@ -51,7 +52,7 @@ public class FragmentAllApartment extends Fragment {
                 });
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         recyclerAll.setLayoutManager(linearLayoutManager);
-        recyclerAll.setAdapter(apartmentItemWishListAdapter);
+        recyclerAll.setAdapter(apartmentItemAllApartmentAdapter);
         tv_all_apartment_result_count.setText(resultApartmentList.size() + " apartments");
         return view;
     }

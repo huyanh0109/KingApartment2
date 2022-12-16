@@ -65,9 +65,10 @@
     <string name="content_help_8">If you want to change to the light/dark interface, you just need to go to the PROFILE section to find the NOTIFICATION section and click the slider to change the status.</string>
     <string name="content_help_9">To rent an apartment, just click the CONTACT NOW button in the apartment details page</string>
     <string name="security_title">Security</string>
-    <string name="security_faceid">Face ID</string>
-    <string name="security_touchid">Touch ID</string>
-    <string name="security_changepass">Đổi mật khẩu</string>
+    <string name="security_faceid">Ads Persionalisation</string>
+    <string name="security_ads_title">Targeted Ads</string>
+    <string name="security_ads_content">Make ads more relevant to you by enabling Ads Personalisation. If this is turned off, you will see the same number of ads, but they may not be relevant to you</string>
+    <string name="security_changepass">Clear Cache</string>
     <string name="notification_title">Notification - Display</string>
     <string name="notification_bell">Bell - Virate</string>
     <string name="notification_ads">Receive advertising notifications</string>
@@ -96,6 +97,8 @@
     <string name="wishlist_title">Wishlist</string>
     <string name="wishlist_results">Favorite Results</string>
     <string name="wishlist_count">results</string>
+    <string name="wishlist_remove_title">Do you want remove it?</string>
+    <string name="wishlist_remove_button">Yes</string>
     <string name="search_title">Search</string>
     <string name="search_hint">search</string>
     <string name="search_result_title">search results</string>

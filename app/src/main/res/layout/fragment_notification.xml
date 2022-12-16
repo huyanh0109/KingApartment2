@@ -1,6 +1,231 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/margin_bottmnav"
+        android:layout_marginLeft="@dimen/padding_large"
+        android:layout_marginRight="@dimen/padding_large"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_normal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_large_normal"
+                android:layout_marginBottom="@dimen/padding_normal"
+                android:layout_marginTop="@dimen/padding_large"
+                android:fontFamily="@font/source_sans_pro_semibold"
+                android:text="@string/text_setting"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:textSize="@dimen/text_size_xlarge" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_notification_date_today"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginBottom="@dimen/padding_normal"
+
+                    android:fontFamily="@font/source_sans_pro_bold"
+                    android:text="Hôm nay, 16 tháng 12 2022"
+                    android:textColor="@color/text_color_light"
+                    android:textSize="@dimen/text_size_normal"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_background_notification"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/padding_normal"
+                    android:layout_marginBottom="@dimen/padding_large"
+                    android:paddingTop="@dimen/padding_normal"
+                    android:paddingBottom="@dimen/padding_normal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/_62dp"
+                        android:layout_height="@dimen/_62dp"
+                        android:src="@drawable/ic_notification_hello" />
+
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/padding_normal"
+                            android:fontFamily="@font/source_sans_pro_semibold"
+                            android:text="Bạn vừa đăng nhập KingApartment"
+                            android:textColor="@color/black"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            android:textSize="@dimen/text_size_normal" />
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/padding_normal"
+                            android:fontFamily="@font/source_sans_pro"
+                            android:text="Chúc bạn có một trải nghiệm tuyệt vời!"
+                            android:textColor="@color/text_color_light"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            android:textSize="@dimen/text_size_small" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_background_notification"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/padding_normal"
+                    android:layout_marginBottom="@dimen/padding_large"
+                    android:paddingTop="@dimen/padding_normal"
+                    android:paddingBottom="@dimen/padding_normal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/_62dp"
+                        android:layout_height="@dimen/_62dp"
+                        android:src="@drawable/ic_notification_bell" />
+
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/padding_normal"
+                            android:fontFamily="@font/source_sans_pro_semibold"
+                            android:text="Có một dự án mới!!!"
+                            android:textColor="@color/black"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            android:textSize="@dimen/text_size_normal" />
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/padding_normal"
+                            android:fontFamily="@font/source_sans_pro"
+                            android:text="Dự án ngay tại sông Tô Lịch với tổng vốn đầu tư gần
+10 tỷ đô"
+                            android:textColor="@color/text_color_light"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            android:textSize="@dimen/text_size_small" />
+                    </LinearLayout>
+                </LinearLayout>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_notification_date_tomorrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginBottom="@dimen/padding_normal"
+
+                    android:fontFamily="@font/source_sans_pro_bold"
+                    android:text="Hôm nay, 16 tháng 12 2022"
+                    android:textColor="@color/text_color_light"
+                    android:textSize="@dimen/text_size_normal"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_background_notification"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/padding_normal"
+                    android:layout_marginBottom="@dimen/padding_large"
+                    android:paddingTop="@dimen/padding_normal"
+                    android:paddingBottom="@dimen/padding_normal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/_62dp"
+                        android:layout_height="@dimen/_62dp"
+                        android:src="@drawable/ic_notification_bell" />
+
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/padding_normal"
+                            android:fontFamily="@font/source_sans_pro_semibold"
+                            android:text="Có một dự án mới!!!"
+                            android:textColor="@color/black"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            android:textSize="@dimen/text_size_normal" />
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/padding_normal"
+                            android:fontFamily="@font/source_sans_pro"
+                            android:text="Nóng bỏng tay với dự án khu đô thị kiểu mới gần trung tâm thành phố"
+                            android:textColor="@color/text_color_light"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            android:textSize="@dimen/text_size_small" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

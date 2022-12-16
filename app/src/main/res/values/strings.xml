@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">King Apartment</string>
+    <string name="channel_name" translatable="false">channel_name</string>
+    <string name="channel_description" translatable="false">channel_description</string>
     <string name="btn_intro">Tiếp Theo</string>
     <string name="text_skip">Bỏ qua</string>
     <string name="title_intro_1">Ứng Dụng Bất Động Sản cập nhật nhanh nhất</string>

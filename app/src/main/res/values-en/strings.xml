@@ -68,7 +68,7 @@
     <string name="security_touchid">Touch ID</string>
     <string name="security_changepass">Đổi mật khẩu</string>
     <string name="notification_title">Notification - Display</string>
-    <string name="notification_bell">Bell</string>
+    <string name="notification_bell">Bell - Virate</string>
     <string name="notification_ads">Receive advertising notifications</string>
     <string name="notification_vibrate">Vibrate</string>
     <string name="user_title">Information</string>

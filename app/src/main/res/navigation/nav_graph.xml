@@ -116,6 +116,9 @@
         <action
             android:id="@+id/action_fragmentDaddy_to_fragmentHomeApartment"
             app:destination="@id/fragmentHomeApartment" />
+        <action
+            android:id="@+id/action_fragmentDaddy_to_fragmentDetaiHomelApartment"
+            app:destination="@id/fragmentDetaiHomelApartment" />
     </fragment>
     <fragment
         android:id="@+id/fragmentProfileTerms"
@@ -212,4 +215,12 @@
         android:id="@+id/fragmentHomeApartment"
         android:name="com.example.datn.fragment.FragmentHomeApartment"
         android:label="FragmentHomeApartment" />
+    <fragment
+        android:id="@+id/fragmentDetaiHomelApartment"
+        android:name="com.example.datn.fragment.FragmentDetaiHomelApartment"
+        android:label="FragmentDetaiHomelApartment" >
+        <action
+            android:id="@+id/action_fragmentDetaiHomelApartment_to_fragmentDaddy"
+            app:destination="@id/fragmentDaddy" />
+    </fragment>
 </navigation>

@@ -89,7 +89,7 @@ public class ApartmentItemHomeAdapter extends RecyclerView.Adapter<RecyclerView.
                 public void onClick(View v) {
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("dataApartment", resultApartment);
-                    Navigation.findNavController(v).navigate(R.id.action_fragmentDaddy_to_fragmentIndex, bundle);
+                    Navigation.findNavController(v).navigate(R.id.action_fragmentDaddy_to_fragmentDetaiHomelApartment, bundle);
                 }
             });
             Glide.with(context).load(this.list.get(position).getPhotos().get(0)).centerCrop().placeholder(

@@ -67,7 +67,7 @@
     <string name="security_touchid">Touch ID</string>
     <string name="security_changepass">Đổi mật khẩu</string>
     <string name="notification_title">Thông báo - Giao diện</string>
-    <string name="notification_bell">Âm thanh</string>
+    <string name="notification_bell">Âm thanh - Rung</string>
     <string name="notification_ads">Nhận thông báo quảng cáo</string>
     <string name="notification_vibrate">Rung</string>
     <string name="user_title">Thông tin cá nhân</string>

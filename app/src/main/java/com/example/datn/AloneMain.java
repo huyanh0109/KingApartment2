@@ -14,11 +14,16 @@ public class AloneMain extends AppCompatActivity {
     public final static String NAME_LANGUAGE = "language";
     public final static String NAME_INTRO = "intro";
     public final static String NAME_AUTOLOGIN = "autologin";
+    public static final String NAME_NOTIFICATION = "notifi";
+    public static final String NAME_RING= "ring";
     public final static String KEY_BL_NIGHTLIGHT = "dark_mode";
     public final static String KEY_BL_LANGUAGE = "language";
     public final static String KEY_BL_FINISHINTRO = "finish";
     public final static String KEY_BL_AUTOLOGIN = "auto";
     public static final String KEY_ACCOUNTUSER= "accountUser";
+    public static final String KEY_BL_NOTIFICATION= "notification";
+    public static final String KEY_BL_RING= "blring";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SharedPreferences sharedPreferences = getSharedPreferences(NAME_NIGHTLIGHT, Context.MODE_PRIVATE);

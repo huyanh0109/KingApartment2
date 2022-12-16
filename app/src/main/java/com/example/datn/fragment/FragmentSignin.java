@@ -1,6 +1,10 @@
 package com.example.datn.fragment;
 
 import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -8,10 +12,15 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
 import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,6 +34,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -63,6 +74,8 @@ import retrofit2.Response;
 
 public class FragmentSignin extends Fragment {
 
+    private static final String CHANNEL_WELCOME = "CHANNEL_WELCOME";
+    private static final String CHANNEL_UPDATE = "CHANNEL_UPDATE";
     SharedPreferences sharedPreferences;
     GoogleSignInClient mGoogleSignInClient;
     LinearLayout login_gmail;
@@ -135,13 +148,86 @@ public class FragmentSignin extends Fragment {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, 1000);
     }
+    private void createNotificationChannel() {
+        String channel_name = "channel_name";
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            String description = getString(R.string.channel_description);
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channelWelcome = new NotificationChannel(CHANNEL_WELCOME, channel_name, importance);
+            channelWelcome.setDescription(description);
+            NotificationChannel channelUpdate = new NotificationChannel(CHANNEL_UPDATE, channel_name, importance);
+            channelUpdate.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getActivity().getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channelWelcome);
+            notificationManager.createNotificationChannel(channelUpdate);
+        }
+    }
+    private void pushNotificationMax(String name){
+        Intent fullScreenIntent = new Intent(getActivity(), FragmentSignin.class);
+        PendingIntent pendingIntent;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            pendingIntent = PendingIntent.getActivity(getActivity(),
+                    0, fullScreenIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
+        }else {
+            pendingIntent = PendingIntent.getActivity(getActivity(),
+                    0, fullScreenIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        }
+        sharedPreferences = getActivity().getSharedPreferences(AloneMain.NAME_RING, Context.MODE_PRIVATE);
+        Boolean ring = sharedPreferences.getBoolean(AloneMain.KEY_BL_RING, true);
+        if (ring == true) {
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), CHANNEL_WELCOME)
+                    .setSmallIcon(R.drawable.ic_logo)
+                    .setColor(getResources().getColor(R.color.textcolor_blue_blod))
+//                .setLargeIcon(bitmap)
+                    .setContentTitle("Welcome!!!")
+//                .setContentText("Welcome " + name)
+                    .setAutoCancel(true)
+                    .setStyle(new NotificationCompat.BigTextStyle().bigText("Chào mừng " + name + " đến với KingApartment"))
+                    .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                    .setPriority(NotificationCompat.PRIORITY_MAX)
+                    .setFullScreenIntent(pendingIntent, true);
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getContext());
+            notificationManager.notify(NotificationManagerCompat.IMPORTANCE_HIGH, builder.build());
+            createNotificationChannel();
+        }else {
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), CHANNEL_WELCOME)
+                    .setSmallIcon(R.drawable.ic_logo)
+                    .setColor(getResources().getColor(R.color.textcolor_blue_blod))
+//                .setLargeIcon(bitmap)
+                    .setContentTitle("Welcome!!!")
+//                .setContentText("Welcome " + name)
+                    .setStyle(new NotificationCompat.BigTextStyle().bigText("Chào mừng " + name + " đến với KingApartment"))
+                    .setPriority(NotificationCompat.PRIORITY_MAX)
+                    .setFullScreenIntent(pendingIntent, true);
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getContext());
+            notificationManager.notify(NotificationManagerCompat.IMPORTANCE_HIGH, builder.build());
+            createNotificationChannel();
+        }
+    }
+    private void pushNotificationMin(){
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), CHANNEL_UPDATE)
+                .setSmallIcon(R.drawable.ic_logo)
+                .setColor(getResources().getColor(R.color.textcolor_blue_blod))
+//                .setLargeIcon(bitmap)
+                .setContentTitle("Update new!!!")
+//                .setContentText("Welcome ")
+                .setAutoCancel(true)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText("Cập nhật thêm nhiều mẫu chung cư mới độc quyền thảo sức lựa chọn"))
+                .setPriority(NotificationCompat.PRIORITY_MIN);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getContext());
+        notificationManager.notify(NotificationManagerCompat.IMPORTANCE_MIN, builder.build());
+    }
     @Override
     public void onDestroy() {
         super.onDestroy();
         requireActivity().unregisterReceiver(broadcastReceiver);
     }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -172,6 +258,13 @@ public class FragmentSignin extends Fragment {
                     String json = gson.toJson(users);
                     prefsEditor.putString(AloneMain.KEY_ACCOUNTUSER, json);
                     prefsEditor.commit();
+                }
+                sharedPreferences = getActivity().getSharedPreferences(AloneMain.NAME_NOTIFICATION, Context.MODE_PRIVATE);
+                Boolean notification = sharedPreferences.getBoolean(AloneMain.KEY_BL_NOTIFICATION, true);
+                if (notification == true) {
+                    pushNotificationMin();
+                    pushNotificationMax(account.getDisplayName());
+                } else {
                 }
                 NavHostFragment.findNavController(FragmentSignin.this).navigate(R.id.action_fragmentSignin_to_fragmentDaddy);
             } else {

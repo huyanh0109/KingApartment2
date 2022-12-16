@@ -17,20 +17,29 @@ import android.view.ViewGroup;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.datn.NetworkBroadcast;
+import com.example.datn.AloneMain;
+import com.example.datn.broadcast.NetworkBroadcast;
 import com.example.datn.R;
+import com.example.datn.api.APIClient;
+import com.example.datn.api.APIservice;
+import com.example.datn.model.AccountUser;
+import com.example.datn.model.ResultApartment;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.gson.Gson;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.List;
 import java.util.Locale;
+
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FragmentDaddy extends Fragment {
     BottomNavigationView navView;
@@ -47,9 +56,10 @@ public class FragmentDaddy extends Fragment {
         autoLogin();
         checkConnect();
         createView();
-        BadgeDrawable badgeDrawable = navView.getOrCreateBadge(R.id.nav_notification);
-        badgeDrawable.setVisible(true);
-        badgeDrawable.setNumber(10);
+        BadgeDrawable badgeDrawableNotification = navView.getOrCreateBadge(R.id.nav_notification);
+        badgeDrawableNotification.setVisible(true);
+        badgeDrawableNotification.setNumber(3);
+        postToCallWishList();
 //        val badgeDrawable = bottomNavigation.getBadge(menuItemId)
 //        if (badgeDrawable != null) {
 //            badgeDrawable.isVisible = false
@@ -57,7 +67,27 @@ public class FragmentDaddy extends Fragment {
 //        }
         return view;
     }
+    private void postToCallWishList(){
+        sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString(AloneMain.KEY_ACCOUNTUSER, "");
+        AccountUser user = gson.fromJson(json, AccountUser.class);
+        APIservice apIservice = APIClient.getClient().create(APIservice.class);
+        retrofit2.Call<List<ResultApartment>> call  = apIservice.postToCallWishListData(user.getEmail());
+        call.enqueue(new Callback<List<ResultApartment>>() {
+            @Override
+            public void onResponse(retrofit2.Call<List<ResultApartment>> call, Response<List<ResultApartment>> response) {
+                BadgeDrawable badgeDrawableWishlist= navView.getOrCreateBadge(R.id.nav_favorite);
+                badgeDrawableWishlist.setVisible(true);
+                badgeDrawableWishlist.setNumber(response.body().size());
+            }
 
+            @Override
+            public void onFailure(retrofit2.Call<List<ResultApartment>> call, Throwable t) {
+
+            }
+        });
+    }
     private void createView() {
         Log.i("TAG", "getBoolean: "+getBoolean(getArguments(), "Callback"));
         if (getBoolean(getArguments(), "Callback") == null) {

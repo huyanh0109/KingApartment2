@@ -1,4 +1,4 @@
-package com.example.datn;
+package com.example.datn.broadcast;
 
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -13,6 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+
+import com.example.datn.AloneMain;
+import com.example.datn.R;
 
 public class NetworkBroadcast extends BroadcastReceiver {
     ConnectivityManager connectivityManager;

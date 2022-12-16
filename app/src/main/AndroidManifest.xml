@@ -67,7 +67,7 @@
             android:resource="@array/preloaded_fonts" />
 
         <receiver
-            android:name=".NetworkBroadcast"
+            android:name=".broadcast.NetworkBroadcast"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTTIVITY_CHANGE" />

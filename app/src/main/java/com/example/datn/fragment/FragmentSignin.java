@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.TaskStackBuilder;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -12,12 +11,9 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.ConnectivityManager;
 import android.os.Build;
@@ -27,12 +23,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -42,13 +36,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.datn.AloneMain;
-import com.example.datn.NetworkBroadcast;
+import com.example.datn.broadcast.NetworkBroadcast;
 import com.example.datn.R;
-import com.example.datn.api.APIClient;
-import com.example.datn.api.APIservice;
 import com.example.datn.model.Account;
 import com.example.datn.model.AccountUser;
-import com.example.datn.model.ResultApartment;
 import com.example.datn.viewmodel.AccountUserViewModel;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -62,15 +53,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.gson.Gson;
 
 import java.io.IOException;
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
-import okhttp3.Connection;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class FragmentSignin extends Fragment {
 

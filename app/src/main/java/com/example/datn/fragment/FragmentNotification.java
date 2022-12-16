@@ -31,9 +31,9 @@ public class FragmentNotification extends Fragment {
         calendar.add(Calendar.DAY_OF_YEAR, -1);
         Date tomorrow = calendar.getTime();
         String currentDateToday = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(today);
-        tv_notification_date_today.setText("Hôm nay, " + currentDateToday);
+        tv_notification_date_today.setText(R.string.notification_today+", " + currentDateToday);
         String currentDateTomorrow = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(tomorrow);
-        tv_notification_date_tomorrow.setText("Hôm qua, " + currentDateTomorrow);
+        tv_notification_date_tomorrow.setText(R.string.notification_tomorrow+", " + currentDateTomorrow);
         return view;
     }
 }

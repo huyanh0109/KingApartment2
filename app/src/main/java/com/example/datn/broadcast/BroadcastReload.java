@@ -1,4 +1,4 @@
-package com.example.datn;
+package com.example.datn.broadcast;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+
+import com.example.datn.R;
 
 public class BroadcastReload extends NetworkBroadcast {
     @Override

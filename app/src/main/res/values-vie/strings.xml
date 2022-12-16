@@ -43,6 +43,7 @@
     <string name="contact_name_edt">Họ và Tên</string>
     <string name="help_title">Trợ giúp</string>
     <string name="contact_message_edt">Viết gì đó cho chúng tôi</string>
+    <string name="profile_user_text">Cập nhật thông tin đang sửa chữa nâng cấp, bạn vui lòng quay lại sau</string>
     <string name="title_help_1">Tôi muốn thay đổi ngôn ngữ!</string>
     <string name="title_help_2">Làm sao để được hỗ trợ?</string>
     <string name="title_help_3">Thông tin chung cư có chính xác?</string>
@@ -98,6 +99,9 @@
     <string name="search_hint">bạn cần tìm gì</string>
     <string name="search_result_title">kết quả</string>
     <string name="search_text_hint">nhập gì đó...</string>
+    <string name="notification_title_text">Thông báo</string>
+    <string name="notification_today">Hôm nay</string>
+    <string name="notification_tomorrow">Hôm qua</string>
     <string name="signin_email">Email<font color="#F81212"> *</font>
     </string>
     <string name="contact_name">Họ và Tên<font color="#F81212"> *</font>

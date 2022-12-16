@@ -244,4 +244,14 @@
             app:lottie_loop="true"
             app:layout_constraintLeft_toRightOf="@+id/tv_onetouch" />
     </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_version"
+        android:layout_margin="@dimen/padding_small"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/source_sans_pro"
+        android:textColor="@color/text_color_light"
+        android:textSize="@dimen/text_size_normal"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

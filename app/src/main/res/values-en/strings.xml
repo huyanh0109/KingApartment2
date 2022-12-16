@@ -44,6 +44,7 @@
     <string name="contact_name_edt">Your Name</string>
     <string name="help_title">Help</string>
     <string name="contact_message_edt">Write something...</string>
+    <string name="profile_user_text">Updating information is being repaired, please come back later</string>
     <string name="title_help_1">I want to change language!</string>
     <string name="title_help_2">How to contact?</string>
     <string name="title_help_3">Is the apartment information accurate?</string>
@@ -99,6 +100,9 @@
     <string name="search_hint">search</string>
     <string name="search_result_title">search results</string>
     <string name="search_text_hint">text something...</string>
+    <string name="notification_title_text">Notification</string>
+    <string name="notification_today">Today</string>
+    <string name="notification_tomorrow">Tomorrow</string>
     <string name="signin_email">Email<font color="#F81212"> *</font>
     </string>
     <string name="contact_name">Họ và Tên<font color="#F81212"> *</font>

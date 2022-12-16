@@ -24,7 +24,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -34,7 +33,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datn.AloneMain;
-import com.example.datn.BroadcastReload;
+import com.example.datn.broadcast.BroadcastReload;
 import com.example.datn.R;
 import com.example.datn.adapter.ListOfListHomeApdapter;
 import com.example.datn.core.Utils;
@@ -49,7 +48,6 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.gson.Gson;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;

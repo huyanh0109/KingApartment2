@@ -75,6 +75,7 @@ public class FragmentSignin extends Fragment {
         login_gmail = view.findViewById(R.id.ll_signin_top);
         checkConnect();
         autoLogin();
+        createNotificationChannel();
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {

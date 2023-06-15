@@ -33,6 +33,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datn.AloneMain;
+import com.example.datn.api.APIClient;
+import com.example.datn.api.APIservice;
 import com.example.datn.broadcast.BroadcastReload;
 import com.example.datn.R;
 import com.example.datn.adapter.ListOfListHomeApdapter;
@@ -51,6 +53,9 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FragmentHome extends Fragment {
     public static final int VIEWTYPE_NORMAL = 1;
@@ -194,6 +199,7 @@ public class FragmentHome extends Fragment {
     }
 
     private void getApartmentNearYou() {
+
         apartmentNearYouViewModel.getliveDataNearYou(longitude, latitude).observe(getActivity(), listApartment -> {
             if (listApartment != null && listApartment.getListApartmentPopulate().getApartmentResult() != null
                     && !listApartment.getListApartmentPopulate().getApartmentResult().isEmpty()) {
@@ -204,11 +210,35 @@ public class FragmentHome extends Fragment {
                 listResultNearYou.clear();
                 listResultNearYou.addAll(Utils.Companion.sortList(apartmentList));
                 listApdapter.notifyDataSetChanged();
+                Log.i("TAG", "getApartmentNearYou: " + listApartment.getListApartmentPopulate().getApartmentResult());
             }
             if (listApartment == null) {
             }
+
         });
     }
+
+//    private void postToCallApartment(){
+//        APIservice apIservice = APIClient.getClientv2().create(APIservice.class);
+//        retrofit2.Call<List<ResultApartment>> call  = apIservice.getApartment();
+//        call.enqueue(new Callback<List<ResultApartment>>() {
+//            @Override
+//            public void onResponse(retrofit2.Call<List<ResultApartment>> call, Response<List<ResultApartment>> response) {
+//                List<ResultApartment> resultApartment  = response.body();
+//                listResultPopular.clear();
+//                listResultPopular.addAll(resultApartment);
+//                Log.i("TAGGGGGGG", "onResponse: "+listResultPopular.size());
+//                listApdapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onFailure(retrofit2.Call<List<ResultApartment>> call, Throwable t) {
+//
+//            }
+//        });
+//        dialog.dismiss();
+//    }
+
 
     private void goToSearchDetail() {
         edt_home_search.setOnClickListener(new View.OnClickListener() {

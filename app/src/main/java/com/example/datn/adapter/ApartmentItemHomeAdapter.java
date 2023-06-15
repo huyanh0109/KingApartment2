@@ -79,11 +79,11 @@ public class ApartmentItemHomeAdapter extends RecyclerView.Adapter<RecyclerView.
             DecimalFormat formatterPrice = new DecimalFormat("#,##");
             double formatPrice = Double.parseDouble(this.list.get(position).getPrice()) / 10000;
             viewHolder.tv_rcv_itemhome_price.setText(formatterPrice.format(formatPrice) + "tr");
-            if (this.list.get(position).getCreateBy().equals("admin")) {
-                viewHolder.tv_rcv_itemhome_desciption.setText("King Mall");
-            } else {
-                viewHolder.tv_rcv_itemhome_desciption.setText("Shoper");
-            }
+//            if (this.list.get(position).getCreateBy().equals("admin")) {
+//                viewHolder.tv_rcv_itemhome_desciption.setText("King Mall");
+//            } else {
+//                viewHolder.tv_rcv_itemhome_desciption.setText("Shoper");
+//            }
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -109,11 +109,11 @@ public class ApartmentItemHomeAdapter extends RecyclerView.Adapter<RecyclerView.
             DecimalFormat formatterPrice = new DecimalFormat("#,##");
             double formatPrice = Double.parseDouble(this.list.get(position).getPrice()) / 10000;
             holderPlus.tv_rcv_price_wishlist.setText(formatterPrice.format(formatPrice) + "tr");
-            if (this.list.get(position).getCreateBy().equals("admin")) {
-                holderPlus.tv_rcv_description_wishlist.setText("King Mall");
-            } else {
-                holderPlus.tv_rcv_description_wishlist.setText("Shoper");
-            }
+//            if (this.list.get(position).getCreateBy().equals("admin")) {
+//                holderPlus.tv_rcv_description_wishlist.setText("King Mall");
+//            } else {
+//                holderPlus.tv_rcv_description_wishlist.setText("Shoper");
+//            }
             holderPlus.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

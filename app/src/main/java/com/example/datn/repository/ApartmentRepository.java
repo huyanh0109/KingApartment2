@@ -36,6 +36,7 @@ public class ApartmentRepository {
                     public void onResponse(@NonNull Call<ApartmentPopular> call,
                                            @NonNull Response<ApartmentPopular> response) {
                         populateData.postValue(response.body());
+                        Log.i("TAG", "onResponse: "+response.body());
                     }
 
                     @Override
@@ -50,7 +51,7 @@ public class ApartmentRepository {
         return populateData;
     }
     public void sendLocation(Double longditude,Double latitude){
-        apIservice.getServerDataApartmentNearYou(longditude,latitude)
+        apIservice.getServerDataApartmentNearYou()
                 .enqueue(new Callback<ApartmentPopular>() {
 
                     @Override

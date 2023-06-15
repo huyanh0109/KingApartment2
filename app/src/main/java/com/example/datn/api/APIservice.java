@@ -21,9 +21,11 @@ public interface APIservice {
     @GET("apartment/popular")
     Call<ApartmentPopular> getServerDataApartmentPopular();
 
-    @GET("apartment/near-you")
-    Call<ApartmentPopular> getServerDataApartmentNearYou(@Query("longitude") Double longitude,
-                                                         @Query("latitude") Double latitude);
+    @GET("apartment/1/popular")
+    Call<List<ResultApartment>> getApartment();
+
+    @GET("near-you")
+    Call<ApartmentPopular> getServerDataApartmentNearYou();
     @GET("apartment/search")
     Call<List<ResultApartment>> getDataSearch(@Query("pattern") String pattern);
 
